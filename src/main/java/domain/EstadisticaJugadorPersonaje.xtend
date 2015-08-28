@@ -2,6 +2,9 @@ package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
 
+/**
+ * Modela la experiencia de un jugador con un personaje a medida que el juego se va utilizando
+ */
 @Accessors
 class EstadisticaJugadorPersonaje {
 	
@@ -15,7 +18,7 @@ class EstadisticaJugadorPersonaje {
 	Ubicacion ubicacionesUsadas	
 	Integer calificacion
 	
-	Object desempenio
+	Desempenio desempenio
 	
 	new(Jugador jugador, Personaje personaje){
 		this.jugador = jugador
@@ -33,7 +36,7 @@ class EstadisticaJugadorPersonaje {
 		
 	}
 	
-	def desempeño(){
+	def desempenio(){
 		
 	}
 }
