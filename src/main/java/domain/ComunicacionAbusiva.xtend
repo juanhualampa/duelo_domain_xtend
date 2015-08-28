@@ -1,7 +1,10 @@
 package domain
 
-class ComunicacionAbusiva implements Motivo{	
-	//el contrincante abusa y tiene malos tratos con nosotros		
+/**
+ * El contrincante abusa y tiene malos tratos con nosotros
+ */
+class ComunicacionAbusiva implements Motivo{
+	
 	override peso() {
 		7
 	}	

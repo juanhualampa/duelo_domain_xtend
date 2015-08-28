@@ -11,10 +11,10 @@ class Jugador {
 	ArrayList<Denuncia> denuncias	
 	
 	new(String Nombre){
-		personajes = new ArrayList<Personaje>()
+		personajes = newArrayList
 		pesoDeDenuncias = 0
 		cantDePeleasGanadas = 0
-		denuncias = new ArrayList<Denuncia>()
+		denuncias = newArrayList
 	}
 	
 	def calificacion(){
