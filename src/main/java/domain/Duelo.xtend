@@ -40,22 +40,22 @@ class Duelo {
 		/*
 		 * mejor poder de ataque * un factor de suerte (un random entre 0 y 1)
 		 * 
-		 
-		 if (esMasPoderoso(this.retador,this.retado)){
-			ganador = this.retador
-		 	perdedor = this.retado
-		 }
-		 else{
-		 	ganador = this.retado
-		 	perdedor = this.retador
-		 	
-		 }
-	
-		 
-		 this.sistema.actualizarEstadisticas(this.retador,this.personajeRetador,this.ubicacionRetador)
-		 this.sistema.actualizarEstadisticas(this.retado,this.personajeRetado,this.ubicacionRetado)
 		 * 
 		 */
+//		 if (esMasPoderoso(this.retador,this.retado)){
+//			ganador = this.retador
+//		 	perdedor = this.retado
+//		 }
+//		 else{
+//		 	ganador = this.retado
+//		 	perdedor = this.retador
+//		 	
+//		 }
+	
+		 
+		 this.sistema.actualizarEstadisticas(this.retador,this.ubicacionRetador)
+		 this.sistema.actualizarEstadisticas(this.retado,this.ubicacionRetado)
+		 
 	}
 	
 	

@@ -55,4 +55,8 @@ class Sistema {
 		obtenerEstadisticas(retador).isEmpty()
 	}
 	
+	def actualizarEstadisticas(Retador retador, Ubicacion ubicacion) {
+		
+	}
+	
 }
