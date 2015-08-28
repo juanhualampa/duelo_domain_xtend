@@ -1,5 +1,5 @@
 package domain
 
-class Ubicacion {
-	
+enum Ubicacion {
+	TOP, BOTTOM
 }

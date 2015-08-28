@@ -1,6 +1,7 @@
 package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.List
 
 /**
  * Modela la experiencia de un jugador con un personaje a medida que el juego se va utilizando
@@ -15,7 +16,7 @@ class EstadisticaJugadorPersonaje {
 	Integer vecesKills
 	Integer vecesDeads
 	Integer vecesAssist	
-	Ubicacion ubicacionesUsadas	
+	List<Ubicacion> ubicacionesUsadas	
 	Integer calificacion
 	
 	Desempenio desempenio
@@ -27,10 +28,11 @@ class EstadisticaJugadorPersonaje {
 		this.vecesKills = 0
 		this.vecesDeads = 0
 		this.vecesAssist = 0
-		this.ubicacionesUsadas = new Ubicacion()
+		this.ubicacionesUsadas = newArrayList
 		this.calificacion = 0
 		this.desempenio = new Desempenio()
 	}
+	
 	
 	def experiencia(){
 		

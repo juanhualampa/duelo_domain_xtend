@@ -9,15 +9,21 @@ class Jugador {
 	int pesoDeDenuncias	
 	int cantDePeleasGanadas
 	ArrayList<Denuncia> denuncias	
+	Integer ranking
 	
 	new(String Nombre){
 		personajes = new ArrayList<Personaje>()
 		pesoDeDenuncias = 0
 		cantDePeleasGanadas = 0
 		denuncias = new ArrayList<Denuncia>()
+		ranking = 0
 	}
+	def Integer getRanking(){
+		ranking = this.calificacion() / 500
+	}	
 	
-	def calificacion(){
+	
+	def Integer calificacion(){
 		(promedioDeCalificacionesDePersonajes - pesoDeDenuncias ) * cantDePeleasGanadas
 	}
 			
