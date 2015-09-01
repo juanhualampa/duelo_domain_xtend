@@ -1,7 +1,9 @@
 package domain
-
-class FeedIntencional implements Motivo{	
-	//el contricante se está dejando ganar y no presenta ningún desafío		
+/**
+ * el contrincante se esta dejando ganar y no presenta ningun desafio	
+ */
+class FeedIntencional implements Motivo{
+	
 	override peso() {
 		10
 	}	

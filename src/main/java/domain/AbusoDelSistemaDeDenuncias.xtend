@@ -1,7 +1,10 @@
 package domain
 
-class AbusoDelSistemaDeDenuncias implements Motivo{	
-	//el contricante se está dejando ganar y no presenta ningún desafío		
+/**
+ * El jugador abusa del sistema de denuncias
+ */
+class AbusoDelSistemaDeDenuncias implements Motivo{
+	
 	override peso() {
 		25
 	}	

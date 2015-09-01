@@ -12,14 +12,14 @@ class Jugador {
 	Integer ranking
 	String nombre
 	
-	new(String nombre){
-		this.nombre = nombre
+	new(String Nombre){
 		personajes = newArrayList
 		pesoDeDenuncias = 0
 		cantDePeleasGanadas = 0
 		denuncias = newArrayList
 		ranking = 0
 	}
+
 	def Integer getRanking(){
 		ranking = this.calificacion() / 500
 	}	
