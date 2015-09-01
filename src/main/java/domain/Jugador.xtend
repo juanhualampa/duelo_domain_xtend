@@ -10,19 +10,29 @@ class Jugador {
 	int cantDePeleasGanadas
 	ArrayList<Denuncia> denuncias	
 	Integer ranking
+	String nombre
 	
-	new(String Nombre){
-		personajes = new ArrayList<Personaje>()
+	new(String nombre){
+		this.nombre = nombre
+		personajes = newArrayList
 		pesoDeDenuncias = 0
 		cantDePeleasGanadas = 0
-		denuncias = new ArrayList<Denuncia>()
+		denuncias = newArrayList
 		ranking = 0
 	}
 	def Integer getRanking(){
 		ranking = this.calificacion() / 500
 	}	
 	
+	def Personaje personajeSeleccionado(){
+		personajes.get(0) // Esto seria un fire property changes
+	}
 	
+	def iniciarDuelo ( Sistema sist, Ubicacion ubi)
+	{
+		
+	}
+		
 	def Integer calificacion(){
 		(promedioDeCalificacionesDePersonajes - pesoDeDenuncias ) * cantDePeleasGanadas
 	}
