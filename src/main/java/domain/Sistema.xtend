@@ -56,7 +56,7 @@ class Sistema {
 	}
 	
 	def actualizarEstadisticas(Retador retador, Ubicacion ubicacion) {
-		
+
 	}
 	
 }
