@@ -51,7 +51,6 @@ class Duelo {
 //		 	perdedor = this.retador
 //		 	
 //		 }
-	
 		 
 		 this.sistema.actualizarEstadisticas(this.retador,this.ubicacionRetador)
 		 this.sistema.actualizarEstadisticas(this.retado,this.ubicacionRetado)

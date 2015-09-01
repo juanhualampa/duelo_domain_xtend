@@ -2,6 +2,7 @@ package domain
 
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
+import javax.management.Descriptor
 
 @Accessors
 class Jugador {
@@ -28,9 +29,11 @@ class Jugador {
 		personajes.get(0) // Esto seria un fire property changes
 	}
 	
-	def iniciarDuelo ( Sistema sist, Ubicacion ubi)
-	{
-		
+	/**
+	 * da la orden de iniciar un duelo
+	 */
+	def iniciarDuelo (Sistema sist, Ubicacion ubic){
+		sist.iniciarReto(new Retador(this, personajeSeleccionado), ubic)
 	}
 		
 	def Integer calificacion(){
@@ -40,4 +43,11 @@ class Jugador {
 	def promedioDeCalificacionesDePersonajes() {
 		personajes.map[it.calificacion].reduce[uno, otro | uno + otro]
 	}
+	
+	/**
+	 * denunciar a jugador
+	 */
+	 def denunciarAJugador(Sistema sist, Jugador jug, Motivo mot, Descripcion desc) {
+	 	sist.denunciarJugador(new Denuncia(this, jug, mot, desc))
+	 }
 }

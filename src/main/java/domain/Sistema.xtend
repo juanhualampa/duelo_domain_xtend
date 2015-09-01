@@ -8,12 +8,6 @@ class Sistema {
 	List<Duelo> duelos = newArrayList
 	List<EstadisticaJugadorPersonaje> estadisticas = newArrayList
 	
-	/*
-	 * 
-	 * 
-	 * 
-	 */
-	
 	/**
 	 * Toma un retaor y una ubicacion y le busca un contrincante de su nivel
 	 */
@@ -57,6 +51,10 @@ class Sistema {
 	
 	def actualizarEstadisticas(Retador retador, Ubicacion ubicacion) {
 
+	}
+	
+	def denunciarJugador(Denuncia denuncia) {
+		denuncia.obtenerJugadorACastigar.castigar
 	}
 	
 }
