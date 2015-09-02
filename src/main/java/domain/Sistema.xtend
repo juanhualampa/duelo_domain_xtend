@@ -54,7 +54,8 @@ class Sistema {
 	}
 	
 	def denunciarJugador(Denuncia denuncia) {
-		denuncia.obtenerJugadorACastigar.castigar
+		//denuncia.obtenerJugadorACastigar.castigar
+		denuncia.castigar
 	}
 	
 }

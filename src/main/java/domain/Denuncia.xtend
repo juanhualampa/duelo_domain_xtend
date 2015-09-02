@@ -5,20 +5,24 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Denuncia {
 	
-	Jugador denunciante	
-	Jugador denunciado	
+	Duelo contexto	
 	Motivo unMotivo	
 	Descripcion unaDescripcion
 	
-	new(Jugador denunciante, Jugador denunciado, Motivo unMotivo, Descripcion unaDescripcion) {
-    	this.denunciante = denunciante
-    	this.denunciado = denunciado
+	new(Duelo contexto, Motivo unMotivo, Descripcion unaDescripcion) {
+    	this.contexto = contexto
     	this.unMotivo = unMotivo
     	this.unaDescripcion = unaDescripcion
     }
     
-    def Jugador castigar() {
-    	
+    def void castigar() {
+    	if(calcularValidez())
+    		unMotivo.evaluarse(contexto)	//cada motivo sabe evaluarse y castigar si corresponde
+    	else {
+    		val abuso = new AbusoDelSistemaDeDenuncias()	//podria ir el string de pantalla
+    		abuso.sancionar(this)
+    		
+    		}
     }
     
 	
@@ -31,14 +35,14 @@ class Denuncia {
 		(unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras())
 	}
 	
-	def void getObtenerJugadorACastigar() {
-		if(calcularValidez())
-    		unMotivo.evaluarse()	//cada motivo sabe evaluarse y castigar si corresponde
-    	else {
-    		val abuso = new AbusoDelSistemaDeDenuncias()	//podria ir el string de pantalla
-    		abuso.sancionar(this)
-    		
-    		}
-	}
+//	def void getObtenerJugadorACastigar() {
+//		if(calcularValidez())
+//    		unMotivo.evaluarse(this)	//cada motivo sabe evaluarse y castigar si corresponde
+//    	else {
+//    		val abuso = new AbusoDelSistemaDeDenuncias()	//podria ir el string de pantalla
+//    		abuso.sancionar(this)
+//    		
+//    		}
+//	}
 	
 }

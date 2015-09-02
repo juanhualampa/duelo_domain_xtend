@@ -3,7 +3,7 @@ package domain
 /**
  * El jugador abusa del sistema de denuncias
  */
-class AbusoDelSistemaDeDenuncias implements Motivo{
+class AbusoDelSistemaDeDenuncias extends Motivo{
 	
 	override peso() {
 		25
@@ -12,8 +12,13 @@ class AbusoDelSistemaDeDenuncias implements Motivo{
 	def sancionar(Denuncia denuncia) {
 		
 		println( "El jugador intenta denunciar a: <<denuncia.denunciado>> 
-					por: <<denuncia.unMotivo>> sin tener una justificación suficiente: 
+					por: <<denuncia.unMotivo>> sin tener una justificaciï¿½n suficiente: 
 					<<denuncia.unaDescripcion>>")
 	}
+	
+	override aplicarPenalidadContraSiCorresponde(Retador retador, Retador retado) {
+	}
+	
+	
 	
 }

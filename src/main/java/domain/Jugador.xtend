@@ -3,6 +3,7 @@ package domain
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 import javax.management.Descriptor
+import java.util.Stack
 
 @Accessors
 class Jugador {
@@ -12,13 +13,17 @@ class Jugador {
 	ArrayList<Denuncia> denuncias	
 	Integer ranking
 	String nombre
+	ArrayList<EstadisticasPersonajes> estadisticas	
+	ArrayList<Duelo> duelos
 	
 	new(String Nombre){
 		personajes = newArrayList
+		estadisticas = newArrayList
 		pesoDeDenuncias = 0
 		cantDePeleasGanadas = 0
 		denuncias = newArrayList
 		ranking = 0
+		duelos = newArrayList
 	}
 
 	def Integer getRanking(){
@@ -48,6 +53,11 @@ class Jugador {
 	 * denunciar a jugador
 	 */
 	 def denunciarAJugador(Sistema sist, Jugador jug, Motivo mot, Descripcion desc) {
-	 	sist.denunciarJugador(new Denuncia(this, jug, mot, desc))
+	 	sist.denunciarJugador(new Denuncia(obtenerUltimoDueloContra(jug), mot, desc))
 	 }
+	
+	def Duelo obtenerUltimoDueloContra(Jugador jugador) {
+		this.duelos.get(this.duelos.lastIndexOf(jugador))
+	}
+	
 }
