@@ -14,23 +14,21 @@ class Duelo {
 	Resultado resultado
 	
 	
-	new(Sistema sistema, Retador ret1 , Ubicacion u1, Retador ret2 ,  Ubicacion u2 )
+	new(Sistema sistema, Retador ret1,  Retador ret2  )
 	{
 		this.sistema = sistema
 		this.retador = ret1
 		this.retado = ret2
-		this.ubicacionRetador = u1
-		this.ubicacionRetado = u2
 	}
 	
-	def Integer poderDeAtaque(EstadisticaJugadorPersonaje est) 
+	def Integer poderDeAtaque(EstadisticasPersonajes est) 
 	{
 		(est.calificacion + (est.vecesKills + est.vecesAssist / 2 - est.vecesDeads) *
 		est.vecesUsadoAntesDelDuelo) * new Random().nextInt(1)
 	}	
 	
 	def Integer poder(Retador ret){
-		poderDeAtaque(sistema.obtenerEstadistica(ret))
+		poderDeAtaque(ret.personaje.estadistica)
 	}
 	
 	def esMasPoderoso(Retador ret1, Retador ret2){

@@ -6,55 +6,49 @@ import java.util.List
 @Accessors
 class Sistema {
 	List<Duelo> duelos = newArrayList
-	List<EstadisticaJugadorPersonaje> estadisticas = newArrayList
-	
+	List<Jugador> jugadores = newArrayList
 	/**
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
-	def iniciarReto(Retador retador, Ubicacion ubicacion){
+	def iniciarReto(Retador retador){
 		if(buscarOponente(retador).isEmpty()){
 			// a joderse
 		}
 		else{
-			realizarDuelo(retador,ubicacion,obtenerOponente(retador),Ubicacion.BOTTOM)
+			realizarDuelo(retador,obtenerOponente(retador))
 		}
 	}
 	
 	def Retador obtenerOponente(Retador retador){
-		new Retador(buscarOponente(retador).head.jugador,buscarOponente(retador).head.personaje)
+		new Retador(buscarOponente(retador).head,buscarOponente(retador).head.personajes.get(0),Ubicacion.BOTTOM )
 	}
 	
 	def buscarOponente(Retador retador){
-		estadisticas.filter[it.jugador.ranking.equals(retador.jugador.ranking) && retador.jugador != jugador].toList
+		jugadores.filter[it.ranking.equals(retador.jugador.ranking) && it != retador.jugador].toList
 	}
 	
-	def void realizarDuelo(Retador ret1, Ubicacion ub1 , Retador ret2, Ubicacion ub2){
-		new Duelo(this,ret1,ub1,ret2,ub2).realizarse()
+	def void realizarDuelo(Retador ret1, Retador ret2){
+		new Duelo(this,ret1,ret2).realizarse()
 	}
 	
-	def EstadisticaJugadorPersonaje obtenerEstadistica(Retador retador) {
+	def EstadisticasPersonajes obtenerEstadistica(Retador retador) {
 		if (esElPrimerDueloConEsteJugadorYEstePersonaje(retador)){
 			// NOOB
 		}
 		else{
-			obtenerEstadisticas(retador).head
+			obtenerEstadisticas(retador)
 		}
 	}
 		
-	def List<EstadisticaJugadorPersonaje> obtenerEstadisticas(Retador retador){
-		estadisticas.filter[it.personaje.equals(personaje) && it.jugador.equals(jugador)].toList
+	def EstadisticasPersonajes obtenerEstadisticas(Retador retador){
+		retador.personaje.estadistica
 	}
 	
 	def esElPrimerDueloConEsteJugadorYEstePersonaje(Retador retador){
-		obtenerEstadisticas(retador).isEmpty()
-	}
-	
-	def actualizarEstadisticas(Retador retador, Ubicacion ubicacion) {
-		
+		retador.personaje.estadistica.equals(null)
 	}
 	
 	def denunciarJugador(Denuncia denuncia) {
-		//denuncia.obtenerJugadorACastigar.castigar
 		denuncia.castigar
 	}
 	

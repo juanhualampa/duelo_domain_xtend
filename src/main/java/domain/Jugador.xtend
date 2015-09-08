@@ -35,12 +35,6 @@ class Jugador {
 		personajes.fold(0)[a,b| a + b.calificacion]
 	}
 	
-	
-//	def <T,R> nose(List<T> lista, Function1<? super T, ? extends R> func){
-//		lista.map[func]
-//	}
-	
-	
 	def Integer getRanking(){
 		ranking = this.calificacion() / 500
 	}	
@@ -53,18 +47,13 @@ class Jugador {
 	 * da la orden de iniciar un duelo
 	 */
 	def iniciarDuelo (Sistema sist, Ubicacion ubic){
-		sist.iniciarReto(new Retador(this, personajeSeleccionado), ubic)
+		sist.iniciarReto(new Retador(this, personajeSeleccionado, ubic))
 	}
 		
 	def Integer calificacion(){
 		(promedioDeCalificacionesDePersonajes - pesoDeDenuncias ) * cantDePeleasGanadas
 	}
 			
-	
-	
-	/**
-	 * denunciar a jugador
-	 */
 	 def denunciarAJugador(Sistema sist, Jugador jug, Motivo mot, Descripcion desc) {
 	 	sist.denunciarJugador(new Denuncia(obtenerUltimoDueloContra(jug), mot, desc))
 	 }
