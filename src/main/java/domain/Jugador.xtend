@@ -2,8 +2,6 @@ package domain
 
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
-import javax.management.Descriptor
-import org.eclipse.xtext.xbase.lib.Functions.Function1
 
 @Accessors
 class Jugador {

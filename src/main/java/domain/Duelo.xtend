@@ -11,11 +11,11 @@ class Duelo {
 	Resultado resultado
 	
 	
-	new(Sistema sistema, Retador ret1,  Retador ret2  )
+	new(Retador ret1,  Retador ret2  )
 	{
 		this.retador = ret1
 		this.retado = ret2
-		this.realizarse(sistema)
+		this.realizarse()
 	}
 	
 	def Integer poderDeAtaque(EstadisticasPersonajes est) 
@@ -32,7 +32,7 @@ class Duelo {
 		poder(ret1) > poder(ret2)
 	}
 	
-	def void realizarse(Sistema sistema){
+	def void realizarse(){
 					
 		 if (esMasPoderoso(this.retador,this.retado)){
 		 	/*
@@ -50,6 +50,9 @@ class Duelo {
 		 /*
 		  * Me gustaria una abstraccion para la parte en la que los duelos se agregan a los jugadores
 		  * no se si esto llevaria a la discusión de donde poner los duelos ....
+		  * 
+		  * Otra cosa más falta tener en cuenta el desempeño, no hice nada pensando en ello.
+		  * 
 		  */
 		 this.retador.jugador.duelos.add(this)
 		 this.retado.jugador.duelos.add(this)

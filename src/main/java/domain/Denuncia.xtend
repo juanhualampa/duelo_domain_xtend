@@ -19,9 +19,7 @@ class Denuncia {
     	if(calcularValidez())
     		unMotivo.evaluarse(this,contexto)	//cada motivo sabe evaluarse y castigar si corresponde
     	else {
-    		val abuso = new AbusoDelSistemaDeDenuncias()	//podria ir el string de pantalla
-    		abuso.evaluarse(this,contexto)
-    		
+    		new AbusoDelSistemaDeDenuncias().evaluarse(this,contexto)    		
     		}
     }
     
@@ -32,7 +30,7 @@ class Denuncia {
 		 * 
 		 */ 
 		
-		(unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras())
+		unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras()
 	}
 
 }
