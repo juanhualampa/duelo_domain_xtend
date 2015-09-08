@@ -6,5 +6,8 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class Personaje {
 
 	Integer calificacion
+	EstadisticasPersonajes estadistica
+	
+	
 	
 }

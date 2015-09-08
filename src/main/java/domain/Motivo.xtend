@@ -3,11 +3,13 @@ package domain
 abstract class Motivo {
 	
       def Integer peso()
-      def void evaluarse(Duelo duelo){
-      	duelo.retador.aplicarPenalidadContraSiCorresponde(duelo.retado)
+      def void evaluarse(Denuncia denuncia, Duelo duelo){
+      	duelo.retado.aplicarPenalidad(denuncia)
       }
 	
-	def void aplicarPenalidadContraSiCorresponde(Retador retador, Retador retado) 
+	def void aplicarPenalidad(Retador contrincante, Denuncia denuncia){
+		contrincante.jugador.recibioDenuncia(denuncia)
+	}
 	
 	  
 }

@@ -17,10 +17,10 @@ class Denuncia {
     
     def void castigar() {
     	if(calcularValidez())
-    		unMotivo.evaluarse(contexto)	//cada motivo sabe evaluarse y castigar si corresponde
+    		unMotivo.evaluarse(this,contexto)	//cada motivo sabe evaluarse y castigar si corresponde
     	else {
     		val abuso = new AbusoDelSistemaDeDenuncias()	//podria ir el string de pantalla
-    		abuso.sancionar(this)
+    		abuso.evaluarse(this,contexto)
     		
     		}
     }
@@ -34,15 +34,5 @@ class Denuncia {
 		
 		(unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras())
 	}
-	
-//	def void getObtenerJugadorACastigar() {
-//		if(calcularValidez())
-//    		unMotivo.evaluarse(this)	//cada motivo sabe evaluarse y castigar si corresponde
-//    	else {
-//    		val abuso = new AbusoDelSistemaDeDenuncias()	//podria ir el string de pantalla
-//    		abuso.sancionar(this)
-//    		
-//    		}
-//	}
-	
+
 }

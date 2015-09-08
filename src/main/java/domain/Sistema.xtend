@@ -9,7 +9,7 @@ class Sistema {
 	List<EstadisticaJugadorPersonaje> estadisticas = newArrayList
 	
 	/**
-	 * Toma un retaor y una ubicacion y le busca un contrincante de su nivel
+	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
 	def iniciarReto(Retador retador, Ubicacion ubicacion){
 		if(buscarOponente(retador).isEmpty()){
@@ -28,7 +28,7 @@ class Sistema {
 		estadisticas.filter[it.jugador.ranking.equals(retador.jugador.ranking) && retador.jugador != jugador].toList
 	}
 	
-	def realizarDuelo(Retador ret1, Ubicacion ub1 , Retador ret2, Ubicacion ub2){
+	def void realizarDuelo(Retador ret1, Ubicacion ub1 , Retador ret2, Ubicacion ub2){
 		new Duelo(this,ret1,ub1,ret2,ub2).realizarse()
 	}
 	
@@ -50,7 +50,7 @@ class Sistema {
 	}
 	
 	def actualizarEstadisticas(Retador retador, Ubicacion ubicacion) {
-
+		
 	}
 	
 	def denunciarJugador(Denuncia denuncia) {

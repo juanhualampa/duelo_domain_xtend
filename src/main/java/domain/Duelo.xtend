@@ -10,7 +10,8 @@ class Duelo {
 	Retador retador	
 	Retador retado	
 	Ubicacion ubicacionRetador	
-	Ubicacion ubicacionRetado
+	Ubicacion ubicacionRetado	
+	Resultado resultado
 	
 	
 	new(Sistema sistema, Retador ret1 , Ubicacion u1, Retador ret2 ,  Ubicacion u2 )
@@ -37,26 +38,22 @@ class Duelo {
 	}
 	
 	def void realizarse(){
-		/*
-		 * mejor poder de ataque * un factor de suerte (un random entre 0 y 1)
-		 * 
-		 * 
-		 */
-//		 if (esMasPoderoso(this.retador,this.retado)){
-//			ganador = this.retador
-//		 	perdedor = this.retado
-//		 }
-//		 else{
-//		 	ganador = this.retado
-//		 	perdedor = this.retador
-//		 	
-//		 }
+					
+		 if (esMasPoderoso(this.retador,this.retado)){
+			resultado = new Victoria (new Ganador(this.retador,ubicacionRetador,this),new Perdedor(this.retado,ubicacionRetador,this))
+		 }
+		 if (esMasPoderoso(this.retado,this.retador)){
+		 	resultado = new Derrota (new Ganador(this.retado,ubicacionRetado,this),new Perdedor(this.retador,ubicacionRetador,this))	 	
+		 }		 
+		 else{
+		 	resultado = new Empatados(new Empate(this))
+		 }	
 		 
-		 this.sistema.actualizarEstadisticas(this.retador,this.ubicacionRetador)
-		 this.sistema.actualizarEstadisticas(this.retado,this.ubicacionRetado)
-		 
+		 /*
+		  * armar el resultado
+		  */
 	}
-	
+		
 	
 	
 }

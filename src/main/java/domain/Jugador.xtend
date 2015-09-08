@@ -3,29 +3,44 @@ package domain
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 import javax.management.Descriptor
-import java.util.Stack
+import org.eclipse.xtext.xbase.lib.Functions.Function1
 
 @Accessors
 class Jugador {
 	ArrayList<Personaje> personajes	
-	int pesoDeDenuncias	
 	int cantDePeleasGanadas
 	ArrayList<Denuncia> denuncias	
 	Integer ranking
 	String nombre
-	ArrayList<EstadisticasPersonajes> estadisticas	
 	ArrayList<Duelo> duelos
 	
 	new(String Nombre){
 		personajes = newArrayList
-		estadisticas = newArrayList
-		pesoDeDenuncias = 0
 		cantDePeleasGanadas = 0
 		denuncias = newArrayList
 		ranking = 0
 		duelos = newArrayList
+		denuncias = newArrayList
+	}
+	
+	def recibioDenuncia(Denuncia denuncia) {
+		denuncias.add(denuncia)
 	}
 
+	def Integer pesoDeDenuncias(){
+		denuncias.fold(0)[a,b | a + b.unMotivo.peso]
+	}
+	
+	def promedioDeCalificacionesDePersonajes() {
+		personajes.fold(0)[a,b| a + b.calificacion]
+	}
+	
+	
+//	def <T,R> nose(List<T> lista, Function1<? super T, ? extends R> func){
+//		lista.map[func]
+//	}
+	
+	
 	def Integer getRanking(){
 		ranking = this.calificacion() / 500
 	}	
@@ -45,9 +60,7 @@ class Jugador {
 		(promedioDeCalificacionesDePersonajes - pesoDeDenuncias ) * cantDePeleasGanadas
 	}
 			
-	def promedioDeCalificacionesDePersonajes() {
-		personajes.map[it.calificacion].reduce[uno, otro | uno + otro]
-	}
+	
 	
 	/**
 	 * denunciar a jugador
@@ -58,6 +71,5 @@ class Jugador {
 	
 	def Duelo obtenerUltimoDueloContra(Jugador jugador) {
 		this.duelos.get(this.duelos.lastIndexOf(jugador))
-	}
-	
+	}	
 }
