@@ -5,8 +5,8 @@ import java.util.List
 
 @Accessors
 class Sistema {
-	List<Duelo> duelos = newArrayList
 	List<Jugador> jugadores = newArrayList
+	
 	/**
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
@@ -21,7 +21,7 @@ class Sistema {
 	
 	def Retador obtenerOponente(Retador retador){
 		val contrincante = buscarOponente(retador).head
-		new Retador(contrincante,contrincante.personajes.get(0),Ubicacion.BOTTOM )
+		new Retador(contrincante,contrincante.personajeSeleccionado,Ubicacion.BOTTOM )
 	}
 	
 	def noHayOponente(Retador retador){

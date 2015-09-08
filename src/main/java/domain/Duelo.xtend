@@ -47,11 +47,12 @@ class Duelo {
 		 else{
 		 	resultado = new Empatados(new Empate(this))
 		 }	
-		 
 		 /*
-		  * armar el resultado
+		  * Me gustaria una abstraccion para la parte en la que los duelos se agregan a los jugadores
+		  * no se si esto llevaria a la discusión de donde poner los duelos ....
 		  */
-		  sistema.duelos.add(this)
+		 this.retador.jugador.duelos.add(this)
+		 this.retado.jugador.duelos.add(this)
 	}
 		
 	

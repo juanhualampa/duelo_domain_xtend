@@ -60,5 +60,6 @@ class Jugador {
 	
 	def Duelo obtenerUltimoDueloContra(Jugador jugador) {
 		this.duelos.get(this.duelos.lastIndexOf(jugador))
-	}	
+	}
+		
 }
