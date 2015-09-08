@@ -17,6 +17,16 @@ class EstadisticasPersonajes {
 	Integer calificacion
 	Desempenio desempenio
 	
+	
+	new(){
+		this.vecesUsadoAntesDelDuelo = 0
+		this.vecesQueGanoDuelo = 0
+		this.vecesKills = 0
+		this.vecesDeads = 0
+		this.vecesAssist = 0
+		this.ubicacionesUsadas = newArrayList		
+	}
+	
 	def void agregarUnaParticipacion() {
 		vecesUsadoAntesDelDuelo += 1
 	}

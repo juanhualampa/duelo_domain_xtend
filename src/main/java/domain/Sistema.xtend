@@ -11,7 +11,7 @@ class Sistema {
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
 	def iniciarReto(Retador retador){
-		if(buscarOponente(retador).isEmpty()){
+		if(noHayOponente(retador)){
 			// a joderse
 		}
 		else{
@@ -20,7 +20,12 @@ class Sistema {
 	}
 	
 	def Retador obtenerOponente(Retador retador){
-		new Retador(buscarOponente(retador).head,buscarOponente(retador).head.personajes.get(0),Ubicacion.BOTTOM )
+		val contrincante = buscarOponente(retador).head
+		new Retador(contrincante,contrincante.personajes.get(0),Ubicacion.BOTTOM )
+	}
+	
+	def noHayOponente(Retador retador){
+		buscarOponente(retador).isEmpty()
 	}
 	
 	def buscarOponente(Retador retador){
@@ -28,16 +33,21 @@ class Sistema {
 	}
 	
 	def void realizarDuelo(Retador ret1, Retador ret2){
-		new Duelo(this,ret1,ret2).realizarse()
+		new Duelo(this,ret1,ret2)
 	}
 	
 	def EstadisticasPersonajes obtenerEstadistica(Retador retador) {
 		if (esElPrimerDueloConEsteJugadorYEstePersonaje(retador)){
-			// NOOB
+			retador.crearEstadisticaParaEstePersonaje()
 		}
 		else{
 			obtenerEstadisticas(retador)
 		}
+	}
+	
+	def crearEstadisticaParaEstePersonaje(Retador retador) {
+		retador.personaje.estadistica = new EstadisticasPersonajes()
+		obtenerEstadisticas(retador)		
 	}
 		
 	def EstadisticasPersonajes obtenerEstadisticas(Retador retador){
@@ -45,7 +55,10 @@ class Sistema {
 	}
 	
 	def esElPrimerDueloConEsteJugadorYEstePersonaje(Retador retador){
-		retador.personaje.estadistica.equals(null)
+		retador.personaje.estadistica.vecesUsadoAntesDelDuelo.equals(0)
+		/*
+		 * Esto podria verse si por ej , si conviene o no poner un estado por defecto ?
+		 */
 	}
 	
 	def denunciarJugador(Denuncia denuncia) {

@@ -4,22 +4,22 @@ class Perdedor {
 	
 	Retador participante
 	
-	new(Retador participante, Ubicacion ubicacion, Duelo duelo) {
+	new(Retador participante, Duelo duelo) {
 		this.participante = participante
-		actualizarEstadisticas(ubicacion,duelo)
+		actualizarEstadisticas(duelo)
 	}
 	
 	def estadisticas(){
 		this.participante.personaje.estadistica
 	}
 	
-	def actualizarEstadisticas(Ubicacion ubicacion,Duelo duelo) {
-		estadisticas.actualizar(ubicacion,duelo)
+	def actualizarEstadisticas(Duelo duelo) {
+		estadisticas.actualizar(duelo)
 	}
 	
-	def void actualizar(EstadisticasPersonajes estadistica, Ubicacion ubicacion, Duelo duelo) {
+	def void actualizar(EstadisticasPersonajes estadistica, Duelo duelo) {
 		estadistica.agregarUnaParticipacion
-		this.participante.actualizacionesDependientesDeLaPosicion(duelo,ubicacion)		
+		this.participante.actualizacionesDependientesDeLaPosicion(duelo,this.participante.ubicacion)		
 	}
 		
 	def boolean inicioElDuelo(Duelo duelo){
