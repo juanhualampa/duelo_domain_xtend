@@ -25,12 +25,11 @@ class Denuncia {
     
 	
 	def calcularValidez() {
-		/*
-		 * Deberia decirme si es fake y no, y con esa informacion que se hace???
-		 * 
-		 */ 
-		
-		unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras()
+		 return unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras()
+	}
+	
+	def getMotivosPosibles(){
+		#[new ComunicacionAbusiva, new AbusoDeHabilidad, new FeedIntencional]
 	}
 
 }

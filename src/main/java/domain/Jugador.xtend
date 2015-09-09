@@ -19,6 +19,7 @@ class Jugador {
 		ranking = 0
 		duelos = newArrayList
 		denuncias = newArrayList
+		this.nombre = Nombre;
 	}
 	
 	def recibioDenuncia(Denuncia denuncia) {

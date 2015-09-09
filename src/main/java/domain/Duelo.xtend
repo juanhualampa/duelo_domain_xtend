@@ -9,13 +9,20 @@ class Duelo {
 	Retador retador	
 	Retador retado		
 	Resultado resultado
-	
+	Sistema sistema;
 	
 	new(Retador ret1,  Retador ret2  )
 	{
 		this.retador = ret1
 		this.retado = ret2
 		this.realizarse()
+	}
+	
+	new(Sistema sis, Retador ret1,  Retador ret2)
+	{
+		this.retador = ret1
+		this.retado = ret2
+		this.sistema = sis;
 	}
 	
 	def Integer poderDeAtaque(EstadisticasPersonajes est) 

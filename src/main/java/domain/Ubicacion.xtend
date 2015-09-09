@@ -1,5 +1,5 @@
 package domain
 
 enum Ubicacion {
-	TOP, BOTTOM
+	TOP, BOTTOM,JUNGLE,MIDDLE
 }
