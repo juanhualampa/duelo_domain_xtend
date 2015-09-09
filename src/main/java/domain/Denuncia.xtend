@@ -1,8 +1,10 @@
 package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@Observable
 class Denuncia {
 	
 	Duelo contexto	
@@ -25,7 +27,8 @@ class Denuncia {
     
 	
 	def calcularValidez() {
-		 return unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras()
+		 return true
+		 //return unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras()
 	}
 	
 	def getMotivosPosibles(){
