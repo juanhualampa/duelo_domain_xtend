@@ -8,32 +8,19 @@ class Ganador extends Veredicto{
 	Retador participante
 	Duelo duelo
 	
-	new(Retador ganador, Duelo duelo) {
-		this.participante = ganador
-		this.duelo = duelo
-		this.participante.personaje.actualizarEstadisticas()
+	new(Retador participante, Duelo duelo) {
+		super(participante,duelo)
 	}
 	
 	def actualizarEstadisticas(Personaje personaje) {
 		personaje.estadistica.actualizar()
 	}
 		
-	def void actualizar(EstadisticasPersonajes estadistica) {
+	override actualizar(EstadisticasPersonajes estadistica) {
 		estadistica.agregarUnaParticipacion
 		estadistica.agregarUnaVictoria
 		this.participante.actualizacionesDependientesDeLaPosicion()		
 	}
-	
-	def estadisticas(){
-		this.participante.personaje.estadistica
-	}
-	
-	def actualizacionesDependientesDeLaPosicion(Retador retador) {
-		retador.inicio.actualizarA(this)
-	}
 		
-	def mensaje(){
-		"Ganaste contra «duelo.retado.nombre»"
-	}
 	
 }
