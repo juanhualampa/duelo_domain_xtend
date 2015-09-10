@@ -9,12 +9,14 @@ class Retador {
 	
 	Jugador jugador	
 	Personaje personaje
-	Ubicacion ubicacion
-	
-	new(Jugador jugador , Personaje personaje, Ubicacion ubicacion){
+	Ubicacion ubicacion	
+	Inicio inicio
+		
+	new(Jugador jugador, Personaje personaje, Ubicacion ubicacion, Inicio inicio) {
 		this.jugador= jugador
 		this.personaje = personaje
 		this.ubicacion = ubicacion
+		this.inicio = inicio
 	}
 	
 }

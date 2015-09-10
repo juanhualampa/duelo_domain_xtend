@@ -49,7 +49,7 @@ class Jugador {
 	 * da la orden de iniciar un duelo
 	 */
 	def iniciarDuelo (Sistema sist, Ubicacion ubic){
-		sist.iniciarReto(new Retador(this, personajeSeleccionado, ubic))
+		sist.iniciarReto(new Retador(this, personajeSeleccionado, ubic, new Iniciador()))
 	}
 		
 	def Integer calificacion(){

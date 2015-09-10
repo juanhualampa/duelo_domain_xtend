@@ -21,7 +21,7 @@ class Sistema {
 	
 	def Retador obtenerOponente(Retador retador){
 		val contrincante = buscarOponente(retador).head
-		new Retador(contrincante,contrincante.personajeSeleccionado,Ubicacion.BOTTOM )
+		new Retador(contrincante,contrincante.personajeSeleccionado,Ubicacion.BOTTOM, new NoIniciador() )
 	}
 	
 	def noHayOponente(Retador retador){

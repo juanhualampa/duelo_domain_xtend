@@ -3,71 +3,35 @@ package domain
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class Ganador {
+class Ganador extends Veredicto{
 		
 	Retador participante
+	Duelo duelo
 	
 	new(Retador ganador, Duelo duelo) {
 		this.participante = ganador
-		this.participante.personaje.actualizarEstadisticas(duelo)
+		this.duelo = duelo
+		this.participante.personaje.actualizarEstadisticas()
 	}
 	
-	def actualizarEstadisticas(Personaje personaje,Duelo duelo) {
-		personaje.estadistica.actualizar(duelo)
+	def actualizarEstadisticas(Personaje personaje) {
+		personaje.estadistica.actualizar()
 	}
-	
-	def void actualizar(EstadisticasPersonajes estadistica,Duelo duelo) {
+		
+	def void actualizar(EstadisticasPersonajes estadistica) {
 		estadistica.agregarUnaParticipacion
 		estadistica.agregarUnaVictoria
-		this.participante.actualizacionesDependientesDeLaPosicion(duelo,this.participante.ubicacion)		
-	}
-	
-	def boolean inicioElDuelo(Duelo duelo){
-		this.participante.jugador.equals(duelo.retador.jugador)
+		this.participante.actualizacionesDependientesDeLaPosicion()		
 	}
 	
 	def estadisticas(){
 		this.participante.personaje.estadistica
 	}
 	
-	def actualizacionesDependientesDeLaPosicion(Retador retador, Duelo duelo, Ubicacion ubi) {
-				
-		if(inicioElDuelo(duelo)){			
-			estadisticas.ubicacionesUsadas.add(null)
-			estadisticas.mejorUbicacion = ubi
-			estadisticas.calificacion = null
-			/*
-			 * Tengo que recalcular esto, necesitaria encapsular en el duelo los datos del retador: jugador
-			 * personaje y ubicacion
-			 */
-		}
-		else{
-			estadisticas.sumarKill
-		}
+	def actualizacionesDependientesDeLaPosicion(Retador retador) {
+		retador.inicio.actualizarA(this)
 	}
-	
-	
-	/*
-	 *     
-	
-	Cantidad de veces que lo usó para iniciar un duelo
-
-    Cantidad de veces que ganó un duelo
-
-    Cantidad de kills: cantidad de duelos que ganó que no fueron iniciados por él
-
-    Cantidad de deads: cantidad de duelos que perdió que no fueron iniciados por él
-
-    Assists: cantidad de duelos que empató (independientemente si los inició o no el jugador)
-
-    Ubicaciones usadas: de los duelos iniciados por el jugador
-
-    Mejor ubicación: ubicación con la que obtuvo la última victoria de duelos iniciados por el jugador
-
-    Calificación: última calificación obtenida por el personaje en un duelo iniciado por el jugador
-	 
-	 */
-	
+		
 	def mensaje(){
 		"Ganaste contra «duelo.retado.nombre»"
 	}
