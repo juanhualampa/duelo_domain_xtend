@@ -4,12 +4,7 @@
 	<groupId>ui_duelo</groupId>
 	<artifactId>ui_duelo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
-	<parent>
-		<groupId>org.uqbar-project</groupId>
-		<artifactId>uqbar-xtend-parent</artifactId>
-		<version>2.7.3</version>
-	</parent>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -23,22 +18,19 @@
 		</plugins>
 	</build>
 
+	<parent>
+		<groupId>org.uqbar-project</groupId>
+		<artifactId>uqbar-xtend-parent</artifactId>
+		<version>2.7.3</version>
+	</parent>
 
 	<dependencies>
 
-		<!-- ASSERTJ -->
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
 			<version>3.1.0</version>
 			<scope>test</scope>
-		</dependency>
-
-		<!-- JUNIT: temporal hasta que podamos probar bien en assertj -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
 		</dependency>
 		
 		<dependency>
