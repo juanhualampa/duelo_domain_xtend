@@ -2,18 +2,21 @@ package domain
 
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
+import java.util.List
 
 @Accessors
+@Observable
 class Jugador {
-	ArrayList<Personaje> personajes	
+	List<Personaje> personajes	
 	int cantDePeleasGanadas
-	ArrayList<Denuncia> denuncias	
+	List<Denuncia> denuncias	
 	Integer ranking
 	String nombre
-	ArrayList<Duelo> duelos
+	List<Duelo> duelos
 	
 	new(String Nombre){
-		personajes = newArrayList
+		personajes = new ArrayList<Personaje>()
 		cantDePeleasGanadas = 0
 		denuncias = newArrayList
 		ranking = 0

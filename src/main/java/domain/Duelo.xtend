@@ -2,8 +2,10 @@ package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.Random
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@Observable
 class Duelo {
 			
 	Retador retador	

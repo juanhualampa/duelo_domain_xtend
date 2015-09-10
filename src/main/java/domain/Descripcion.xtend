@@ -3,7 +3,9 @@ package domain
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.ArrayList
 import java.util.Arrays
+import org.uqbar.commons.utils.Observable
 
+@Observable
 @Accessors
 class Descripcion {
 	

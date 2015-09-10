@@ -27,7 +27,8 @@ class Denuncia {
     
 	
 	def calcularValidez() {
-		 return true
+		 return false
+		 
 		 //return unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras()
 	}
 	
