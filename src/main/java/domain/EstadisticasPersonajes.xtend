@@ -14,8 +14,7 @@ class EstadisticasPersonajes {
 	int vecesAssist	
 	List<Ubicacion> ubicacionesUsadas	
 	Ubicacion mejorUbicacion
-	Integer calificacion
-	Desempenio desempenio
+	Calificacion calificacion
 	
 	
 	new(){
@@ -46,7 +45,6 @@ class EstadisticasPersonajes {
 	def agregarAssist(){
 		vecesAssist += 1
 	}
-	
-	
-	
+		
 }
+

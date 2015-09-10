@@ -45,15 +45,13 @@ class Jugador {
 		personajes.get(0) // Esto seria un fire property changes
 	}
 	
-	/**
-	 * da la orden de iniciar un duelo
-	 */
 	def iniciarDuelo (Sistema sist, Ubicacion ubic){
 		sist.iniciarReto(new Retador(this, personajeSeleccionado, ubic, new Iniciador()))
 	}
-		
+			
 	def Integer calificacion(){
 		(promedioDeCalificacionesDePersonajes - pesoDeDenuncias ) * cantDePeleasGanadas
+		// aunque nos piden 		pesoDeDenuncias  * cantDePeleasGanadas
 	}
 			
 	 def denunciarAJugador(Sistema sist, Jugador jug, Motivo mot, Descripcion desc) {

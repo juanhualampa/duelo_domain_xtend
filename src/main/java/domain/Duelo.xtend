@@ -29,7 +29,7 @@ class Duelo {
 	
 	def Integer poderDeAtaque(EstadisticasPersonajes est) 
 	{
-		(est.calificacion + (est.vecesKills + est.vecesAssist / 2 - est.vecesDeads) *
+		(est.calificacion.nro + (est.vecesKills + est.vecesAssist / 2 - est.vecesDeads) *
 		est.vecesUsadoAntesDelDuelo) * new Random().nextInt(1)
 	}	
 	
