@@ -16,7 +16,7 @@ class Duelo {
 	{
 		this.retador = ret1
 		this.retado = ret2
-		this.realizarse()
+		//this.realizarse()
 	}
 	
 	new(Sistema sis, Retador ret1,  Retador ret2)
@@ -44,6 +44,10 @@ class Duelo {
 	
 	def empataste(Retador ret) {
 		new Empate(ret,this).actualizarEstadisticas
+	}
+	
+	def boolean involucraA(Jugador jugador) {
+		this.retador.jugador.equals(jugador) || this.retado.jugador.equals(jugador)
 	}
 	
 	

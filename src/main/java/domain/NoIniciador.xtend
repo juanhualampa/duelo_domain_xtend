@@ -14,4 +14,8 @@ class NoIniciador implements Inicio{
 		actualiza(veredicto)
 	}
 	
+	override aString() {
+		"No-Iniciador"
+	}
+	
 }

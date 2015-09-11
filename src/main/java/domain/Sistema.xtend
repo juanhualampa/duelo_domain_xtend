@@ -20,47 +20,28 @@ class Sistema {
 	}
 	
 	def Retador obtenerOponente(Retador retador){
-		val contrincante = buscarOponente(retador).head
-		new Retador(contrincante,contrincante.personajeSeleccionado,Ubicacion.BOTTOM, new NoIniciador() )
+		val contrincante = oponentesPosibles(retador).head
+		new Retador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM, new NoIniciador() )
 	}
 	
 	def noHayOponente(Retador retador){
-		buscarOponente(retador).isEmpty()
+		oponentesPosibles(retador).isEmpty()
 	}
 	
-	def buscarOponente(Retador retador){
-		jugadores.filter[it.ranking.equals(retador.jugador.ranking) && it.nombre != retador.jugador.nombre].toList
+	def oponentesPosibles(Retador retador){
+		jugadores.filter[it.mismoRankingSinSerElMismo(retador.jugador)].toList
 	}
 	
+	
+	
+	def mismoRankingSinSerElMismo(Jugador jug1, Jugador jug2){
+		jug1.ranking.equals(jug2.ranking)  && jug1.nombre != jug2.nombre
+	}	
+		
 	def void realizarDuelo(Retador ret1, Retador ret2){
-		new Duelo(ret1,ret2)
+		new Duelo(ret1,ret2).realizarse()
 	}
-	
-//	def EstadisticasPersonajes obtenerEstadistica(Retador retador) {
-//		if (esElPrimerDueloConEsteJugadorYEstePersonaje(retador)){
-//			retador.crearEstadisticaParaEstePersonaje()
-//		}
-//		else{
-//			obtenerEstadisticas(retador)
-//		}
-//	}
-	
-//	def crearEstadisticaParaEstePersonaje(Retador retador) {
-//		retador.personaje.estadistica = new EstadisticasPersonajes()
-//		obtenerEstadisticas(retador)		
-//	}
-//		
-//	def EstadisticasPersonajes obtenerEstadisticas(Retador retador){
-//		retador.personaje.estadistica
-//	}
-//	
-//	def esElPrimerDueloConEsteJugadorYEstePersonaje(Retador retador){
-//		retador.personaje.estadistica.vecesUsadoAntesDelDuelo.equals(0)
-//		/*
-//		 * Esto podria verse si por ej , si conviene o no poner un estado por defecto ?
-//		 */
-//	}
-	
+
 	def denunciarJugador(Denuncia denuncia) {
 		denuncia.castigar
 	}

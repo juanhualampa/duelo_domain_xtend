@@ -15,19 +15,22 @@ class Descripcion {
 		this.palabras = palabras;
 	}
 		
-	def poseeMenosDe20Caracteres(){
-		palabras.length() < 20
+	def poseeAlMenos20Caracteres(){
+		palabras.length > 20
 	}
 	
-	def sonMenosDe3Palabras(){
+	def sonAlMenos3Palabras(){
 		val myList = new ArrayList<String>(Arrays.asList(palabras.split(" ")));
-		myList.size < 3
+		myList.size > 2
 	}
 	
 	def static void main(String [] args){
-		val desc = new Descripcion("Java es malo , Xtend es bueno")
-		val myList = new ArrayList<String>(Arrays.asList(desc.palabras.split("\\s*,\\s*")))
+		val desc = new Descripcion("denuncio abuso de habilidad")
+		println(desc.poseeAlMenos20Caracteres)
+		val myList = //new ArrayList<String>(Arrays.asList(desc.palabras.split("\\s*,\\s*")))
+		new ArrayList<String>(Arrays.asList(desc.palabras.split(" ")));
 		println(myList);  
+		println(myList.size);
 		// e imprime [Java, es, malo, ,, Xtend, es, bueno] lo cual es feo 
 		// con lo cual habria que googlear otro regex.
 	}

@@ -5,6 +5,6 @@ import org.junit.Test
 import static org.assertj.core.api.Assertions.*
 
 class JugadorTest {
-	val pepe = new Jugador("pepe")
+	val pepe = new Jugador("pepe",null)
 	
 }

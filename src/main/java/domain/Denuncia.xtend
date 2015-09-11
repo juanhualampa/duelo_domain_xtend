@@ -18,18 +18,17 @@ class Denuncia {
     }
     
     def void castigar() {
-    	if(calcularValidez())
-    		unMotivo.evaluarse(this,contexto)	//cada motivo sabe evaluarse y castigar si corresponde
+    	print(calcularValidez)
+    	if(calcularValidez)
+    		unMotivo.evaluarse(this,contexto)
     	else {
     		new AbusoDelSistemaDeDenuncias().evaluarse(this,contexto)    		
     		}
     }
     
 	
-	def calcularValidez() {
-		 return false
-		 
-		 //return unaDescripcion.poseeMenosDe20Caracteres() || unaDescripcion.sonMenosDe3Palabras()
+	def boolean calcularValidez() {
+		 return (unaDescripcion.poseeAlMenos20Caracteres || unaDescripcion.sonAlMenos3Palabras)
 	}
 	
 	def getMotivosPosibles(){

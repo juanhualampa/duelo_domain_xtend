@@ -15,4 +15,10 @@ class Iniciador implements Inicio{
 		veredicto.estadisticas.calificacion = new CalculadorDeCalificaciones().calcular(veredicto)
 	}
 	
+	override aString() {
+		"Iniciador"
+	}
+	
+	
+	
 }

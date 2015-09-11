@@ -13,9 +13,10 @@ class Jugador {
 	List<Denuncia> denuncias	
 	Integer ranking
 	String nombre
-	List<Duelo> duelos
+	List<Duelo> duelos	
+	Sistema sistema
 	
-	new(String Nombre){
+	new(String Nombre,Sistema sis){
 		personajes = new ArrayList<Personaje>()
 		cantDePeleasGanadas = 0
 		denuncias = newArrayList
@@ -23,6 +24,8 @@ class Jugador {
 		duelos = newArrayList
 		denuncias = newArrayList
 		this.nombre = Nombre;
+		this.sistema = sis
+		sistema.jugadores.add(this)
 	}
 	
 	def recibioDenuncia(Denuncia denuncia) {
@@ -41,25 +44,25 @@ class Jugador {
 		ranking = this.calificacion() / 500
 	}	
 	
-	def Personaje personajeSeleccionado(){
-		personajes.get(0) // Esto seria un fire property changes
-	}
-	
-	def iniciarDuelo (Sistema sist, Ubicacion ubic){
-		sist.iniciarReto(new Retador(this, personajeSeleccionado, ubic, new Iniciador()))
+	def iniciarDuelo (Personaje personaje ,Ubicacion ubic){
+		sistema.iniciarReto(new Retador(this, personaje, ubic, new Iniciador()))
 	}
 			
+	def elegirPersonajeAlAzar(){
+		this.personajes.get(0) // deberia  ser random
+	}
+	
 	def Integer calificacion(){
 		(promedioDeCalificacionesDePersonajes - pesoDeDenuncias ) * cantDePeleasGanadas
 		// aunque nos piden 		pesoDeDenuncias  * cantDePeleasGanadas
 	}
 			
-	 def denunciarAJugador(Sistema sist, Jugador jug, Motivo mot, Descripcion desc) {
-	 	sist.denunciarJugador(new Denuncia(obtenerUltimoDueloContra(jug), mot, desc))
+	 def denunciarAJugador(Jugador jug, Motivo mot, Descripcion desc) {
+	 	sistema.denunciarJugador(new Denuncia(obtenerUltimoDueloContra(jug), mot, desc))
 	 }
 	
 	def Duelo obtenerUltimoDueloContra(Jugador jugador) {
-		this.duelos.get(this.duelos.lastIndexOf(jugador))
+		this.duelos.filter[it.involucraA(jugador)].last
 	}
 		
 }
