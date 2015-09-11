@@ -25,4 +25,8 @@ class Victoria extends Resultado{
 		duelo.sosPerdedor(retador2)
 	}
 	
+	override visualizacion() {
+		"Ganaste contra «nombrePerdedor», " //falta el tema de los puntos
+	}
+	
 }

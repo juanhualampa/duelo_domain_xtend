@@ -12,6 +12,8 @@ abstract class Resultado {
 		this.retador2 = perdedor
 	}
 	
+	def String visualizacion()
+	
 	def void aplicarActualizacionesAEstadisticas(Duelo duelo) 
 	
 }
