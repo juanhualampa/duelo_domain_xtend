@@ -1,8 +1,10 @@
 package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@Observable
 abstract class Resultado {
 	Retador retador1
 	Retador retador2

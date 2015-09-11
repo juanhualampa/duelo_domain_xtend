@@ -18,7 +18,6 @@ class Retador {
 		this.ubicacion = ubicacion
 		this.inicio = inicio
 	}
-			
 	
 	def Integer poder(Retador ret){
 		ret.personaje.poderDeAtaque()
@@ -46,7 +45,7 @@ class Retador {
 	}
 	
 	def agregarDuelo(Retador retador, Duelo duelo) {
-		this.jugador.duelos.add(duelo)
+		jugador.duelos.add(duelo)
 		retador.jugador.duelos.add(duelo)
 	}
 	

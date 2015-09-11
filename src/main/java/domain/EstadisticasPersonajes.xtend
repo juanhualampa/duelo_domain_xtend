@@ -2,9 +2,10 @@ package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
-
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@Observable
 class EstadisticasPersonajes {
 	
 	int vecesUsadoAntesDelDuelo
@@ -23,7 +24,8 @@ class EstadisticasPersonajes {
 		this.vecesKills = 0
 		this.vecesDeads = 0
 		this.vecesAssist = 0
-		this.ubicacionesUsadas = newArrayList		
+		this.ubicacionesUsadas = newArrayList	
+		this.calificacion = new Calificacion("NOOB",5)	
 	}
 	
 	def void agregarUnaParticipacion() {
