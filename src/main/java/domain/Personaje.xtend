@@ -1,6 +1,7 @@
 package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.Random
 
 @Accessors
 class Personaje {
@@ -20,6 +21,9 @@ class Personaje {
 		estadistica = new EstadisticasPersonajes()
 	}
 	
-	
+	def Integer poderDeAtaque() 
+	{
+		estadistica.poderDeAtaque() * new Random().nextInt(1)
+	}
 	
 }

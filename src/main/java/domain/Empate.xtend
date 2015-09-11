@@ -1,13 +1,13 @@
 package domain
 
-class Empate {
+class Empate extends Veredicto{
 	
-	new(Duelo duelo) {
-		duelo.retador.personaje.estadistica.actualizar()
-		duelo.retado.personaje.estadistica.actualizar()
+	
+	new(Retador ret1, Duelo duelo) {
+		super(ret1,duelo)
 	}
 	
-	def void actualizar(EstadisticasPersonajes estadistica) {
+	override actualizar(EstadisticasPersonajes estadistica) {
 		estadistica.agregarUnaParticipacion	
 		estadistica.agregarAssist	
 	}

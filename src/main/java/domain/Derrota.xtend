@@ -4,21 +4,21 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 class Derrota extends Resultado{
-	
-	Ganador ganador
-	Perdedor perdedor
-	
-	new(Ganador ganador, Perdedor perdedor) {
-		this.ganador = ganador
-		this.perdedor = perdedor
+		
+	new(Retador ganador, Retador perdedor) {
+		super(ganador,perdedor)
 	}
 	
 	def nombreGanador(){
-		ganador.participante.jugador.nombre
+		retador1.jugador.nombre
 	}
 	
 	def nombrePerdedor(){
-		perdedor.participante.jugador.nombre
+		retador2.jugador.nombre
 	}
 	
+	override aplicarActualizacionesAEstadisticas(Duelo duelo) {
+		duelo.sosGanador(retador1)
+		duelo.sosPerdedor(retador2)
+	}
 }

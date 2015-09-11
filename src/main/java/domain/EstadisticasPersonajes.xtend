@@ -45,6 +45,10 @@ class EstadisticasPersonajes {
 	def agregarAssist(){
 		vecesAssist += 1
 	}
+	
+	def poderDeAtaque() {
+		calificacion.nro + (vecesKills + vecesAssist / 2 - vecesDeads) * vecesUsadoAntesDelDuelo
+	}
 		
 }
 

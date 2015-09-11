@@ -11,7 +11,6 @@ abstract class Veredicto {
 	new(Retador participante, Duelo duelo) {
 		this.participante = participante
 		this.duelo = duelo
-		actualizarEstadisticas()
 	}
 	
 	def estadisticas(){
