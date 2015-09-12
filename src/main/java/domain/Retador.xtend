@@ -19,12 +19,12 @@ class Retador {
 		this.inicio = inicio
 	}
 	
-	def Integer poder(Retador ret){
+	def Integer poderDeAtaque(Retador ret){
 		ret.personaje.poderDeAtaque()
 	}
 	
 	def esMasPoderosoQue(Retador ret){
-		poder(this) > poder(ret)
+		poderDeAtaque(this) > poderDeAtaque(ret)
 	}
 	
 	def void pelea(Retador retador,Duelo duelo) {
@@ -46,9 +46,12 @@ class Retador {
 	
 	def agregarDuelo(Retador retador, Duelo duelo) {
 		jugador.duelos.add(duelo)
-		retador.jugador.duelos.add(duelo)
+		retador.duelos.add(duelo)
 	}
 	
+	def duelos (Retador ret){
+		ret.jugador.duelos
+	}
 		
 	
 	

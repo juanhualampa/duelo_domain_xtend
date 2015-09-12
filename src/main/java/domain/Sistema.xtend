@@ -30,9 +30,7 @@ class Sistema {
 	
 	def oponentesPosibles(Retador retador){
 		jugadores.filter[it.mismoRankingSinSerElMismo(retador.jugador)].toList
-	}
-	
-	
+	}	
 	
 	def mismoRankingSinSerElMismo(Jugador jug1, Jugador jug2){
 		jug1.ranking.equals(jug2.ranking)  && jug1.nombre != jug2.nombre

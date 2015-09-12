@@ -6,7 +6,6 @@ import java.util.Random
 @Accessors
 class Personaje {
 
-	Integer calificacion
 	EstadisticasPersonajes estadistica
 	Ubicacion ubicacionIdeal
 	String especialidades
@@ -25,5 +24,14 @@ class Personaje {
 	{
 		estadistica.poderDeAtaque() * new Random().nextInt(1)
 	}
+	
+	def setCalificacion(Calificacion cal){
+		estadistica.calificacion = cal
+	}
+	def calificacion(){
+		estadistica.calificacion
+	}
+	
+	
 	
 }

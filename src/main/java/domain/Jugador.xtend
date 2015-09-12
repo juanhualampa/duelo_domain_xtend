@@ -37,7 +37,7 @@ class Jugador {
 	}
 	
 	def promedioDeCalificacionesDePersonajes() {
-		personajes.fold(0)[a,b| a + b.calificacion]
+		personajes.fold(0)[a,b| a + b.estadistica.calificacion.nro]
 	}
 	
 	def Integer getRanking(){
