@@ -23,6 +23,7 @@ abstract class Veredicto {
 	def void actualizar(EstadisticasPersonajes estadistica)
 		
 	def actualizacionesDependientesDeLaPosicion(Retador retador) {
+		print(retador.inicio.toString())
 		retador.inicio.actualizarA(this)
 	}
 }

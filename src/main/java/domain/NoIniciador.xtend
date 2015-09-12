@@ -1,6 +1,6 @@
 package domain
 
-class NoIniciador implements Inicio{
+class NoIniciador extends Inicio{
 	
 	def dispatch actualiza(Ganador ganador) {
 		ganador.estadisticas.sumarKill

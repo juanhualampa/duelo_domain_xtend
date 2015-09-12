@@ -1,6 +1,6 @@
 package domain
 
-class Iniciador implements Inicio{
+class Iniciador extends Inicio{
 	
 	def dispatch actualiza(Ganador ganador) {
 		ganador.estadisticas.mejorUbicacion = ganador.participante.ubicacion

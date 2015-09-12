@@ -31,11 +31,19 @@ class Duelo {
 	}
 
 	def sosGanador(Retador ret) {
-		new Ganador(ret,this).actualizarEstadisticas
+		this.actualiza(new Ganador(ret,this))
 	}
 	
 	def sosPerdedor(Retador ret) {
-		new Perdedor(ret,this).actualizarEstadisticas
+		this.actualiza(new Perdedor(ret,this))
+	}
+	
+	def dispatch actualiza(Ganador ganador){
+		ganador.actualizarEstadisticas
+	}
+	
+	def dispatch actualiza(Perdedor perdedor){
+		perdedor.actualizarEstadisticas
 	}
 	
 	def void actualizarEstadisticas() {

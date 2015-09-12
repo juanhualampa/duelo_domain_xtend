@@ -16,6 +16,11 @@ class Ganador extends Veredicto{
 		personaje.estadistica.actualizar()
 	}
 		
+	override actualizacionesDependientesDeLaPosicion(Retador retador) {
+		print(retador.inicio.toString())
+		retador.inicio.actualizarA(this)
+	}	
+		
 	override actualizar(EstadisticasPersonajes estadistica) {
 		estadistica.agregarUnaParticipacion
 		estadistica.agregarUnaVictoria
