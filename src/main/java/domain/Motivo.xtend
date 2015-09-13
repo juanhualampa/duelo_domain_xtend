@@ -11,12 +11,12 @@ abstract class Motivo {
 		this.nombre = nombre;
 	}
     def Integer peso()
-    def void evaluarse(Denuncia denuncia, Duelo duelo){
-      	duelo.retado.aplicarPenalidad(denuncia)
+    def void evaluarse(Denuncia denuncia, Duelo it){
+      	retado.aplicarPenalidad(denuncia)
     }
 	
-	def void aplicarPenalidad(Retador contrincante, Denuncia denuncia){
-		contrincante.jugador.recibioDenuncia(denuncia)
+	def void aplicarPenalidad(Retador it, Denuncia denuncia){
+		jugador.recibioDenuncia(denuncia)
 	}
 	
 	  

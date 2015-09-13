@@ -16,7 +16,6 @@ class Duelo {
 	{
 		this.retador = ret1
 		this.retado = ret2
-		//this.realizarse()
 	}
 	
 	new(Sistema sis, Retador ret1,  Retador ret2)
@@ -30,32 +29,29 @@ class Duelo {
 		this.retador.pelea(this.retado,this)
 	}
 
-	def sosGanador(Retador ret) {
-		this.actualiza(new Ganador(ret,this))
+	def sosGanador(Retador it) {
+		println("Empiezo en duelo con " + jugador)
+		setPostDuelo(new Ganador)
+		it.actualizarEstadisticas
 	}
-	
-	def sosPerdedor(Retador ret) {
-		this.actualiza(new Perdedor(ret,this))
+		
+	def sosPerdedor(Retador it) {
+		println("Empiezo en duelo con " + jugador)
+		setPostDuelo(new Perdedor)		
+		it.actualizarEstadisticas
 	}
-	
-	def dispatch actualiza(Ganador ganador){
-		ganador.actualizarEstadisticas
-	}
-	
-	def dispatch actualiza(Perdedor perdedor){
-		perdedor.actualizarEstadisticas
-	}
-	
+		
 	def void actualizarEstadisticas() {
 		resultado.aplicarActualizacionesAEstadisticas(this)
 	}
 	
-	def empataste(Retador ret) {
-		new Empate(ret,this).actualizarEstadisticas
+	def empataste(Retador it) {
+		setPostDuelo(new Empate)
+		it.actualizarEstadisticas
 	}
 	
-	def boolean involucraA(Jugador jugador) {
-		this.retador.jugador.equals(jugador) || this.retado.jugador.equals(jugador)
+	def boolean involucraA(Jugador it) {
+		this.retador.jugador.equals || this.retado.jugador.equals
 	}
 	
 	

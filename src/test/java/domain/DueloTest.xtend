@@ -14,6 +14,7 @@ class DueloTest {
 	Personaje per2
 	Retador ret1 
 	Retador ret2 	
+	Duelo duelo
 	
 	
 	@Before
@@ -46,7 +47,9 @@ class DueloTest {
 	@Test 
 	def atestsDosJugadoresNoTienenElMismoRanking(){
 		per1.setCalificacion(new Calificacion("RAMPAGE",100))
-		jugador1.iniciarDuelo(per1,ubi1)		
+		//jugador1.iniciarDuelo(per1,ubi1)
+		duelo = new Duelo(ret1,ret2)
+		duelo.sosGanador(ret1)
 		assertTrue(true)
 	}
 	

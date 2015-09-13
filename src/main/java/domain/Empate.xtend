@@ -1,15 +1,14 @@
 package domain
 
-class Empate extends Veredicto{
+class Empate implements Veredicto{
 	
-	
-	new(Retador ret1, Duelo duelo) {
-		super(ret1,duelo)
+		
+	override actualizarEstadisticas(Retador it) {
+		estadisticas.agregarUnaParticipacion	
+		estadisticas.agregarAssist
 	}
 	
-	override actualizar(EstadisticasPersonajes estadistica) {
-		estadistica.agregarUnaParticipacion	
-		estadistica.agregarAssist	
+	override actualizaSegunGanesPierdasOEmpates(Retador ret) {
 	}
 	
 }

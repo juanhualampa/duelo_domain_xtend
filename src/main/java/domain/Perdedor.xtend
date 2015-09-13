@@ -3,17 +3,21 @@ package domain
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class Perdedor extends Veredicto{
+class Perdedor implements Veredicto{
 	
-	Retador participante
-	Duelo duelo
-	
-	new(Retador participante, Duelo duelo) {
-		super(participante,duelo)
+	override actualizarEstadisticas(Retador it) {
+		estadisticas.agregarUnaParticipacion
+		actualizacionesDependientesDeLaPosicion
 	}
+	
+	def void actualizacionesDependientesDeLaPosicion(Retador it)
+	 {
+		println(inicio.toString())
+		inicio.actualizarA(it)
+	}
+	
+	override actualizaSegunGanesPierdasOEmpates(Retador ret) {
 		
-	override actualizar(EstadisticasPersonajes estadistica) {
-		estadistica.agregarUnaParticipacion
-		this.participante.actualizacionesDependientesDeLaPosicion()		
-	}	
+	}
+	
 }

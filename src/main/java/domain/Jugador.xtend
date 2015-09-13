@@ -45,7 +45,7 @@ class Jugador {
 	}	
 	
 	def iniciarDuelo (Personaje personaje ,Ubicacion ubic){
-		sistema.iniciarReto(new Retador(this, personaje, ubic, new Iniciador()))
+		sistema.iniciarReto(this, personaje, ubic)
 	}
 			
 	def elegirPersonajeAlAzar(){

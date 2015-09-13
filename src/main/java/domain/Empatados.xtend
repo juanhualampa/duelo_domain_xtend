@@ -6,9 +6,9 @@ class Empatados extends Resultado {
 		super(ret1,ret2)
 	}
 	
-	override aplicarActualizacionesAEstadisticas(Duelo duelo) {
-		duelo.empataste(retador1)
-		duelo.empataste(retador2)
+	override aplicarActualizacionesAEstadisticas(Duelo it) {
+		empataste(retador1)
+		empataste(retador2)
 	}
 	override visualizacion() {
 		"Empataro con «nombrePerdedor», son igual de malos " //falta el tema de los puntos

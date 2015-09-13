@@ -4,34 +4,34 @@ import java.util.Random
 
 class CalculadorDeCalificaciones {
 	
-	def Calificacion calcular(Veredicto v) {
+	def Calificacion calcular(Retador it) {
 		val nroAlAzar = new Random().nextInt(100)
 		var Calificacion res = new Calificacion("NOOB",5)
-		if (v.estadisticas.usasteAlPersonajeEnUbicacionIdealAlMenos(v,5) && esNroAlAzarMayorA(nroAlAzar,90) ){
+		if (estadisticas.usasteAlPersonajeEnUbicacionIdealAlMenos(it,5) && esNroAlAzarMayorA(nroAlAzar,90) ){
 			res = new Calificacion("RAMPAGE",100)
 		}
-		if (v.usasteCualquierPersonajeEnUbicacionIdealMasDe(2) && esNroAlAzarMayorA(nroAlAzar,70)){
+		if (usasteCualquierPersonajeEnUbicacionIdealMasDe(2) && esNroAlAzarMayorA(nroAlAzar,70)){
 			res = new Calificacion("DOMINADOR",75)
 		}
 		if(esNroAlAzarMayorA(nroAlAzar,50)){
 			res = new Calificacion("KILLING_SPREAD",60)
 		}
-		if(v.participante.ubicacion.esUbicacionIdeal(v)){
+		if(ubicacion.esUbicacionIdeal(it)){
 			res = new Calificacion("MANCO",15)
 		}
 		res
 	}
 	
-	def esUbicacionIdeal(Ubicacion ubicacion,Veredicto v){
-		ubicacion.equals(v.participante.personaje.ubicacionIdeal)
+	def esUbicacionIdeal(Ubicacion ubicacion,Retador it){
+		ubicacion.equals(personaje.ubicacionIdeal)
 	}
 	
-	def boolean usasteAlPersonajeEnUbicacionIdealAlMenos(EstadisticasPersonajes e,Veredicto v ,int veces){
-		e.ubicacionesUsadas.filter[it.esUbicacionIdeal(v)].size >= veces
+	def boolean usasteAlPersonajeEnUbicacionIdealAlMenos(EstadisticasPersonajes it,Retador ret ,int veces){
+		ubicacionesUsadas.filter[it.esUbicacionIdeal(ret)].size >= veces
 	}
 	
-	def boolean usasteCualquierPersonajeEnUbicacionIdealMasDe(Veredicto v, int veces){
-		! v.participante.jugador.personajes.filter[it.estadistica.usasteAlPersonajeEnUbicacionIdealAlMenos(v,veces)].isEmpty
+	def boolean usasteCualquierPersonajeEnUbicacionIdealMasDe(Retador ret, int veces){
+		! ret.jugador.personajes.filter[it.estadistica.usasteAlPersonajeEnUbicacionIdealAlMenos(ret,veces)].isEmpty
 		// TODO: 
 	}
 	
