@@ -19,8 +19,8 @@ class Derrota extends Resultado{
 	}
 	
 	override aplicarActualizacionesAEstadisticas(Duelo it) {
-		sosGanador(this.retador1)
-		sosPerdedor(this.retador2)
+		sosPerdedor(this.retador1)
+		sosGanador(this.retador2)		
 	}
 	
 	override visualizacion() {

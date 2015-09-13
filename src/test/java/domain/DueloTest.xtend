@@ -45,16 +45,41 @@ class DueloTest {
 	}
 	
 	@Test 
-	def testsDosJugadoresPeleanYSeEfectivizaEnLosDuelosDeAmbos(){
+	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElPrimero(){
 		per1.calificacion.nro = 200
 		duelo = new Duelo(ret1,ret2)
 		duelo.realizarse
 		assertTrue(jugador1.duelos.contains(duelo))
 		assertTrue(jugador2.duelos.contains(duelo))
 		assertEquals(1,jugador1.duelos.size)
-		assertEquals(1,jugador1.duelos.size)
+		assertEquals(1,jugador2.duelos.size)
 		assertTrue(ret1.veredicto instanceof Ganador)
 		assertTrue(ret2.veredicto instanceof Perdedor)
+	}
+	
+	@Test 
+	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElSegundo(){
+		per2.calificacion.nro = 2300
+		duelo = new Duelo(ret1,ret2)
+		duelo.realizarse
+		assertTrue(jugador1.duelos.contains(duelo))
+		assertTrue(jugador2.duelos.contains(duelo))
+		assertEquals(1,jugador1.duelos.size)
+		assertEquals(1,jugador2.duelos.size)
+		assertTrue(ret1.veredicto instanceof Perdedor)
+		assertTrue(ret2.veredicto instanceof Ganador)
+	}
+	
+	@Test 
+	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConEmpate(){
+		duelo = new Duelo(ret1,ret2)
+		duelo.realizarse
+		assertTrue(jugador1.duelos.contains(duelo))
+		assertTrue(jugador2.duelos.contains(duelo))
+		assertEquals(1,jugador1.duelos.size)
+		assertEquals(1,jugador2.duelos.size)
+		assertTrue(ret1.veredicto instanceof Empate)
+		assertTrue(ret2.veredicto instanceof Empate)
 	}
 	
 }
