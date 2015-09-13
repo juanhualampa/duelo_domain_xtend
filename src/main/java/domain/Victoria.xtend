@@ -21,6 +21,7 @@ class Victoria extends Resultado{
 	}
 	
 	override aplicarActualizacionesAEstadisticas(Duelo it) {
+		println("Estoy en victoria")
 		sosGanador(retador1)
 		sosPerdedor(retador2)
 	}

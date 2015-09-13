@@ -20,45 +20,39 @@ class Retador {
 		this.inicio = inicio
 	}
 	
-	def Integer poderDeAtaque(Retador it){
+	def Integer poderDeAtaque(){
 		personaje.poderDeAtaque()
 	}
 	
 	def esMasPoderosoQue(Retador it){
-		poderDeAtaque(this) > poderDeAtaque
+		this.poderDeAtaque > it.poderDeAtaque
 	}
 	
-	def void pelea(Retador it,Duelo duelo) {
-		if(esMasPoderosoQue){
-			println("Entre por mas poderoso")
-			duelo.resultado = new Victoria(this,it)
-			duelo.actualizarEstadisticas()
-			agregarDuelo(duelo)
-		}
-		if(! esMasPoderosoQue){
-			println("Entre por menos poderoso")
-			duelo.resultado = new Derrota(it,this)
-			duelo.actualizarEstadisticas()
-			agregarDuelo(duelo)
-		}
-		else{
-			duelo.resultado = new Empatados(this,it)
-			agregarDuelo(duelo)
-		}
-	}
+//	def void pelea(Retador it,Duelo duelo) {
+//		if(esMasPoderosoQue){
+//			println("Entre por mas poderoso")
+//			duelo.resultado = new Victoria(this,it)
+//			duelo.actualizarEstadisticas()
+//			agregarDuelo(duelo)
+//		}
+//		if(! esMasPoderosoQue){
+//			println("Entre por menos poderoso")
+//			duelo.resultado = new Derrota(it,this)
+//			duelo.actualizarEstadisticas()
+//			agregarDuelo(duelo)
+//		}
+//		else{
+//			println("Entre por empatados")
+//			duelo.resultado = new Empatados(this,it)
+//			agregarDuelo(duelo)
+//		}
+//	}
 	
 	def estadisticas(){
 		this.personaje.estadistica
 	}
 	
-	def agregarDuelo(Retador it, Duelo duelo) {
-		jugador.duelos.add(duelo)
-		duelos.add(duelo)
-	}
 	
-	def duelos (Retador it){
-		jugador.duelos
-	}
 	
 	def Veredicto setPostDuelo(Veredicto v) {
 		this.veredicto = v

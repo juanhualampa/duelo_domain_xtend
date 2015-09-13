@@ -50,7 +50,7 @@ class EstadisticasPersonajes {
 	}
 	
 	def poderDeAtaque() {
-		calificacion.nro + (vecesKills + vecesAssist / 2 - vecesDeads) * vecesUsadoAntesDelDuelo
+		calificacion.nro + ((vecesKills + vecesAssist / 2 - vecesDeads) * vecesUsadoAntesDelDuelo)
 	}
 		
 }

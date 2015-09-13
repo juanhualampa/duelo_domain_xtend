@@ -22,8 +22,9 @@ class Personaje {
 	
 	def Integer poderDeAtaque() 
 	{
-		estadistica.poderDeAtaque() * new Random().nextInt(1)
+		estadistica.poderDeAtaque() //* new Random().nextInt(1)
 	}
+	
 	
 	def setCalificacion(Calificacion cal){
 		estadistica.calificacion = cal

@@ -26,17 +26,41 @@ class Duelo {
 	}
 	
 	def void realizarse(){
-		this.retador.pelea(this.retado,this)
+		this.pelea(this.retador,this.retado)
 	}
+	
+	def void pelea(Retador it,Retador ret) {
+		if(esMasPoderosoQue(ret)){
+			println("Entre por mas poderoso")			
+			resultado = new Victoria(it,ret)	
+			println(resultado)	
+			println(resultado.retador1)
+			println(resultado.retador2)
+			actualizarEstadisticas()
+		}
+		if(ret.esMasPoderosoQue(it)){
+			println("Entre por menos poderoso")
+			resultado = new Derrota(it,ret)
+			actualizarEstadisticas()			
+		}
+		else{
+			println("Entre por empatados")			
+			resultado = new Empatados(it,ret)
+			actualizarEstadisticas()		
+		}
+	}
+	
 
 	def sosGanador(Retador it) {
 		println("Empiezo en duelo con " + jugador)
+		jugador.duelos.add(this)
 		setPostDuelo(new Ganador)
 		it.actualizarEstadisticasDelRetador
 	}
 		
 	def sosPerdedor(Retador it) {
 		println("Empiezo en duelo con " + jugador)
+		jugador.duelos.add(this)
 		setPostDuelo(new Perdedor)		
 		it.actualizarEstadisticasDelRetador
 	}
