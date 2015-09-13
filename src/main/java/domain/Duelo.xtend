@@ -32,13 +32,13 @@ class Duelo {
 	def sosGanador(Retador it) {
 		println("Empiezo en duelo con " + jugador)
 		setPostDuelo(new Ganador)
-		it.actualizarEstadisticas
+		it.actualizarEstadisticasDelRetador
 	}
 		
 	def sosPerdedor(Retador it) {
 		println("Empiezo en duelo con " + jugador)
 		setPostDuelo(new Perdedor)		
-		it.actualizarEstadisticas
+		it.actualizarEstadisticasDelRetador
 	}
 		
 	def void actualizarEstadisticas() {
@@ -47,7 +47,7 @@ class Duelo {
 	
 	def empataste(Retador it) {
 		setPostDuelo(new Empate)
-		it.actualizarEstadisticas
+		it.actualizarEstadisticasDelRetador
 	}
 	
 	def boolean involucraA(Jugador it) {

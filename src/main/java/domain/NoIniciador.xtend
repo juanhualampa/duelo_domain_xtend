@@ -2,20 +2,14 @@ package domain
 
 class NoIniciador extends Inicio{
 	
-//	def dispatch actualiza(Ganador it) {
-//		participante.estadisticas.sumarKill
-//	}
-//	
-//	def dispatch actualiza(Perdedor it){
-//		estadisticas.sumarDeads
-//	}
+	override actualizarEstadisticas(Retador it) {
+		estadisticas.agregarUnaParticipacion		
+		it.veredicto.actualizarEstadisticasSegunVeredicto(it)
+	}
 		
 	override aString() {
 		"No-Iniciador"
 	}
 	
-	override actualizarA(Retador it) {
-		//veredicto.actualiza
-	}
 	
 }

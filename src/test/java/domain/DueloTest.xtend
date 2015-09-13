@@ -45,12 +45,14 @@ class DueloTest {
 	}
 	
 	@Test 
-	def atestsDosJugadoresNoTienenElMismoRanking(){
+	def testsDosJugadoresPeleanYGanaElPrimero(){
 		per1.setCalificacion(new Calificacion("RAMPAGE",100))
 		//jugador1.iniciarDuelo(per1,ubi1)
 		duelo = new Duelo(ret1,ret2)
-		duelo.sosGanador(ret1)
-		assertTrue(true)
+		duelo.realizarse
+		assertFalse(jugador1.duelos.contains(duelo))
+		//assertTrue(jugador2.duelos.contains(duelo))
+		//assertTrue(true)
 	}
 	
 	

@@ -1,14 +1,10 @@
 package domain
 
 class Empate implements Veredicto{
-	
 		
-	override actualizarEstadisticas(Retador it) {
-		estadisticas.agregarUnaParticipacion	
+	override actualizarEstadisticasSegunVeredicto(Retador it) {
 		estadisticas.agregarAssist
 	}
 	
-	override actualizaSegunGanesPierdasOEmpates(Retador ret) {
-	}
 	
 }

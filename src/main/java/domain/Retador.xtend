@@ -30,11 +30,13 @@ class Retador {
 	
 	def void pelea(Retador it,Duelo duelo) {
 		if(esMasPoderosoQue){
+			println("Entre por mas poderoso")
 			duelo.resultado = new Victoria(this,it)
 			duelo.actualizarEstadisticas()
 			agregarDuelo(duelo)
 		}
 		if(! esMasPoderosoQue){
+			println("Entre por menos poderoso")
 			duelo.resultado = new Derrota(it,this)
 			duelo.actualizarEstadisticas()
 			agregarDuelo(duelo)
@@ -62,12 +64,13 @@ class Retador {
 		this.veredicto = v
 	}
 		
-	def actualizarEstadisticas() {
-		veredicto.actualizarEstadisticas(this)
+	def actualizarEstadisticasDelRetador() {
+		inicio.actualizarEstadisticas(this)
 	}
-	
-	def actualiza(){
-		veredicto.actualizaSegunGanesPierdasOEmpates(this)
-	}
+		
+//	def actualizarEstadisticasComoGanadorEIniciador() {
+//		estadisticas.agregarUnaVictoria
+//		estadisticas.ubicacionesUsadas.add(ubicacion)
+//	}
 	
 }

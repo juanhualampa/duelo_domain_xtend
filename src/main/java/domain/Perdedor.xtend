@@ -5,19 +5,16 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Perdedor implements Veredicto{
 	
-	override actualizarEstadisticas(Retador it) {
-		estadisticas.agregarUnaParticipacion
-		actualizacionesDependientesDeLaPosicion
+	override actualizarEstadisticasSegunVeredicto(Retador it) {
+		actualizarUsandoInicio(it,it.inicio)
+		println("Termine Perdedor")
 	}
 	
-	def void actualizacionesDependientesDeLaPosicion(Retador it)
-	 {
-		println(inicio.toString())
-		inicio.actualizarA(it)
+	def dispatch actualizarUsandoInicio(Retador it, Iniciador inicio) {
 	}
 	
-	override actualizaSegunGanesPierdasOEmpates(Retador ret) {
-		
+	def dispatch actualizarUsandoInicio(Retador it, NoIniciador inicio) {
+		estadisticas.sumarDeads
 	}
 	
 }

@@ -2,7 +2,7 @@ package domain
 
 abstract class Inicio {
 	
-	def void actualizarA(Retador ret)
+	def void actualizarEstadisticas(Retador ret)
 	
 	def String aString()
 	
