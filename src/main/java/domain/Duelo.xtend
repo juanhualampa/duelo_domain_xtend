@@ -57,7 +57,6 @@ class Duelo {
 		
 	def sosPerdedor(Retador it) {
 		println("Empiezo en duelo siendo Perdedor con " + jugador)
-		jugador.duelos.add(this)
 		setPostDuelo(new Perdedor)		
 		it.actualizarEstadisticasDelRetador
 	}

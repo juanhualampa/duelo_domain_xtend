@@ -7,7 +7,7 @@ import static org.junit.Assert.*
 class DueloTest {
 	Jugador jugador1
 	Jugador jugador2
-	Sistema sis = new Sistema();
+	Sistema sis
 	Ubicacion ubi1
 	Ubicacion ubi2		
 	Personaje per1 
@@ -51,38 +51,10 @@ class DueloTest {
 		duelo.realizarse
 		assertTrue(jugador1.duelos.contains(duelo))
 		assertTrue(jugador2.duelos.contains(duelo))
-		assertTrue(jugador1.duelosEnlosQueGano.contains(duelo))
-		assertEquals(1,jugador1.duelosEnlosQueGano.size)
-		//assertEquals(jugador1,duelo.resultado)
+		assertEquals(1,jugador1.duelos.size)
+		assertEquals(1,jugador1.duelos.size)
+		assertTrue(ret1.veredicto instanceof Ganador)
+		assertTrue(ret2.veredicto instanceof Perdedor)
 	}
 	
-	
-	
-		
-//	@Test
-//	def testJugadoresTienenPersonajesYSistemaTieneJugadores() {
-//		jugador1.iniciarDuelo(per1,)
-//		assertEquals(2,sis.jugadores.size)
-//		assertEquals(per1.nombre,jugador1.personajes.get(0).nombre)
-//		assertEquals(per2.nombre,jugador2.personajes.get(0).nombre)
-//	}
-//	
-//	@Test
-//	def testHagoUnaDenunciaValida() {
-//		jugador1.duelos.add(duelo)
-//		jugador2.duelos.add(duelo)
-//		unaDescripcion= new Descripcion("denuncio abuso de habilidad")
-//		jugador1.denunciarAJugador(jugador2,unMotivo,unaDescripcion)
-//		assertEquals(1,jugador2.denuncias.size)	
-//		assertEquals(5,jugador2.denuncias.get(0).unMotivo.peso)	
-//	}
-//	
-//	@Test
-//	def testHagoUnaDenunciaInValida() {
-//		jugador1.duelos.add(duelo)
-//		jugador2.duelos.add(duelo)
-//		otraDescripcion= new Descripcion("denuncio")
-//		jugador2.denunciarAJugador(jugador1,unMotivo,otraDescripcion)
-//		assertEquals(0,jugador1.denuncias.size)	
-//	}
 }
