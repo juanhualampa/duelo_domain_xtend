@@ -5,6 +5,11 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Derrota extends Resultado{
 		
+	new(Retador r1, Retador r2){
+		this.retador1 = r1
+		this.retador2 = r2
+	}	
+	
 	def nombreGanador(){
 		retador1.jugador.nombre
 	}
@@ -13,9 +18,9 @@ class Derrota extends Resultado{
 		retador2.jugador.nombre
 	}
 	
-	override aplicarActualizacionesAEstadisticas(Duelo it, Retador ret1, Retador ret2) {
-		sosGanador(ret1)
-		sosPerdedor(ret2)
+	override aplicarActualizacionesAEstadisticas(Duelo it) {
+		sosGanador(this.retador1)
+		sosPerdedor(this.retador2)
 	}
 	
 	override visualizacion() {

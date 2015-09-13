@@ -31,16 +31,16 @@ class Duelo {
 	
 	def void pelea(Retador it,Retador ret) {
 		switch it {
-		  case esMasPoderosoQue(ret)   : aplicar(new Victoria,it,ret)
-		  case ret.esMasPoderosoQue(it): aplicar(new Derrota,it,ret)
-		  default                  : aplicar(new Empatados,it,ret)
+		  case esMasPoderosoQue(ret)   : aplicar(new Victoria(it,ret))
+		  case ret.esMasPoderosoQue(it): aplicar(new Derrota(it,ret))
+		  default                  : aplicar(new Empatados(it,ret))
 		} 
 	}
 	
-	def aplicar(Resultado r, Retador it, Retador ret){
+	def aplicar(Resultado r){
 		println("Entre por " + r.toString)			
 		resultado = r
-		this.actualizarEstadisticas(it,ret)
+		this.actualizarEstadisticas
 	}
 	
 	def sonIgualDePoderosos(Retador it, Retador ret){
@@ -48,26 +48,25 @@ class Duelo {
 	}
 
 	def sosGanador(Retador it) {
-		println("Empiezo en duelo con " + jugador)
+		println("Empiezo en duelo siendo Ganador con " + jugador)
 		jugador.duelos.add(this)
 		setPostDuelo(new Ganador)
 		it.actualizarEstadisticasDelRetador
 	}
 		
 	def sosPerdedor(Retador it) {
-		println("Empiezo en duelo con " + jugador)
+		println("Empiezo en duelo siendo Perdedor con " + jugador)
 		jugador.duelos.add(this)
 		setPostDuelo(new Perdedor)		
 		it.actualizarEstadisticasDelRetador
 	}
 		
-	def void actualizarEstadisticas(Retador it, Retador ret) {
-		resultado.retador1 = it
-		resultado.retador2 = ret
-		resultado.aplicarActualizacionesAEstadisticas(this,it,ret)
+	def void actualizarEstadisticas() {
+		resultado.aplicarActualizacionesAEstadisticas(this)
 	}
 	
 	def empataste(Retador it) {
+		println("Empiezo en duelo Empatando con " + jugador)
 		setPostDuelo(new Empate)
 		it.actualizarEstadisticasDelRetador
 	}

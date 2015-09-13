@@ -11,6 +11,6 @@ abstract class Resultado {
 		
 	def String visualizacion()
 	
-	def void aplicarActualizacionesAEstadisticas(Duelo duelo, Retador ret1, Retador ret2) 
+	def void aplicarActualizacionesAEstadisticas(Duelo duelo) 
 	
 }
