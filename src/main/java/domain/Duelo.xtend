@@ -30,23 +30,17 @@ class Duelo {
 	}
 	
 	def void pelea(Retador it,Retador ret) {
-		println("RET 1:" + it.poderDeAtaque)
-		println("RET 1:" + ret.poderDeAtaque)
-		if(esMasPoderosoQue(ret)){
-			println("Entre por mas poderoso")			
-			resultado = new Victoria
-			this.actualizarEstadisticas(it,ret)
-		}
-		if(ret.esMasPoderosoQue(it)){
-			println("Entre por menos poderoso")
-			resultado = new Derrota
-			this.actualizarEstadisticas(it,ret)			
-		}
-		else{
-			println("Entre por empatados")			
-			resultado = new Empatados
-			this.actualizarEstadisticas(it,ret)		
-		}
+		switch it {
+		  case esMasPoderosoQue(ret)   : aplicar(new Victoria,it,ret)
+		  case ret.esMasPoderosoQue(it): aplicar(new Derrota,it,ret)
+		  default                  : aplicar(new Empatados,it,ret)
+		} 
+	}
+	
+	def aplicar(Resultado r, Retador it, Retador ret){
+		println("Entre por " + r.toString)			
+		resultado = r
+		this.actualizarEstadisticas(it,ret)
 	}
 	
 	def sonIgualDePoderosos(Retador it, Retador ret){
