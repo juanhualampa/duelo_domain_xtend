@@ -26,8 +26,8 @@ class DueloTest {
 		this.ubi2 = Ubicacion.BOTTOM;
 		this.per1 = new Personaje("Wolverine","Araniar","La ducha",Ubicacion.BOTTOM)
 		this.per2 = new Personaje("Gambito","Tirarte cartitas","Ni idea",Ubicacion.MIDDLE)
-		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador())
-		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador())
+		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador)
+		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador)
 		jugador1.personajes.add(per1)
 		jugador2.personajes.add(per2)
 	}
@@ -45,12 +45,15 @@ class DueloTest {
 	}
 	
 	@Test 
-	def testsDosJugadoresPeleanYGanaElPrimero(){
+	def testsDosJugadoresPeleanYSeEfectivizaEnLosDuelosDeAmbos(){
 		per1.calificacion.nro = 200
 		duelo = new Duelo(ret1,ret2)
 		duelo.realizarse
+		assertTrue(jugador1.duelos.contains(duelo))
 		assertTrue(jugador2.duelos.contains(duelo))
-		//assertTrue(true)
+		assertTrue(jugador1.duelosEnlosQueGano.contains(duelo))
+		assertEquals(1,jugador1.duelosEnlosQueGano.size)
+		//assertEquals(jugador1,duelo.resultado)
 	}
 	
 	

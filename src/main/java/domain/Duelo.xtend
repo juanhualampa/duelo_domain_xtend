@@ -41,6 +41,8 @@ class Duelo {
 		println("Entre por " + r.toString)			
 		resultado = r
 		this.actualizarEstadisticas
+		r.retador1.jugador.duelos.add(this)
+		r.retador2.jugador.duelos.add(this)
 	}
 	
 	def sonIgualDePoderosos(Retador it, Retador ret){
@@ -49,7 +51,6 @@ class Duelo {
 
 	def sosGanador(Retador it) {
 		println("Empiezo en duelo siendo Ganador con " + jugador)
-		jugador.duelos.add(this)
 		setPostDuelo(new Ganador)
 		it.actualizarEstadisticasDelRetador
 	}

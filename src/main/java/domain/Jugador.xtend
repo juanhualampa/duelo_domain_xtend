@@ -28,6 +28,18 @@ class Jugador {
 		sistema.jugadores.add(this)
 	}
 	
+	def duelosEnlosQueGano(){
+		duelos.filter[it.resultado instanceof Victoria].toList
+		//duelos.filter[it.resultado.esVictoria].toList
+	}
+	
+	def esVictoria(Resultado it){
+		switch it{
+	      Victoria : true 
+	      default : false
+	    } 
+	}
+	
 	def recibioDenuncia(Denuncia denuncia) {
 		denuncias.add(denuncia)
 	}
