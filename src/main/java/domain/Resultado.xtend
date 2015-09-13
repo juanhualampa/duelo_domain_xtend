@@ -8,14 +8,9 @@ import org.uqbar.commons.utils.Observable
 abstract class Resultado {
 	Retador retador1
 	Retador retador2
-	
-	new(Retador ganador, Retador perdedor) {
-		this.retador1 = ganador
-		this.retador2 = perdedor
-	}
-	
+		
 	def String visualizacion()
 	
-	def void aplicarActualizacionesAEstadisticas(Duelo duelo) 
+	def void aplicarActualizacionesAEstadisticas(Duelo duelo, Retador ret1, Retador ret2) 
 	
 }

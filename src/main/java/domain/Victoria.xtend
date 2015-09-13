@@ -8,10 +8,6 @@ class Victoria extends Resultado{
 	Retador retador1
 	Retador retador2
 	
-	new(Retador ganador, Retador perdedor) {
-		super(ganador,perdedor)
-	}
-	
 	def nombreGanador(){
 		retador1.jugador.nombre
 	}
@@ -20,10 +16,10 @@ class Victoria extends Resultado{
 		retador2.jugador.nombre
 	}
 	
-	override aplicarActualizacionesAEstadisticas(Duelo it) {
+	override aplicarActualizacionesAEstadisticas(Duelo it, Retador ret1, Retador ret2) {
 		println("Estoy en victoria")
-		sosGanador(retador1)
-		sosPerdedor(retador2)
+		sosGanador(ret1)
+		sosPerdedor(ret2)
 	}
 	
 	override visualizacion() {

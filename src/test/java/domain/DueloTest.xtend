@@ -47,11 +47,9 @@ class DueloTest {
 	@Test 
 	def testsDosJugadoresPeleanYGanaElPrimero(){
 		per1.calificacion.nro = 200
-		//jugador1.iniciarDuelo(per1,ubi1)
 		duelo = new Duelo(ret1,ret2)
 		duelo.realizarse
-		assertTrue(jugador1.duelos.size.equals(0))
-		//assertTrue(jugador2.duelos.contains(duelo))
+		assertTrue(jugador2.duelos.contains(duelo))
 		//assertTrue(true)
 	}
 	
