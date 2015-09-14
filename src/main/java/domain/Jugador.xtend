@@ -8,7 +8,7 @@ import java.util.List
 @Accessors
 @Observable
 class Jugador {
-	List<Personaje> personajes	
+	List<EstadisticasPersonajes> estadisticasPersonajes	
 	int cantDePeleasGanadas
 	List<Denuncia> denuncias	
 	Integer ranking
@@ -17,7 +17,7 @@ class Jugador {
 	Sistema sistema
 	
 	new(String Nombre,Sistema sis){
-		personajes = new ArrayList<Personaje>()
+		estadisticasPersonajes = new ArrayList<EstadisticasPersonajes>()
 		cantDePeleasGanadas = 0
 		denuncias = newArrayList
 		ranking = 0
@@ -37,7 +37,7 @@ class Jugador {
 	}
 	
 	def promedioDeCalificacionesDePersonajes() {
-		personajes.fold(0)[a,b| a + b.estadistica.calificacion.nro]
+		estadisticasPersonajes.fold(0)[a,b| a + b.calificacion.nro]
 	}
 	
 	def Integer getRanking(){
@@ -47,11 +47,7 @@ class Jugador {
 	def iniciarDuelo (Personaje personaje ,Ubicacion ubic){
 		sistema.iniciarReto(this, personaje, ubic)
 	}
-			
-	def elegirPersonajeAlAzar(){
-		this.personajes.get(0) // deberia  ser random
-	}
-	
+		
 	def Integer calificacion(){
 		(promedioDeCalificacionesDePersonajes - pesoDeDenuncias ) * cantDePeleasGanadas
 		// aunque nos piden 		pesoDeDenuncias  * cantDePeleasGanadas
@@ -63,6 +59,18 @@ class Jugador {
 	
 	def Duelo obtenerUltimoDueloContra(Jugador jugador) {
 		this.duelos.filter[it.involucraA(jugador)].last
+	}
+	
+	def EstadisticasPersonajes estadisticas(Personaje p){
+		estadisticasPersonajes.filter[it.personaje.equals(personaje)].head
+	}
+	
+	def poderDeAtaque(Personaje personaje) {
+		estadisticas(personaje).poderDeAtaque
+	}
+	
+	def elegirPersonajeAlAzar() {
+		new Personaje("Boludo","","",Ubicacion.BOTTOM)
 	}
 		
 }

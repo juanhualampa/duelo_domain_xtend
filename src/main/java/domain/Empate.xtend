@@ -3,7 +3,7 @@ package domain
 class Empate implements Veredicto{
 		
 	override actualizarEstadisticasSegunVeredicto(Retador it) {
-		estadisticas.agregarAssist
+		estadisticas(it.personaje).agregarAssist
 	}
 	
 	

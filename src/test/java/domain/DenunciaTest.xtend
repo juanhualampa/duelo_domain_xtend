@@ -18,6 +18,8 @@ class DenunciaTest {
 	Descripcion unaDescripcion
 	Descripcion otraDescripcion
 	Denuncia den
+	EstadisticasPersonajes est1
+	EstadisticasPersonajes est2
 	
 	
 	@Before
@@ -32,17 +34,19 @@ class DenunciaTest {
 		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador())
 		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador())		
 		this.duelo    = new Duelo( ret1, ret2)
-		this.unMotivo = new AbusoDeHabilidad();		
+		this.unMotivo = new AbusoDeHabilidad();	
+		this.est1= new EstadisticasPersonajes(per1)
+		this.est2= new EstadisticasPersonajes(per2)
 		this.den = new Denuncia(duelo, unMotivo, unaDescripcion)
 	}
 		
 	@Test
 	def testJugadoresTienenPersonajesYSistemaTieneJugadores() {
-		jugador1.personajes.add(per1)
-		jugador2.personajes.add(per2)
+		jugador1.getEstadisticasPersonajes.add(est1)
+		jugador2.getEstadisticasPersonajes.add(est2)
 		assertEquals(2,sis.jugadores.size)
-		assertEquals(per1.nombre,jugador1.personajes.get(0).nombre)
-		assertEquals(per2.nombre,jugador2.personajes.get(0).nombre)
+		assertEquals(per1.nombre,jugador1.estadisticasPersonajes.get(0).personaje.nombre)
+		assertEquals(per2.nombre,jugador2.getEstadisticasPersonajes.get(0).personaje.nombre)
 	}
 	
 	@Test

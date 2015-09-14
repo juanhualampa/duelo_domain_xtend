@@ -14,7 +14,7 @@ class Perdedor implements Veredicto{
 	}
 	
 	def dispatch actualizarUsandoInicio(Retador it, NoIniciador inicio) {
-		estadisticas.sumarDeads
+		estadisticas(personaje).sumarDeads
 	}
 	
 }

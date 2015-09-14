@@ -3,7 +3,7 @@ package domain
 class NoIniciador extends Inicio{
 	
 	override actualizarEstadisticas(Retador it) {
-		estadisticas.agregarUnaParticipacion		
+		estadisticas(personaje).agregarUnaParticipacion		
 		it.veredicto.actualizarEstadisticasSegunVeredicto(it)
 	}
 		

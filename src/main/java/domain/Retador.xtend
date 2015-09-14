@@ -21,7 +21,7 @@ class Retador {
 	}
 	
 	def Integer poderDeAtaque(){
-		personaje.poderDeAtaque()
+		jugador.poderDeAtaque(personaje)
 	}
 	
 	def esMasPoderosoQue(Retador it){				
@@ -48,19 +48,17 @@ class Retador {
 //			agregarDuelo(duelo)
 //		}
 //	}
-	
-	def estadisticas(){
-		this.personaje.estadistica
-	}
-	
-	
-	
+		
 	def Veredicto setPostDuelo(Veredicto v) {
 		this.veredicto = v
 	}
 		
 	def actualizarEstadisticasDelRetador() {
 		inicio.actualizarEstadisticas(this)
+	}
+	
+	def estadisticas(Personaje it) {
+		jugador.estadisticas(it)
 	}
 		
 //	def actualizarEstadisticasComoGanadorEIniciador() {

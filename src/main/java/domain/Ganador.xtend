@@ -11,12 +11,12 @@ class Ganador implements Veredicto{
 	}
 	
 	def dispatch actualizarUsandoInicio(Retador it, Iniciador inicio) {
-		estadisticas.agregarUnaVictoria
-		estadisticas.mejorUbicacion = ubicacion
+		estadisticas(it.personaje).agregarUnaVictoria
+		estadisticas(it.personaje).mejorUbicacion = ubicacion
 	}
 	
 	def dispatch actualizarUsandoInicio(Retador it, NoIniciador inicio) {
-		estadisticas.sumarKill
+		estadisticas(personaje).sumarKill
 	}
 	
 	

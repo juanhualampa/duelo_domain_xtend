@@ -16,9 +16,11 @@ class EstadisticasPersonajes {
 	List<Ubicacion> ubicacionesUsadas	
 	Ubicacion mejorUbicacion
 	Calificacion calificacion
+	Personaje personaje
 	
 	
-	new(){
+	new(Personaje personaje){
+		this.personaje = personaje
 		this.vecesUsadoAntesDelDuelo = 0
 		this.vecesQueGanoDuelo = 0
 		this.vecesKills = 0

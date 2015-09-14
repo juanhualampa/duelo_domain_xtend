@@ -7,7 +7,7 @@ class CalculadorDeCalificaciones {
 	def Calificacion calcular(Retador it) {
 		val nroAlAzar = new Random().nextInt(100)
 		var Calificacion res = new Calificacion("NOOB",5)
-		if (estadisticas.usasteAlPersonajeEnUbicacionIdealAlMenos(it,5) && esNroAlAzarMayorA(nroAlAzar,90) ){
+		if (estadisticas(it.personaje).usasteAlPersonajeEnUbicacionIdealAlMenos(it,5) && esNroAlAzarMayorA(nroAlAzar,90) ){
 			res = new Calificacion("RAMPAGE",100)
 		}
 		if (usasteCualquierPersonajeEnUbicacionIdealMasDe(2) && esNroAlAzarMayorA(nroAlAzar,70)){
@@ -31,8 +31,7 @@ class CalculadorDeCalificaciones {
 	}
 	
 	def boolean usasteCualquierPersonajeEnUbicacionIdealMasDe(Retador ret, int veces){
-		! ret.jugador.personajes.filter[it.estadistica.usasteAlPersonajeEnUbicacionIdealAlMenos(ret,veces)].isEmpty
-		// TODO: 
+		ret.jugador.estadisticasPersonajes.exists[usasteAlPersonajeEnUbicacionIdealAlMenos(it,ret,veces)]
 	}
 	
 	def esNroAlAzarMayorA(int nroAzaroso ,int nro){
