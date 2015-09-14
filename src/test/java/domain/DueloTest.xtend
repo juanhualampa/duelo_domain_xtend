@@ -13,8 +13,7 @@ class DueloTest {
 	Personaje per1 
 	Personaje per2
 	Retador ret1 
-	Retador ret2 	
-	Duelo duelo
+	Retador ret2 
 	EstadisticasPersonajes est1
 	EstadisticasPersonajes est2
 	
@@ -30,65 +29,67 @@ class DueloTest {
 		this.per2 = new Personaje("Gambito","Tirarte cartitas","Ni idea",Ubicacion.MIDDLE)
 		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador)
 		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador)
-		this.est1= new EstadisticasPersonajes(per1)
-		this.est2= new EstadisticasPersonajes(per2)
-		jugador1.getEstadisticasPersonajes.add(est1)
-		jugador2.getEstadisticasPersonajes.add(est2)
+		this.est1 = new EstadisticasPersonajes(per1)
+		this.est2 = new EstadisticasPersonajes(per2)
 	}
 		
 	@Test 
 	def testDosJugadoresTienenElMismoRanking(){		
 		assertTrue(sis.mismoRankingSinSerElMismo(jugador1,jugador2))
 		assertEquals(jugador1.calificacion,jugador2.calificacion)
-		assertEquals(est1.calificacion.categoria,est2.calificacion.categoria)
 		
 	}
 	
+	/*
 	@Test 
 	def testsDosJugadoresNoTienenElMismoRanking(){
+		
 		est1.setCalificacion(new Calificacion("RAMPAGE",100))
-		/*
-		 * Juan mirate lo de las calificaciones
-		 */	
+		
+		 * Juan mirate lo de las calificaciones con el Ranking
+		 
 		//assertNotEquals(jugador1.calificacion,jugador2.calificacion)	
-		//assertNotEquals(est1.calificacion.categoria,est2.calificacion.categoria)
+		assertNotEquals(est1.calificacion.categoria,est2.calificacion.categoria)
 	}
+	
+	*/
 	
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElPrimero(){
-		est1.calificacion.nro = 200
-		duelo = new Duelo(ret1,ret2)
-		duelo.realizarse
-		assertTrue(jugador1.duelos.contains(duelo))
-		assertTrue(jugador2.duelos.contains(duelo))
+		est1.calificacion.nro = 200		
+		sis.oponentePorDefecto = ret2
+		jugador1.agregarEstadistica(est1)
+		ret2.jugador.agregarEstadistica(est2)
+		assertEquals(0,jugador1.duelos.size)
+		jugador1.iniciarDuelo(per1,Ubicacion.MIDDLE)
 		assertEquals(1,jugador1.duelos.size)
-		assertEquals(1,jugador2.duelos.size)
-		assertTrue(ret1.veredicto instanceof Ganador)
+		val veredictoParaElJugador1 = jugador1.duelos.get(0).retador.veredicto
+		assertTrue(veredictoParaElJugador1 instanceof Ganador)
 		assertTrue(ret2.veredicto instanceof Perdedor)
 	}
 	
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElSegundo(){
-		est2.calificacion.nro = 2300
-		duelo = new Duelo(ret1,ret2)
-		duelo.realizarse
-		assertTrue(jugador1.duelos.contains(duelo))
-		assertTrue(jugador2.duelos.contains(duelo))
+		est2.calificacion.nro = 2300		
+		sis.oponentePorDefecto = ret2
+		ret2.jugador.agregarEstadistica(est2)
+		assertEquals(0,jugador1.duelos.size)
+		jugador1.iniciarDuelo(per1,Ubicacion.MIDDLE)
 		assertEquals(1,jugador1.duelos.size)
-		assertEquals(1,jugador2.duelos.size)
-		assertTrue(ret1.veredicto instanceof Perdedor)
+		val veredictoParaElJugador1 = jugador1.duelos.get(0).retador.veredicto
+		assertTrue(veredictoParaElJugador1 instanceof Perdedor)
 		assertTrue(ret2.veredicto instanceof Ganador)
 	}
 	
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConEmpate(){
-		duelo = new Duelo(ret1,ret2)
-		duelo.realizarse
-		assertTrue(jugador1.duelos.contains(duelo))
-		assertTrue(jugador2.duelos.contains(duelo))
+		sis.oponentePorDefecto = ret2
+		ret2.jugador.agregarEstadisticaPara(per2)
+		assertEquals(0,jugador1.duelos.size)
+		jugador1.iniciarDuelo(per1,Ubicacion.MIDDLE)
 		assertEquals(1,jugador1.duelos.size)
-		assertEquals(1,jugador2.duelos.size)
-		assertTrue(ret1.veredicto instanceof Empate)
+		val veredictoParaElJugador1 = jugador1.duelos.get(0).retador.veredicto
+		assertTrue(veredictoParaElJugador1 instanceof Empate)
 		assertTrue(ret2.veredicto instanceof Empate)
 	}
 	

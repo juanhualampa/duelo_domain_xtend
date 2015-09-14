@@ -19,21 +19,4 @@ class Ganador implements Veredicto{
 		estadisticas(personaje).sumarKill
 	}
 	
-	
-	
-		
-//	override actualizarEstadisticas(Retador it) {
-//		estadisticas.agregarUnaParticipacion
-//		estadisticas.agregarUnaVictoria
-//		actualizacionesDependientesDeLaPosicion
-//		println("Termine??")
-//	}
-//	
-//	def void actualizacionesDependientesDeLaPosicion(Retador it) {
-//		inicio.actualizarA(it)
-//	}
-		
-//	override actualizaSegunGanesPierdasOEmpates(Retador it) {
-//		estadisticas.mejorUbicacion = ubicacion		
-//	}
 }

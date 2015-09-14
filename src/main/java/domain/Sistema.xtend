@@ -5,14 +5,23 @@ import java.util.List
 
 @Accessors
 class Sistema {
-	List<Jugador> jugadores = newArrayList
+	List<Jugador> jugadores = newArrayList	
+	Retador oponentePorDefecto
 	
 	/**
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
-	def iniciarReto(Jugador jug, Personaje it ,Ubicacion ubic){
-		armarDuelo(new Retador(jug,it,ubic,new Iniciador))
+	def void iniciarReto(Jugador it, Personaje per ,Ubicacion ubic){
+		if(noPoseeEstadisticas(per)){
+			it.agregarEstadisticaPara(per)
+		}
+		armarDuelo(new Retador(it,per,ubic,new Iniciador))
 	}
+	
+	def noPoseeEstadisticas(Jugador it, Personaje personaje) {
+		! estadisticasPersonajes.exists[it.personaje.equals(personaje)]
+	}
+	
 	def armarDuelo(Retador it){	
 		if(it.noHayOponente){
 			// a joderse
@@ -23,10 +32,10 @@ class Sistema {
 	}
 	
 	def Retador obtenerOponente(Retador it){
-		val contrincante = oponentesPosibles.head
-		new Retador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM, new NoIniciador)
+		//val contrincante = oponentesPosibles.head
+		this.oponentePorDefecto //new Retador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM, new NoIniciador)
 	}
-	
+		
 	def noHayOponente(Retador it){
 		oponentesPosibles.isEmpty
 	}
