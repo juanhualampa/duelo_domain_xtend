@@ -69,9 +69,7 @@ class Jugador {
 		estadisticas(personaje).poderDeAtaque
 	}
 	
-	def elegirPersonajeAlAzar() {
-		new Personaje("Boludo","","",Ubicacion.BOTTOM)
-	}
+	
 	
 	def agregarEstadistica(EstadisticasPersonajes it) {
 		estadisticasPersonajes.add(it)

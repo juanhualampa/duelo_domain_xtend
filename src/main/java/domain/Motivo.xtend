@@ -12,6 +12,9 @@ abstract class Motivo {
 	}
     def Integer peso()
     def void evaluarse(Denuncia denuncia, Duelo it){
+    	println(it)
+    	println(retador)
+    	println(retado)
       	retado.aplicarPenalidad(denuncia)
     }
 	

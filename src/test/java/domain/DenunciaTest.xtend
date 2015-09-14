@@ -6,7 +6,7 @@ import static org.junit.Assert.*
 class DenunciaTest {
 	Jugador jugador1
 	Jugador jugador2
-	Sistema sis = new Sistema();
+	Sistema sis 
 	Ubicacion ubi1
 	Ubicacion ubi2		
 	Personaje per1 
@@ -49,14 +49,22 @@ class DenunciaTest {
 		assertEquals(per2.nombre,jugador2.getEstadisticasPersonajes.get(0).personaje.nombre)
 	}
 	
+//	@Test
+//	def testFuncionaObtenerUltimoDueloContra() {
+//		assertEquals(0,jugador1.duelos.size)
+//		jugador1.duelos.add(duelo)
+//		assertEquals(1,jugador1.duelos.size)
+//		assertEquals(duelo,jugador1.obtenerUltimoDueloContra(jugador2))
+//	}
+	
 	@Test
 	def testHagoUnaDenunciaValida() {
 		jugador1.duelos.add(duelo)
 		jugador2.duelos.add(duelo)
 		unaDescripcion= new Descripcion("denuncio abuso de habilidad")
 		jugador1.denunciarAJugador(jugador2,unMotivo,unaDescripcion)
-		assertEquals(1,jugador2.denuncias.size)	
-		assertEquals(5,jugador2.denuncias.get(0).unMotivo.peso)	
+		assertEquals(1,jugador1.denuncias.size)	
+		assertEquals(5,jugador1.denuncias.get(0).unMotivo.peso)			
 	}
 	
 	@Test

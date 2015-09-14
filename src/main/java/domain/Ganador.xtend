@@ -7,7 +7,6 @@ class Ganador implements Veredicto{
 	
 	override actualizarEstadisticasSegunVeredicto(Retador it) {
 		actualizarUsandoInicio(it,it.inicio)
-		println("Termine Ganador")
 	}
 	
 	def dispatch actualizarUsandoInicio(Retador it, Iniciador inicio) {

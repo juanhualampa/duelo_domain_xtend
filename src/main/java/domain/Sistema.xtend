@@ -52,8 +52,10 @@ class Sistema {
 		new Duelo(it,ret2).realizarse
 	}
 
-	def denunciarJugador(Denuncia it) {
-		castigar
+	def denunciarJugador(Denuncia den) {
+		println("Denuncio en: " + den.contexto)
+		println("debido a: " + den.unMotivo + " con " + den.unaDescripcion)
+		den.castigar
 	}
 	
 }
