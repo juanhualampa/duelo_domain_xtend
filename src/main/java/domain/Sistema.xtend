@@ -53,8 +53,6 @@ class Sistema {
 	}
 
 	def denunciarJugador(Denuncia den) {
-		println("Denuncio en: " + den.contexto)
-		println("debido a: " + den.unMotivo + " con " + den.unaDescripcion)
 		den.castigar
 	}
 	

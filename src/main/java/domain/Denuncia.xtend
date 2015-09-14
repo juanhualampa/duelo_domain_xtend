@@ -18,9 +18,9 @@ class Denuncia {
     }
     
     def void castigar() {
-    	print(calcularValidez)
-    	if(calcularValidez)
+    	if(calcularValidez){
     		unMotivo.evaluarse(this,contexto)
+    	}
     	else {
     		new AbusoDelSistemaDeDenuncias().evaluarse(this,contexto)    		
     		}
