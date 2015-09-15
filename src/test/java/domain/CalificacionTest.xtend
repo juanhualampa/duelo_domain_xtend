@@ -89,13 +89,53 @@ class CalificacionTest {
 	}
 	
 	@Test 
+	def testNoEntraPorCalicacionPorRampagePorNoTenerCantidadDeDuelosPrevios(){		
+		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		agregandoDuelos(jugador1,3)
+		assertEquals(3,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,95)
+		assertNotEquals("RAMPAGE",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
+	@Test 
+	def testNoEntraPorCalicacionPorRampagePorNoTenerUbicacionIdeal(){		
+		this.ret1 = new Retador(jugador1, per2,Ubicacion.MIDDLE,new Iniciador)
+		agregandoDuelos(jugador1,5)
+		assertEquals(5,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,95)
+		assertNotEquals("RAMPAGE",ret1.estadisticas(per2).calificacion.categoria)
+	}
+		
+	@Test 
 	def testEntraPorCalicacionPorDominador(){		
 		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		agregandoDuelos(jugador1,2)
+		assertEquals(2,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,85)
+		assertEquals("DOMINADOR",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
+	@Test 
+	def testNoEntraPorCalicacionPorDominadorPorCantDuelosPrevios(){		
+		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		agregandoDuelos(jugador1,1)
+		assertEquals(1,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,85)
+		assertNotEquals("DOMINADOR",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
+	@Test 
+	def testNoEntraPorCalicacionPorDominadorPorUbicacion(){		
+		this.ret1 = new Retador(jugador1, per2,Ubicacion.MIDDLE,new Iniciador)
 		agregandoDuelos(jugador1,5)
 		assertEquals(5,jugador1.duelos.size)
 		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
 		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,85)
-		assertEquals("DOMINADOR",ret1.estadisticas(per2).calificacion.categoria)
+		assertNotEquals("DOMINADOR",ret1.estadisticas(per2).calificacion.categoria)
 	}
 	
 	@Test 
@@ -117,6 +157,29 @@ class CalificacionTest {
 		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,35)
 		assertEquals("MANCO",ret1.estadisticas(per2).calificacion.categoria)
 	}
+	
+	@Test 
+	def testNoEntraPorCalicacionPorMancoDebidoAlaUbicacion(){		
+		this.ret1 = new Retador(jugador1, per2,Ubicacion.MIDDLE,new Iniciador)
+		agregandoDuelos(jugador1,5)
+		assertEquals(5,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,35)
+		assertNotEquals("MANCO",ret1.estadisticas(per2).calificacion.categoria)
+		assertEquals("NOOB",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
+	@Test 
+	def testEntraPorCalicacionPorNoob(){		
+		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		agregandoDuelos(jugador1,1)
+		assertEquals(1,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,5)
+		assertEquals("NOOB",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
+	
 	
 
 

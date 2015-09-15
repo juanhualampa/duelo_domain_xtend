@@ -9,7 +9,7 @@ class CalculadorDeCalificaciones {
 			case cumpleConRequisitosRampage(nroAlAzar) : new Calificacion("RAMPAGE",100)
 			case cumpleConRequisitosDominador(nroAlAzar) : new Calificacion("DOMINADOR",75)
 			case cumpleConRequisitosKilling(nroAlAzar) : new Calificacion("KILLING_SPREAD",60)
-			case cumpleConRequisitosManco : new Calificacion("MANCO",15)
+			case cumpleConRequisitosManco(nroAlAzar) : new Calificacion("MANCO",15)
 			default : new Calificacion("NOOB",5)
 		}
 	}
@@ -22,6 +22,7 @@ class CalculadorDeCalificaciones {
 		 jugador.duelos.hayDuelosConPersonajeYUbicacionIdealEnAlMenos(jugador,personaje,5) &&
 		esNroAlAzarMayorA(nroAlAzar,90)
 	}
+	
 	def boolean hayDuelosConPersonajeYUbicacionIdealEnAlMenos(List<Duelo> duelos, Jugador j, Personaje personaje, int veces){
 		duelos.filter[it.conEsteJugadorYPersonajeEnUbicacionIdeal(j,personaje)].size >= veces
 	}
@@ -36,8 +37,8 @@ class CalculadorDeCalificaciones {
 	}
 	
 	
-	def cumpleConRequisitosManco(Retador it){
-		ubicacion.esUbicacionIdeal(it)
+	def cumpleConRequisitosManco(Retador it, int nroAlAzar){
+		ubicacion.esUbicacionIdeal(it) && esNroAlAzarMayorA(nroAlAzar,30)
 	}
 	
 	def cumpleConRequisitosKilling(Retador it, int nroAlAzar){
@@ -45,8 +46,17 @@ class CalculadorDeCalificaciones {
 	}
 		
 	def boolean cumpleConRequisitosDominador(Retador it, int nroAlAzar){
+		/*
+		 * Esto pasa cuando el jugador tiene experiencia previa 
+		 * (de al menos dos duelos) jugando con este u otros personajes en la posición ideal 
+		 * para este y además sacó un numero al azar > a 70
+		 */
 		usasteCualquierPersonajeEnUbicacionIdealMasDe(2) && esNroAlAzarMayorA(nroAlAzar,70)
 	}	
+	
+	def boolean hayDuelosConCualquierPesonajeYUbicacionIdealEnAlMenos(List<Duelo> duelos, Jugador j,  int veces){
+		j.estadisticasPersonajes.map[it.personaje].exists[hayDuelosConPersonajeYUbicacionIdealEnAlMenos(duelos,j,it,veces)]
+	}
 		 
 	def esUbicacionIdeal(Ubicacion ubicacion,Retador it){
 		ubicacion.equals(personaje.ubicacionIdeal)
@@ -56,8 +66,8 @@ class CalculadorDeCalificaciones {
 		ubicacionesUsadas.filter[it.esUbicacionIdeal(ret)].size >= veces
 	}
 	
-	def boolean usasteCualquierPersonajeEnUbicacionIdealMasDe(Retador ret, int veces){
-		ret.jugador.estadisticasPersonajes.exists[usasteAlPersonajeEnUbicacionIdealAlMenos(it,ret,veces)]
+	def boolean usasteCualquierPersonajeEnUbicacionIdealMasDe(Retador it, int veces){
+		hayDuelosConCualquierPesonajeYUbicacionIdealEnAlMenos(jugador.duelos,jugador,veces)
 	}
 	
 	def esNroAlAzarMayorA(int nroAzaroso ,int nro){
