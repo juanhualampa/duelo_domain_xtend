@@ -12,9 +12,6 @@ class Sistema {
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
 	def void iniciarReto(Jugador it, Personaje per ,Ubicacion ubic){
-		if(noPoseeEstadisticas(per)){
-			it.agregarEstadisticaPara(per)
-		}
 		armarDuelo(new Retador(it,per,ubic,new Iniciador))
 	}
 	
@@ -22,18 +19,22 @@ class Sistema {
 		! estadisticasPersonajes.exists[it.personaje.equals(personaje)]
 	}
 	
-	def armarDuelo(Retador it){	
-		if(it.noHayOponente){
+	def armarDuelo(Retador ret){
+		if(ret.noHayOponente){
 			// a joderse
 		}
 		else{
-			realizarDuelo(it,obtenerOponente)
+			realizarDuelo(ret,ret.obtenerOponente)
 		}
 	}
 	
 	def Retador obtenerOponente(Retador it){
-		//val contrincante = oponentesPosibles.head
-		this.oponentePorDefecto //new Retador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM, new NoIniciador)
+		val contrincante = oponentesPosibles.head
+		new Retador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM, new NoIniciador)
+	}
+	
+	def elegirPersonajeAlAzar(Jugador jugador) {
+		jugador.estadisticasPersonajes.get(0).personaje
 	}
 		
 	def noHayOponente(Retador it){

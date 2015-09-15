@@ -24,7 +24,7 @@ class Retador {
 		jugador.poderDeAtaque(personaje)
 	}
 	
-	def esMasPoderosoQue(Retador it){			
+	def esMasPoderosoQue(Retador it){
 		this.poderDeAtaque > it.poderDeAtaque
 	}
 	

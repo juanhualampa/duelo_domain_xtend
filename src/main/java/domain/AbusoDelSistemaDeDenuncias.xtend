@@ -11,6 +11,10 @@ class AbusoDelSistemaDeDenuncias extends Motivo{
 		super("Abuso del sistema de denuncias")
 	}
 	
+	override void evaluarse(Denuncia denuncia, Duelo duelo){
+      	duelo.retador.aplicarPenalidad(denuncia)
+    }
+	
 	override peso() {
 		25
 	}

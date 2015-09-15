@@ -64,7 +64,7 @@ class DenunciaTest {
 		unaDescripcion= new Descripcion("denuncio abuso de habilidad")
 		jugador1.denunciarAJugador(jugador2,unMotivo,unaDescripcion)
 		assertEquals(0,jugador1.denuncias.size)	
-		assertEquals(5,jugador1.denuncias.get(0).unMotivo.peso)			
+		assertEquals(5,jugador2.denuncias.get(0).unMotivo.peso)			
 	}
 	
 	@Test
@@ -72,7 +72,7 @@ class DenunciaTest {
 		jugador1.duelos.add(duelo)
 		jugador2.duelos.add(duelo)
 		otraDescripcion= new Descripcion("denuncio")
-		jugador2.denunciarAJugador(jugador1,unMotivo,otraDescripcion)
+		jugador1.denunciarAJugador(jugador2,unMotivo,otraDescripcion)
 		assertEquals(1,jugador1.denuncias.size)	
 	}
 	

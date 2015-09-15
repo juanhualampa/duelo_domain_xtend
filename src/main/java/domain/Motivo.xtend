@@ -12,7 +12,7 @@ abstract class Motivo {
 	}
     def Integer peso()
     def void evaluarse(Denuncia denuncia, Duelo duelo){
-      	duelo.retador.aplicarPenalidad(denuncia)
+      	duelo.retado.aplicarPenalidad(denuncia)
     }
 	
 	def void aplicarPenalidad(Retador ret, Denuncia denuncia){

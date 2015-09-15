@@ -31,6 +31,21 @@ class EstadisticasPersonajes {
 		this.calificacion = new Calificacion("NOOB",5)	
 	}
 	
+	new(Personaje personaje,int vecesUsadoAntesDelDuelo, 
+		int vecesQueGanoDuelo, int vecesKills, int vecesDeads,
+		 int vecesAssist , List<Ubicacion> ubicacionesUsadas,
+		 Ubicacion mejorUbicacion, Calificacion calificacion ){
+		this.personaje = personaje
+		this.vecesUsadoAntesDelDuelo = vecesUsadoAntesDelDuelo
+		this.vecesQueGanoDuelo = vecesQueGanoDuelo
+		this.vecesKills = vecesKills
+		this.vecesDeads = vecesDeads
+		this.vecesAssist = vecesAssist
+		this.ubicacionesUsadas = ubicacionesUsadas	
+		this.mejorUbicacion = mejorUbicacion
+		this.calificacion = calificacion	
+	}
+	
 	def void agregarUnaParticipacion() {
 		vecesUsadoAntesDelDuelo += 1
 	}

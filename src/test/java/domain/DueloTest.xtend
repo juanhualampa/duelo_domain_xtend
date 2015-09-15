@@ -2,7 +2,8 @@ package domain
 import org.junit.Before
 import org.junit.Test
 import static org.junit.Assert.*
-
+import java.util.ArrayList
+import java.util.Arrays
 
 class DueloTest {
 	Jugador jugador1
@@ -20,17 +21,35 @@ class DueloTest {
 	
 	@Before
 	def void setUp() {
-		this.sis = new Sistema()		
-		this.jugador1 = new Jugador("Luciano",sis)
-		this.jugador2 = new Jugador("Juan",sis)
+		this.sis = new Sistema()	
 		this.ubi1 = Ubicacion.TOP;
-		this.ubi2 = Ubicacion.BOTTOM;
+		this.ubi2 = Ubicacion.BOTTOM;	
 		this.per1 = new Personaje("Wolverine","Araniar","La ducha",Ubicacion.BOTTOM)
 		this.per2 = new Personaje("Gambito","Tirarte cartitas","Ni idea",Ubicacion.MIDDLE)
+		
+		val calGanadora = new Calificacion("RAMPAGE",100)
+		val calPerdedora = new Calificacion("NOOB",5)
+		
+		val ubicacionesUsadas = new ArrayList<Ubicacion>
+		ubicacionesUsadas.addAll(Arrays.asList(ubi1,ubi2,ubi1,ubi2))
+		
+		val ubicacionesUsadas2 = new ArrayList<Ubicacion>
+		ubicacionesUsadas.addAll(Arrays.asList(ubi1,ubi2))
+		
+		est1 = new EstadisticasPersonajes(per1,10,4, 3, 1, 5, ubicacionesUsadas, ubi1,calGanadora)
+		est2 = new EstadisticasPersonajes(per2,4,1, 1, 1, 1, ubicacionesUsadas2, ubi1,calPerdedora)
+		
+		val estadisticasPersonajesParaGanador = new ArrayList<EstadisticasPersonajes>()
+		estadisticasPersonajesParaGanador.add(est1)
+		estadisticasPersonajesParaGanador.add(est2)
+		
+		val estadisticasPersonajesParaPerdedor = new ArrayList<EstadisticasPersonajes>()
+		estadisticasPersonajesParaPerdedor.add(est2)
+		
+		this.jugador1 = new Jugador("Luciano",sis,estadisticasPersonajesParaGanador )
+		this.jugador2 = new Jugador("Juan",sis,estadisticasPersonajesParaPerdedor)
 		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador)
 		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador)
-		this.est1 = new EstadisticasPersonajes(per1)
-		this.est2 = new EstadisticasPersonajes(per2)
 	}
 		
 	@Test 
@@ -56,41 +75,36 @@ class DueloTest {
 	
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElPrimero(){
-		est1.calificacion.nro = 200		
-		sis.oponentePorDefecto = ret2
-		jugador1.agregarEstadistica(est1)
-		ret2.jugador.agregarEstadistica(est2)
 		assertEquals(0,jugador1.duelos.size)
-		jugador1.iniciarDuelo(per1,Ubicacion.MIDDLE)
+		jugador1.iniciarDuelo(per1,ubi1)
 		assertEquals(1,jugador1.duelos.size)
 		val veredictoParaElJugador1 = jugador1.duelos.get(0).retador.veredicto
+		val veredictoParaElJugador2 = jugador1.duelos.get(0).retado.veredicto
 		assertTrue(veredictoParaElJugador1 instanceof Ganador)
-		assertTrue(ret2.veredicto instanceof Perdedor)
+		assertTrue(veredictoParaElJugador2 instanceof Perdedor)
 	}
 	
 	@Test 
-	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElSegundo(){
-		est2.calificacion.nro = 2300		
-		sis.oponentePorDefecto = ret2
-		ret2.jugador.agregarEstadistica(est2)
-		assertEquals(0,jugador1.duelos.size)
-		jugador1.iniciarDuelo(per1,Ubicacion.MIDDLE)
-		assertEquals(1,jugador1.duelos.size)
-		val veredictoParaElJugador1 = jugador1.duelos.get(0).retador.veredicto
-		assertTrue(veredictoParaElJugador1 instanceof Perdedor)
-		assertTrue(ret2.veredicto instanceof Ganador)
+	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElSegundo(){		
+		assertEquals(0,jugador2.duelos.size)
+		jugador2.iniciarDuelo(per2,ubi1)
+		assertEquals(1,jugador2.duelos.size)
+		val veredictoParaElJugador2 = jugador2.duelos.get(0).retador.veredicto
+		val veredictoParaElJugador1 = jugador2.duelos.get(0).retado.veredicto
+		assertTrue(veredictoParaElJugador2 instanceof Perdedor)
+		assertTrue(veredictoParaElJugador1 instanceof Ganador)
 	}
 	
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConEmpate(){
-		sis.oponentePorDefecto = ret2
-		ret2.jugador.agregarEstadisticaPara(per2)
+		
 		assertEquals(0,jugador1.duelos.size)
-		jugador1.iniciarDuelo(per1,Ubicacion.MIDDLE)
+		jugador1.iniciarDuelo(per2,ubi1)
 		assertEquals(1,jugador1.duelos.size)
 		val veredictoParaElJugador1 = jugador1.duelos.get(0).retador.veredicto
+		val veredictoParaElJugador2 = jugador1.duelos.get(0).retado.veredicto
 		assertTrue(veredictoParaElJugador1 instanceof Empate)
-		assertTrue(ret2.veredicto instanceof Empate)
+		assertTrue(veredictoParaElJugador2 instanceof Empate)
 	}
 	
 }

@@ -5,7 +5,7 @@ class Iniciador extends Inicio{
 	override actualizarEstadisticas(Retador it) {
 		estadisticas(personaje).agregarUnaParticipacion
 		estadisticas(personaje).ubicacionesUsadas.add(ubicacion)		
-		it.veredicto.actualizarEstadisticasSegunVeredicto(it)
+		veredicto.actualizarEstadisticasSegunVeredicto(it)
 		estadisticas(personaje).calificacion = new CalculadorDeCalificaciones().calcular(it)
 	}
 		

@@ -27,6 +27,18 @@ class Jugador {
 		this.sistema = sis
 		sistema.jugadores.add(this)
 	}
+	
+	new(String Nombre,Sistema sis , List<EstadisticasPersonajes> estadisticasPersonajes){
+		this.estadisticasPersonajes = estadisticasPersonajes
+		cantDePeleasGanadas = 0
+		denuncias = newArrayList
+		ranking = 0
+		duelos = newArrayList
+		denuncias = newArrayList
+		this.nombre = Nombre;
+		this.sistema = sis
+		sistema.jugadores.add(this)
+	}
 		
 	def recibioDenuncia(Denuncia denuncia) {
 		denuncias.add(denuncia)
@@ -62,7 +74,7 @@ class Jugador {
 	}
 	
 	def EstadisticasPersonajes estadisticas(Personaje p){
-		estadisticasPersonajes.filter[it.personaje.equals(personaje)].head
+		estadisticasPersonajes.filter[it.personaje.equals(p)].head
 	}
 	
 	def poderDeAtaque(Personaje personaje) {
