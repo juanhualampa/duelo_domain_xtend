@@ -6,22 +6,31 @@ class CalculadorDeCalificaciones {
 	
 	def Calificacion calcular(Retador it) {
 		val nroAlAzar = new Random().nextInt(100)
-		var Calificacion res = new Calificacion("NOOB",5)
-		if (estadisticas(it.personaje).usasteAlPersonajeEnUbicacionIdealAlMenos(it,5) && esNroAlAzarMayorA(nroAlAzar,90) ){
-			res = new Calificacion("RAMPAGE",100)
+		switch it{
+			case cumpleConRequisitosRampage(nroAlAzar) : new Calificacion("RAMPAGE",100)
+			case cumpleConRequisitosDominador(nroAlAzar) : new Calificacion("DOMINADOR",75)
+			case cumpleConRequisitosKilling(nroAlAzar) : new Calificacion("KILLING_SPREAD",60)
+			case cumpleConRequisitosManco : new Calificacion("MANCO",15)
+			default : new Calificacion("NOOB",5)
 		}
-		if (usasteCualquierPersonajeEnUbicacionIdealMasDe(2) && esNroAlAzarMayorA(nroAlAzar,70)){
-			res = new Calificacion("DOMINADOR",75)
-		}
-		if(esNroAlAzarMayorA(nroAlAzar,50)){
-			res = new Calificacion("KILLING_SPREAD",60)
-		}
-		if(ubicacion.esUbicacionIdeal(it)){
-			res = new Calificacion("MANCO",15)
-		}
-		res
 	}
 	
+	def cumpleConRequisitosManco(Retador it){
+		ubicacion.esUbicacionIdeal(it)
+	}
+	
+	def cumpleConRequisitosKilling(Retador it, int nroAlAzar){
+		esNroAlAzarMayorA(nroAlAzar,50)
+	}
+		
+	def boolean cumpleConRequisitosDominador(Retador it, int nroAlAzar){
+		usasteCualquierPersonajeEnUbicacionIdealMasDe(2) && esNroAlAzarMayorA(nroAlAzar,70)
+	}	
+	
+	def boolean cumpleConRequisitosRampage(Retador it, int nroAlAzar){
+		estadisticas(it.personaje).usasteAlPersonajeEnUbicacionIdealAlMenos(it,5) && esNroAlAzarMayorA(nroAlAzar,90)
+	}
+	 
 	def esUbicacionIdeal(Ubicacion ubicacion,Retador it){
 		ubicacion.equals(personaje.ubicacionIdeal)
 	}

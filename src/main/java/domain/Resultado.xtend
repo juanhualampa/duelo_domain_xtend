@@ -13,4 +13,9 @@ abstract class Resultado {
 	
 	def void aplicarActualizacionesAEstadisticas(Duelo duelo) 
 	
+	def aplicarVeredicto(Retador it, Veredicto v) {
+		setPostDuelo(v)
+		it.actualizarEstadisticasDelRetador
+	}
+	
 }

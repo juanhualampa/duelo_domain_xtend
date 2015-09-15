@@ -27,7 +27,7 @@ class Sistema {
 			realizarDuelo(ret,ret.obtenerOponente)
 		}
 	}
-	
+		
 	def Retador obtenerOponente(Retador it){
 		val contrincante = oponentesPosibles.head
 		new Retador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM, new NoIniciador)

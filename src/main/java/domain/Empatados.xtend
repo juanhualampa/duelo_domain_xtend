@@ -8,8 +8,8 @@ class Empatados extends Resultado {
 	}
 	
 	override aplicarActualizacionesAEstadisticas(Duelo it) {
-		empataste(this.retador1)
-		empataste(this.retador2)
+		retador.aplicarVeredicto(new Empate)
+		retado.aplicarVeredicto(new Empate)
 	}
 	override visualizacion() {
 		"Empataro con «nombrePerdedor», son igual de malos " //falta el tema de los puntos

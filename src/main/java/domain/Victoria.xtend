@@ -19,8 +19,8 @@ class Victoria extends Resultado{
 	}
 	
 	override aplicarActualizacionesAEstadisticas(Duelo it) {
-		sosGanador(retador1)
-		sosPerdedor(retador2)
+		retador.aplicarVeredicto(new Ganador)
+		retado.aplicarVeredicto(new Perdedor)
 	}
 	
 	override visualizacion() {

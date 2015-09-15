@@ -51,24 +51,9 @@ class Duelo {
 	def sonIgualDePoderosos(Retador it, Retador ret){
 		it.poderDeAtaque > ret.poderDeAtaque
 	}
-
-	def sosGanador(Retador it) {
-		setPostDuelo(new Ganador)
-		it.actualizarEstadisticasDelRetador
-	}
-		
-	def sosPerdedor(Retador it) {
-		setPostDuelo(new Perdedor)		
-		it.actualizarEstadisticasDelRetador
-	}
-		
+	
 	def void actualizarEstadisticas() {
 		resultado.aplicarActualizacionesAEstadisticas(this)
-	}
-	
-	def empataste(Retador it) {
-		setPostDuelo(new Empate)
-		it.actualizarEstadisticasDelRetador
 	}
 	
 	def boolean involucraA(Jugador jug) {
