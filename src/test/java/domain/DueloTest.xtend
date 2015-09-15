@@ -24,7 +24,7 @@ class DueloTest {
 		this.sis = new Sistema()	
 		this.ubi1 = Ubicacion.TOP;
 		this.ubi2 = Ubicacion.BOTTOM;	
-		this.per1 = new Personaje("Wolverine","Araniar","La ducha",Ubicacion.BOTTOM)
+		this.per1 = new Personaje("Wolverine","Araniar","La ducha",ubi1)
 		this.per2 = new Personaje("Gambito","Tirarte cartitas","Ni idea",Ubicacion.MIDDLE)
 		
 		val calGanadora = new Calificacion("RAMPAGE",100)

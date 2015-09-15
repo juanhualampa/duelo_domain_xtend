@@ -1,4 +1,5 @@
 package domain
+import java.util.Random
 
 class Iniciador extends Inicio{
 	
@@ -6,7 +7,8 @@ class Iniciador extends Inicio{
 		estadisticas(personaje).agregarUnaParticipacion
 		estadisticas(personaje).ubicacionesUsadas.add(ubicacion)		
 		veredicto.actualizarEstadisticasSegunVeredicto(it)
-		estadisticas(personaje).calificacion = new CalculadorDeCalificaciones().calcular(it)
+		val nroAlAzar = new Random().nextInt(100)
+		estadisticas(personaje).calificacion = new CalculadorDeCalificaciones().calcular(it,nroAlAzar)
 	}
 		
 	override aString() {

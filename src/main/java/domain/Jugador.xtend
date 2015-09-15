@@ -80,9 +80,7 @@ class Jugador {
 	def poderDeAtaque(Personaje personaje) {
 		estadisticas(personaje).poderDeAtaque
 	}
-	
-	
-	
+		
 	def agregarEstadistica(EstadisticasPersonajes it) {
 		estadisticasPersonajes.add(it)
 	}

@@ -1,11 +1,10 @@
 package domain
 
-import java.util.Random
+import java.util.List
 
 class CalculadorDeCalificaciones {
 	
-	def Calificacion calcular(Retador it) {
-		val nroAlAzar = new Random().nextInt(100)
+	def Calificacion calcular(Retador it, int nroAlAzar) {
 		switch it{
 			case cumpleConRequisitosRampage(nroAlAzar) : new Calificacion("RAMPAGE",100)
 			case cumpleConRequisitosDominador(nroAlAzar) : new Calificacion("DOMINADOR",75)
@@ -14,6 +13,28 @@ class CalculadorDeCalificaciones {
 			default : new Calificacion("NOOB",5)
 		}
 	}
+	
+	def boolean cumpleConRequisitosRampage(Retador it, int nroAlAzar){
+		/*
+		 * Asumi que lo que me piden son las estadisticas de todos los duelos con este personaje
+		 * (me fijo si son al menos 5 en la posIdeal del personaje que uso el retador)
+		 */
+		 jugador.duelos.hayDuelosConPersonajeYUbicacionIdealEnAlMenos(jugador,personaje,5) &&
+		esNroAlAzarMayorA(nroAlAzar,90)
+	}
+	def boolean hayDuelosConPersonajeYUbicacionIdealEnAlMenos(List<Duelo> duelos, Jugador j, Personaje personaje, int veces){
+		duelos.filter[it.conEsteJugadorYPersonajeEnUbicacionIdeal(j,personaje)].size >= veces
+	}
+	
+	def boolean conEsteJugadorYPersonajeEnUbicacionIdeal(Duelo duelo, Jugador jugador, Personaje personaje) {
+		duelo.retador.conEsteJugadorYPersonajeEnUbicacionIdeal(jugador,personaje) ||
+		duelo.retado.conEsteJugadorYPersonajeEnUbicacionIdeal(jugador,personaje) 
+	}
+	
+	def boolean conEsteJugadorYPersonajeEnUbicacionIdeal(Retador ret, Jugador j, Personaje p ){
+		ret.jugador.equals(j) && ret.personaje.equals(p) && ret.ubicacion.equals(p.ubicacionIdeal)
+	}
+	
 	
 	def cumpleConRequisitosManco(Retador it){
 		ubicacion.esUbicacionIdeal(it)
@@ -26,11 +47,7 @@ class CalculadorDeCalificaciones {
 	def boolean cumpleConRequisitosDominador(Retador it, int nroAlAzar){
 		usasteCualquierPersonajeEnUbicacionIdealMasDe(2) && esNroAlAzarMayorA(nroAlAzar,70)
 	}	
-	
-	def boolean cumpleConRequisitosRampage(Retador it, int nroAlAzar){
-		estadisticas(it.personaje).usasteAlPersonajeEnUbicacionIdealAlMenos(it,5) && esNroAlAzarMayorA(nroAlAzar,90)
-	}
-	 
+		 
 	def esUbicacionIdeal(Ubicacion ubicacion,Retador it){
 		ubicacion.equals(personaje.ubicacionIdeal)
 	}

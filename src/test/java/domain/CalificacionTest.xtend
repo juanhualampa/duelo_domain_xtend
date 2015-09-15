@@ -17,22 +17,29 @@ class CalificacionTest {
 	Retador ret1 
 	Retador ret2 
 	EstadisticasPersonajes est1
-	EstadisticasPersonajes est2
+	EstadisticasPersonajes est2	
+	Calificacion calGanadora	
+	Calificacion calPerdedora
 	
+	def agregandoDuelos(Jugador jug, int veces){
+		(1..veces).forEach[
+			jug.duelos.add(new Duelo(ret1,ret2))
+		]
+	}
 	
 	@Before
 	def void setUp() {
 		this.sis = new Sistema()	
 		this.ubi1 = Ubicacion.TOP;
 		this.ubi2 = Ubicacion.BOTTOM;	
-		this.per1 = new Personaje("Wolverine","Araniar","La ducha",Ubicacion.BOTTOM)
-		this.per2 = new Personaje("Gambito","Tirarte cartitas","Ni idea",Ubicacion.MIDDLE)
+		this.per1 = new Personaje("Wolverine","Araniar","La ducha",ubi1)
+		this.per2 = new Personaje("Gambito","Tirarte cartitas","Ni idea",ubi1)
 		
-		val calGanadora = new Calificacion("RAMPAGE",100)
-		val calPerdedora = new Calificacion("NOOB",5)
+		calGanadora = new Calificacion("RAMPAGE",100)
+		calPerdedora = new Calificacion("NOOB",5)
 		
 		val ubicacionesUsadas = new ArrayList<Ubicacion>
-		ubicacionesUsadas.addAll(Arrays.asList(ubi1,ubi2,ubi1,ubi2))
+		ubicacionesUsadas.addAll(Arrays.asList(ubi1,ubi2,ubi1,ubi2,ubi1,ubi1,ubi1,ubi1))
 		
 		val ubicacionesUsadas2 = new ArrayList<Ubicacion>
 		ubicacionesUsadas.addAll(Arrays.asList(ubi1,ubi2))
@@ -49,13 +56,68 @@ class CalificacionTest {
 		
 		this.jugador1 = new Jugador("Luciano",sis,estadisticasPersonajesParaGanador )
 		this.jugador2 = new Jugador("Juan",sis,estadisticasPersonajesParaPerdedor)
-		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador)
+		
 		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador)
 	}
 
 	
-	
+	@Test 
+	def testSetDeCalicacionRampage(){		
+		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new Calificacion("RAMPAGE",100)
+		assertEquals("RAMPAGE",ret1.estadisticas(per2).calificacion.categoria)
+	}
 
+	@Test 
+	def testEntraPorCalicacionPorDefecto(){		
+		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,3)
+		assertEquals("NOOB",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
+		
+	@Test 
+	def testEntraPorCalicacionPorRampage(){		
+		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		agregandoDuelos(jugador1,5)
+		assertEquals(5,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,95)
+		assertEquals("RAMPAGE",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
+	@Test 
+	def testEntraPorCalicacionPorDominador(){		
+		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		agregandoDuelos(jugador1,5)
+		assertEquals(5,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,85)
+		assertEquals("DOMINADOR",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
+	@Test 
+	def testEntraPorCalicacionPorKillingSpread(){		
+		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		agregandoDuelos(jugador1,5)
+		assertEquals(5,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,65)
+		assertEquals("KILLING_SPREAD",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
+	@Test 
+	def testEntraPorCalicacionPorManco(){		
+		this.ret1 = new Retador(jugador1, per2,ubi1,new Iniciador)
+		agregandoDuelos(jugador1,5)
+		assertEquals(5,jugador1.duelos.size)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,35)
+		assertEquals("MANCO",ret1.estadisticas(per2).calificacion.categoria)
+	}
+	
 
 
 	
