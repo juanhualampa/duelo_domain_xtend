@@ -32,8 +32,10 @@ class CalificacionTest {
 		this.sis = new Sistema()	
 		this.ubi1 = Ubicacion.TOP;
 		this.ubi2 = Ubicacion.BOTTOM;	
-		this.per1 = new Personaje("Wolverine","Araniar","La ducha",ubi1)
-		this.per2 = new Personaje("Gambito","Tirarte cartitas","Ni idea",ubi1)
+		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
+			Arrays.asList("La ducha"),ubi1)
+		this.per2 = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
+		
 		
 		calGanadora = new Calificacion("RAMPAGE",100)
 		calPerdedora = new Calificacion("NOOB",5)

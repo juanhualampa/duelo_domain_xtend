@@ -2,6 +2,7 @@ package domain
 import org.junit.Before
 import org.junit.Test
 import static org.junit.Assert.*
+import java.util.Arrays
 
 class DenunciaTest {
 	Jugador jugador1
@@ -29,8 +30,10 @@ class DenunciaTest {
 		this.jugador2 = new Jugador("Juan",sis)
 		this.ubi1 = Ubicacion.TOP;
 		this.ubi2 = Ubicacion.BOTTOM;
-		this.per1 = new Personaje("Wolverine","Araniar","La ducha",Ubicacion.BOTTOM)
-		this.per2 = new Personaje("Gambito","Tirarte cartitas","Ni idea",Ubicacion.MIDDLE)
+		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
+			Arrays.asList("La ducha"),ubi1)
+		this.per2 = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
+		
 		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador())
 		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador())		
 		this.duelo    = new Duelo( ret1, ret2)

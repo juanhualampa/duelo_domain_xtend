@@ -2,7 +2,9 @@ package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import org.uqbar.commons.utils.Observable
 
+@Observable
 @Accessors
 class Sistema {
 	List<Jugador> jugadores = newArrayList	
