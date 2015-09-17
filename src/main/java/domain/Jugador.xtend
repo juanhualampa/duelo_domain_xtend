@@ -56,7 +56,7 @@ class Jugador {
 		ranking = this.calificacion() / 500
 	}	
 	
-	def iniciarDuelo (Personaje personaje ,Ubicacion ubic){
+	def Duelo iniciarDuelo (Personaje personaje ,Ubicacion ubic){
 		sistema.iniciarReto(this, personaje, ubic)
 	}
 		

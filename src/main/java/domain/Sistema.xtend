@@ -13,7 +13,7 @@ class Sistema {
 	/**
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
-	def void iniciarReto(Jugador it, Personaje per ,Ubicacion ubic){
+	def Duelo iniciarReto(Jugador it, Personaje per ,Ubicacion ubic){
 		armarDuelo(new Retador(it,per,ubic,new Iniciador))
 	}
 	
@@ -21,9 +21,12 @@ class Sistema {
 		! estadisticasPersonajes.exists[it.personaje.equals(personaje)]
 	}
 	
-	def armarDuelo(Retador ret){
+	def Duelo armarDuelo(Retador ret){
 		if(ret.noHayOponente){
 			// a joderse
+			// ACA NO PUEDO MOSTRAR VENTANA PORQUE ESTOY EN EL MODELO !!!
+			// TENGO QUE DESDE LA VISTA (O APPMODEL) CATCHEAR LA EXCEPCION
+			throw new NoHayOponenteException()
 		}
 		else{
 			realizarDuelo(ret,ret.obtenerOponente)
@@ -51,12 +54,18 @@ class Sistema {
 		ranking.equals(jug2.ranking)  && nombre != jug2.nombre
 	}	
 		
-	def void realizarDuelo(Retador it, Retador ret2){
-		new Duelo(it,ret2).realizarse
+	def Duelo realizarDuelo(Retador it, Retador ret2){
+		val duelo = new Duelo(it,ret2)
+		duelo.realizarse
+		duelo
 	}
 
 	def denunciarJugador(Denuncia den) {
 		den.castigar
+	}
+	
+	def dameAMRX(Retador retador) {
+		new Retador(retador.jugador,retador.personaje,Ubicacion.BOTTOM,new NoIniciador)
 	}
 	
 }
