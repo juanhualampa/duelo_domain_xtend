@@ -3,6 +3,7 @@ package domain
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import org.uqbar.commons.utils.Observable
+import java.util.Random
 
 @Observable
 @Accessors
@@ -64,8 +65,14 @@ class Sistema {
 		den.castigar
 	}
 	
-	def dameAMRX(Retador retador) {
-		new Retador(retador.jugador,retador.personaje,Ubicacion.BOTTOM,new NoIniciador)
+	def Retador dameAMRX(Retador it) {
+		val cantPersonajesRandom =new Random().nextInt(it.jugador.estadisticasPersonajes.size )
+		generarMRX(it,cantPersonajesRandom)
+	}
+	def generarMRX(Retador it, int nroAzaroso){
+		val personajeRandom = it.jugador.estadisticasPersonajes.map[personaje].get(nroAzaroso)
+		val bot = new Jugador("MR.X",this,it.jugador.estadisticasPersonajes)
+		new Retador(bot,personajeRandom,Ubicacion.BOTTOM,new NoIniciador)
 	}
 	
 }
