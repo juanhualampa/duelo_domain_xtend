@@ -11,13 +11,7 @@ class MrXTest {
 	Ubicacion ubi2		
 	Personaje per1 
 	Personaje per2
-	Retador ret1 
-	Retador ret2 
-	Duelo duelo		
-	Motivo unMotivo
-	Descripcion unaDescripcion
-	Descripcion otraDescripcion
-	Denuncia den
+	Retador ret1 	
 	EstadisticasPersonajes est1
 	EstadisticasPersonajes est2
 	
@@ -31,7 +25,6 @@ class MrXTest {
 		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
 			Arrays.asList("La ducha"),ubi1)
 		this.per2 = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
-		this.duelo    = new Duelo( ret1, ret2)	
 		this.est1= new EstadisticasPersonajes(per1)
 		this.est2= new EstadisticasPersonajes(per2)
 		

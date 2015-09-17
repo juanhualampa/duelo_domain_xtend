@@ -16,7 +16,8 @@ class Descripcion {
 	}
 		
 	def poseeAlMenos20Caracteres(){
-		palabras.length > 20
+		val sinEspacios = palabras.replaceAll("\\s","")
+		sinEspacios.length > 20
 	}
 	
 	def sonAlMenos3Palabras(){

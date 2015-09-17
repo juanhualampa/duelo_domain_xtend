@@ -28,6 +28,8 @@ class Denuncia {
     
 	
 	def boolean calcularValidez() {
+		// FALTA VER EN EL REGEX PARA EL CASO EN QUE ALGUIEN SOLO PONGA BARRAS ESPACIADORAS, OSA
+		// QUE LOS ESPACIOS NO VALGAN COMO PALABRAS
 		 return (unaDescripcion.poseeAlMenos20Caracteres || unaDescripcion.sonAlMenos3Palabras)
 	}
 	
