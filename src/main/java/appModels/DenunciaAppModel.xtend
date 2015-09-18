@@ -10,6 +10,7 @@ import domain.ComunicacionAbusiva
 import domain.FeedIntencional
 import domain.Descripcion
 import domain.Denuncia
+import org.uqbar.commons.model.ObservableUtils
 
 @Observable
 @Accessors
@@ -17,7 +18,7 @@ class DenunciaAppModel {
 	
 	Jugador denunciante
 	Jugador denunciado
-	String motivo
+	//String motivo
 	Motivo unMotivo
 	Duelo duelo
 	String palabrasDescripcion
@@ -26,11 +27,26 @@ class DenunciaAppModel {
 		this.duelo = duelo
 		this.denunciante = duelo.retador.jugador
 		this.denunciado = duelo.retado.jugador
+		this.palabrasDescripcion = ""
 	}
 	
 	def unaDescripcion(){
 		new Descripcion(palabrasDescripcion)
 	}
+	
+	def boolean isPuedeDenunciar(){
+		!this.palabrasDescripcion.isEmpty
+	}
+	
+	def setPalabrasDescripcion(String palabra){
+		palabrasDescripcion = palabra
+		cambioPuedeDenunciar
+	}
+	
+	def cambioPuedeDenunciar() {
+		ObservableUtils.firePropertyChanged(this,"puedeDenunciar")
+	}
+		
 	
 	def denuncia(){
 		new Denuncia(duelo,unMotivo,unaDescripcion)
@@ -42,6 +58,10 @@ class DenunciaAppModel {
 	
 	def calcularValidez() {
 		denuncia.calcularValidez
+	}
+	
+	def efectivizarDenuncia() {
+		this.denuncia.castigar
 	}
 	
 }
