@@ -61,7 +61,8 @@ class Sistema {
 		duelo
 	}
 
-	def denunciarJugador(Denuncia den) {
+	def denunciarJugador(Duelo duelo , Motivo mot, Descripcion desc) {
+		val den = new Denuncia(duelo,mot,desc)
 		den.castigar
 	}
 	

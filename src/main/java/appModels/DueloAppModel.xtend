@@ -3,14 +3,22 @@ package appModels
 import domain.Duelo
 import domain.EstadisticasPersonajes
 import org.uqbar.commons.utils.Observable
+import domain.Retador
+import domain.Jugador
+import org.eclipse.xtend.lib.annotations.Accessors
 
 @Observable
+@Accessors
 class DueloAppModel {	
 	Duelo duelo
 	
 	new(Duelo duelo) {
 		this.duelo = duelo
 		
+	}
+	
+	def Jugador getJugadorRetador(){
+		this.duelo.retador.jugador
 	}
 	
 	def getNombreRetador(Duelo duelo) {

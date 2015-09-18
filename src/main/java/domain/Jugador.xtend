@@ -66,7 +66,7 @@ class Jugador {
 	}
 			
 	 def denunciarAJugador(Jugador jug, Motivo mot, Descripcion desc) {
-	 	sistema.denunciarJugador(new Denuncia(obtenerUltimoDueloContra(jug), mot, desc))
+	 	sistema.denunciarJugador(obtenerUltimoDueloContra(jug), mot, desc)
 	 }
 	
 	def Duelo obtenerUltimoDueloContra(Jugador jugador) {
