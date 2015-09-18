@@ -6,25 +6,30 @@ import org.uqbar.commons.utils.Observable
 import domain.Retador
 import domain.Jugador
 import org.eclipse.xtend.lib.annotations.Accessors
+import domain.Victoria
+import domain.Derrota
+import domain.Empatados
+import domain.Resultado
+import org.uqbar.commons.model.ObservableUtils
 
 @Observable
 @Accessors
 class DueloAppModel {	
-	Duelo duelo
+	
+	Duelo duelo	
+	String copete = ""	
+	String title = ""	
+	String msj = ""
 	
 	new(Duelo duelo) {
 		this.duelo = duelo
-		
+		this.resultadoDuelo
 	}
 	
 	def Jugador getJugadorRetador(){
 		this.duelo.retador.jugador
 	}
-	
-	def getNombreRetador(Duelo duelo) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
-	
+		
 	def String getNombreRetado() {
 		this.duelo.retado.jugador.nombre
 	}
@@ -41,12 +46,41 @@ class DueloAppModel {
 		this.duelo.retador.jugador.estadisticas(this.duelo.retador.personaje)
 	}
 	
-	def String visualizateParteSuperior() {
-		this.duelo.resultado.visualizacionParteSuperior
+	def resultadoDuelo(){
+		duelo.resultado.display
 	}
 	
-	def String visualizateParteInferior() {
-		this.duelo.resultado.visualizacionInferior
+	def setTitle(String t){
+		title = t
+		ObservableUtils.firePropertyChanged(this,"title")
 	}
 	
+	def setCopete(String c){
+		copete = c
+		ObservableUtils.firePropertyChanged(this,"copete")
+	}
+	def setMsj(String m){
+		msj = m
+		ObservableUtils.firePropertyChanged(this,"msj")
+	}
+	
+	def dispatch display(Victoria resultado){
+		title = "Ganaste contra "+ nombreRetado
+		copete = "Ganador: " + nombreRetador + estadisticasRetador.calificacion.nro + " puntos contra "
+		+ estadisticasRetado.calificacion.nro
+		msj = "Celebra tu victoria"
+	}
+	
+	def dispatch display(Empatados resultado){
+		title = "Empataste contra "+ nombreRetado
+		copete = "Empataste: " + nombreRetador + estadisticasRetador.calificacion.nro + " puntos contra "
+		+ estadisticasRetado.calificacion.nro
+		msj = "Mediocre, mejora !"
+	}
+	def dispatch display(Derrota resultado){
+		title = "Perdiste contra "+ nombreRetado
+		copete = "Ganador: " + nombreRetado + estadisticasRetado.calificacion.nro + " puntos contra "
+		+ estadisticasRetador.calificacion.nro
+		msj = "Aceptar Derrota con Honor"
+	}
 }
