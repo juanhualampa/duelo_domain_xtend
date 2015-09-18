@@ -37,8 +37,8 @@ class CalculadorDeCalificaciones {
 	}
 	
 	
-	def cumpleConRequisitosManco(Retador it, int nroAlAzar){
-		ubicacion.esUbicacionIdeal(it) && esNroAlAzarMayorA(nroAlAzar,30)
+	def cumpleConRequisitosManco(Retador ret, int nroAlAzar){
+		ret.ubicacion.esUbicacionIdeal(ret.personaje.ubicacionIdeal) && esNroAlAzarMayorA(nroAlAzar,30)
 	}
 	
 	def cumpleConRequisitosKilling(Retador it, int nroAlAzar){
@@ -58,12 +58,12 @@ class CalculadorDeCalificaciones {
 		j.estadisticasPersonajes.map[it.personaje].exists[hayDuelosConPersonajeYUbicacionIdealEnAlMenos(duelos,j,it,veces)]
 	}
 		 
-	def esUbicacionIdeal(Ubicacion ubicacion,Retador it){
-		ubicacion.equals(personaje.ubicacionIdeal)
+	def esUbicacionIdeal(Ubicacion ubicacion,Ubicacion ubiPersonaje){
+		ubicacion.equals(ubiPersonaje)
 	}
 	
 	def boolean usasteAlPersonajeEnUbicacionIdealAlMenos(EstadisticasPersonajes it,Retador ret ,int veces){
-		ubicacionesUsadas.filter[it.esUbicacionIdeal(ret)].size >= veces
+		ubicacionesUsadas.filter[it.esUbicacionIdeal(ret.personaje.ubicacionIdeal)].size >= veces
 	}
 	
 	def boolean usasteCualquierPersonajeEnUbicacionIdealMasDe(Retador it, int veces){
