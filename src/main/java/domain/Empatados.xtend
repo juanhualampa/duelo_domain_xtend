@@ -11,8 +11,14 @@ class Empatados extends Resultado {
 		retador.aplicarVeredicto(new Empate)
 		retado.aplicarVeredicto(new Empate)
 	}
-	override visualizacion() {
-		"Empataro con «nombrePerdedor», son igual de malos " //falta el tema de los puntos
+	override visualizacionParteSuperior() {
+		"Empataron con "+this.retador2.jugador.nombre +" , son igual de malos " //falta el tema de los puntos
+	}
+	
+	override visualizacionInferior() {
+		"Empataron, obtuvieron " + 
+		this.retador1.estadisticas(this.retador1.personaje).calificacion.nro + " puntos contra " +
+		this.retador2.estadisticas(this.retador2.personaje).calificacion.nro
 	}
 	
 }

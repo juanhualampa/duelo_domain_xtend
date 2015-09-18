@@ -9,7 +9,9 @@ abstract class Resultado {
 	Retador retador1
 	Retador retador2
 		
-	def String visualizacion()
+	def String visualizacionParteSuperior()
+	
+	def String visualizacionInferior()
 	
 	def void aplicarActualizacionesAEstadisticas(Duelo duelo) 
 	

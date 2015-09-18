@@ -23,8 +23,14 @@ class Derrota extends Resultado{
 		retado.aplicarVeredicto(new Ganador)
 	}
 	
-	override visualizacion() {
-		"Ganaste contra «nombrePerdedor», " //falta el tema de los puntos
+	override visualizacionParteSuperior() {
+		"Perdiste contra «nombrePerdedor», " //falta el tema de los puntos
+	}
+	
+	override visualizacionInferior() {
+		"Ganador:" + this.retador1.jugador.nombre + "!!! - " + 
+		this.retador1.estadisticas(this.retador1.personaje).calificacion.nro + " puntos contra " +
+		this.retador2.estadisticas(this.retador2.personaje).calificacion.nro
 	}
 	
 }
