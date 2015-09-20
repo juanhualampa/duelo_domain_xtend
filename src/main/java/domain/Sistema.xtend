@@ -66,6 +66,9 @@ class Sistema {
 		den.castigar
 	}
 	
+	/**
+	 * 
+	 */
 	def Retador dameAMRX(Retador it) {
 		val cantPersonajesRandom =new Random().nextInt(it.jugador.estadisticasPersonajes.size )
 		generarMRX(it,cantPersonajesRandom)

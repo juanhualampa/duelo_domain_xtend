@@ -35,8 +35,18 @@ class DenunciaAppModel {
 	}
 	
 	def boolean isPuedeDenunciar(){
-		!this.palabrasDescripcion.isEmpty
+		tengoMotivo && !(palabrasDescripcion.isEmpty)
 	}
+	
+	def tengoMotivo() {
+		unMotivo != null
+	}
+	
+	def setUnMotivo(Motivo motivo){
+		unMotivo = motivo
+		ObservableUtils.firePropertyChanged(this,"puedeDenunciar")
+	}
+	
 	
 	def setPalabrasDescripcion(String palabra){
 		palabrasDescripcion = palabra
@@ -47,7 +57,6 @@ class DenunciaAppModel {
 		ObservableUtils.firePropertyChanged(this,"puedeDenunciar")
 	}
 		
-	
 	def denuncia(){
 		new Denuncia(duelo,unMotivo,unaDescripcion)
 	}

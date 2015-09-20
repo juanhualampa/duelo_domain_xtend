@@ -27,7 +27,7 @@ class EstadisticasPersonajes {
 		this.vecesDeads = 0
 		this.vecesAssist = 0
 		this.ubicacionesUsadas = newArrayList	
-		this.mejorUbicacion = Ubicacion.BOTTOM
+		this.mejorUbicacion = personaje.ubicacionIdeal
 		this.calificacion = new Calificacion("NOOB",5)	
 	}
 	

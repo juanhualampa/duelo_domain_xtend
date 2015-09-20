@@ -66,21 +66,30 @@ class DueloAppModel {
 	
 	def dispatch display(Victoria resultado){
 		title = "Ganaste contra "+ nombreRetado
-		copete = "Ganador: " + nombreRetador + estadisticasRetador.calificacion.nro + " puntos contra "
+		copete = "Ganador: " + nombreRetador +" "+ estadisticasRetador.calificacion.nro + " puntos contra "
 		+ estadisticasRetado.calificacion.nro
 		msj = "Celebra tu victoria"
 	}
 	
 	def dispatch display(Empatados resultado){
 		title = "Empataste contra "+ nombreRetado
-		copete = "Empataste: " + nombreRetador + estadisticasRetador.calificacion.nro + " puntos contra "
+		copete = "Empataste: " + nombreRetador +" "+ estadisticasRetador.calificacion.nro + " puntos contra "
 		+ estadisticasRetado.calificacion.nro
 		msj = "Mediocre, mejora !"
 	}
 	def dispatch display(Derrota resultado){
 		title = "Perdiste contra "+ nombreRetado
-		copete = "Ganador: " + nombreRetado + estadisticasRetado.calificacion.nro + " puntos contra "
+		copete = "Ganador: " + nombreRetado +" "+ estadisticasRetado.calificacion.nro + " puntos contra "
 		+ estadisticasRetador.calificacion.nro
 		msj = "Aceptar Derrota con Honor"
 	}
+	
+	def personajeRetador() {
+		this.duelo.retador.personaje.nombre
+	}
+	
+	def personajeRetado() {
+		this.duelo.retado.personaje.nombre
+	}
+	
 }

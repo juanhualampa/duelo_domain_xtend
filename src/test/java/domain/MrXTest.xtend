@@ -44,6 +44,7 @@ class MrXTest {
 		val duelo = sis.realizarDuelo(ret1,sis.dameAMRX(ret1))
 		assertEquals(1,jugador1.duelos.size)
 		assertEquals("MR.X",duelo.retado.jugador.nombre)
+		assertEquals(Ubicacion.BOTTOM,duelo.retado.ubicacion)
 	}
 	
 }
