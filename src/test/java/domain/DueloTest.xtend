@@ -47,8 +47,10 @@ class DueloTest {
 		val estadisticasPersonajesParaPerdedor = new ArrayList<EstadisticasPersonajes>()
 		estadisticasPersonajesParaPerdedor.add(est2)
 		
-		this.jugador1 = new Jugador("Luciano",sis,estadisticasPersonajesParaGanador )
-		this.jugador2 = new Jugador("Juan",sis,estadisticasPersonajesParaPerdedor)
+		this.jugador1 = new Jugador("Luciano",estadisticasPersonajesParaGanador )
+		this.jugador2 = new Jugador("Juan",estadisticasPersonajesParaPerdedor)
+		jugador1.setSistema(sis)
+		jugador2.setSistema(sis)
 		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador)
 		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador)
 	}

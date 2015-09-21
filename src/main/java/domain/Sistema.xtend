@@ -23,15 +23,21 @@ class Sistema {
 	}
 	
 	def Duelo armarDuelo(Retador ret){
-		if(ret.noHayOponente){
-			// a joderse
-			// ACA NO PUEDO MOSTRAR VENTANA PORQUE ESTOY EN EL MODELO !!!
-			// TENGO QUE DESDE LA VISTA (O APPMODEL) CATCHEAR LA EXCEPCION
-			throw new NoHayOponenteException()
-		}
-		else{
+		try{
 			realizarDuelo(ret,ret.obtenerOponente)
 		}
+		catch (Exception e){
+			throw new NoHayOponenteException()
+		}
+//		if(ret.noHayOponente){
+//			// a joderse
+//			// ACA NO PUEDO MOSTRAR VENTANA PORQUE ESTOY EN EL MODELO !!!
+//			// TENGO QUE DESDE LA VISTA (O APPMODEL) CATCHEAR LA EXCEPCION
+//			throw new NoHayOponenteException()
+//		}
+//		else{
+//			realizarDuelo(ret,ret.obtenerOponente)
+//		}
 	}
 		
 	def Retador obtenerOponente(Retador it){
@@ -66,17 +72,15 @@ class Sistema {
 		den.castigar
 	}
 	
-	/**
-	 * 
-	 */
 	def Retador dameAMRX(Retador it) {
 		val cantPersonajesRandom =new Random().nextInt(it.jugador.estadisticasPersonajes.size )
 		generarMRX(it,cantPersonajesRandom)
 	}
 	def generarMRX(Retador it, int nroAzaroso){
 		val personajeRandom = it.jugador.estadisticasPersonajes.map[personaje].get(nroAzaroso)
-		val bot = new Jugador("MR.X",this,it.jugador.estadisticasPersonajes)
-		new Retador(bot,personajeRandom,Ubicacion.BOTTOM,new NoIniciador)
+		val estadisticas = it.jugador.estadisticasPersonajes
+		val bot = new Jugador("MR.X",estadisticas)
+		new Retador(bot,personajeRandom,Ubicacion.BOTTOM,new Bot)
 	}
 	
 }

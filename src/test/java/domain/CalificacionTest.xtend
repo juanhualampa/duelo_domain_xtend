@@ -56,9 +56,10 @@ class CalificacionTest {
 		val estadisticasPersonajesParaPerdedor = new ArrayList<EstadisticasPersonajes>()
 		estadisticasPersonajesParaPerdedor.add(est2)
 		
-		this.jugador1 = new Jugador("Luciano",sis,estadisticasPersonajesParaGanador )
-		this.jugador2 = new Jugador("Juan",sis,estadisticasPersonajesParaPerdedor)
-		
+		this.jugador1 = new Jugador("Luciano",estadisticasPersonajesParaGanador )
+		this.jugador2 = new Jugador("Juan",estadisticasPersonajesParaPerdedor)
+		jugador1.setSistema(sis)
+		jugador2.setSistema(sis)
 		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador)
 	}
 

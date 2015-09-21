@@ -13,6 +13,8 @@ class Retador {
 	Inicio inicio
 	Veredicto veredicto
 		
+	new (){	}
+	
 	new(Jugador jugador, Personaje personaje, Ubicacion ubicacion, Inicio inicio) {
 		this.jugador= jugador
 		this.personaje = personaje

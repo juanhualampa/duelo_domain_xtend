@@ -28,7 +28,8 @@ class MrXTest {
 		this.est1= new EstadisticasPersonajes(per1)
 		this.est2= new EstadisticasPersonajes(per2)
 		
-		this.jugador1 = new Jugador("Luciano",sis,Arrays.asList(est1, est2))
+		this.jugador1 = new Jugador("Luciano",Arrays.asList(est1, est2))
+		jugador1.setSistema(sis)
 		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador())
 	}
 	
