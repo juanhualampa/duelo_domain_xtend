@@ -64,21 +64,21 @@ class DueloAppModel {
 	
 	def dispatch display(Victoria resultado){
 		title = "Ganaste contra "+ nombreRetado
-		copete = "Ganador: " + nombreRetador +" "+ estadisticasRetador.calificacion.nro + " puntos contra "
-		+ estadisticasRetado.calificacion.nro
+		copete = "Ganador: " + nombreRetador +"! "+ this.duelo.retador.poderDeAtaque + " puntos contra "
+		+ this.duelo.retado.poderDeAtaque
 		msj = "Celebra tu victoria"
 	}
 	
 	def dispatch display(Empatados resultado){
 		title = "Empataste contra "+ nombreRetado
-		copete = "Empataste: " + nombreRetador +" "+ estadisticasRetador.calificacion.nro + " puntos contra "
-		+ estadisticasRetado.calificacion.nro
+		copete = "Empataste: " + nombreRetador +" "+  this.duelo.retador.poderDeAtaque + " puntos contra "
+		+ this.duelo.retado.poderDeAtaque
 		msj = "Mediocre, mejora !"
 	}
 	def dispatch display(Derrota resultado){
-		title = "Perdiste contra "+ nombreRetado
-		copete = "Ganador: " + nombreRetado +" "+ estadisticasRetado.calificacion.nro + " puntos contra "
-		+ estadisticasRetador.calificacion.nro
+		title = "Perdiste contra "+ nombreRetado 
+		copete = "Ganador: " + nombreRetado +"! "+ this.duelo.retado.poderDeAtaque + " puntos contra "
+		+ this.duelo.retador.poderDeAtaque
 		msj = "Aceptar Derrota con Honor"
 	}
 	

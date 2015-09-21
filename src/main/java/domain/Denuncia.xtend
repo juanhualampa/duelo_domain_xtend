@@ -27,6 +27,7 @@ class Denuncia {
     }
 	
 	def cambioMotivoSiNoEsValido() {
+		if (!calcularValidez)
     		this.unMotivo = new AbusoDelSistemaDeDenuncias()
 	}
 	
