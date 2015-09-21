@@ -5,6 +5,9 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import java.util.List
 
+/**
+ * Representa a un jugador del sistema. El mismo posee las estadisticas para cada personaje.
+ */
 @Accessors
 @Observable
 class Jugador {
@@ -28,16 +31,19 @@ class Jugador {
 		sistema.jugadores.add(this)
 	}
 	
-	new(String Nombre,Sistema sis , List<EstadisticasPersonajes> estadisticasPersonajes){
+	new(String nombre, List<EstadisticasPersonajes> estadisticasPersonajes){
 		this.estadisticasPersonajes = estadisticasPersonajes
 		cantDePeleasGanadas = 0
 		denuncias = newArrayList
 		ranking = 0
 		duelos = newArrayList
 		denuncias = newArrayList
-		this.nombre = Nombre;
+		this.nombre = nombre
+	}
+	
+	def setSistema(Sistema sis){
 		this.sistema = sis
-		sistema.jugadores.add(this)
+		this.sistema.jugadores.add(this)
 	}
 		
 	def recibioDenuncia(Denuncia denuncia) {

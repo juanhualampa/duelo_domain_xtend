@@ -15,28 +15,22 @@ class Sistema {
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
 	def Duelo iniciarReto(Jugador it, Personaje per ,Ubicacion ubic){
-		armarDuelo(new Retador(it,per,ubic,new Iniciador))
-	}
-	
-	def noPoseeEstadisticas(Jugador it, Personaje personaje) {
-		! estadisticasPersonajes.exists[it.personaje.equals(personaje)]
-	}
-	
-	def Duelo armarDuelo(Retador ret){
-		if(ret.noHayOponente){
-			// a joderse
-			// ACA NO PUEDO MOSTRAR VENTANA PORQUE ESTOY EN EL MODELO !!!
-			// TENGO QUE DESDE LA VISTA (O APPMODEL) CATCHEAR LA EXCEPCION
-			throw new NoHayOponenteException()
-		}
-		else{
-			realizarDuelo(ret,ret.obtenerOponente)
-		}
+		armarDuelo(new Iniciador(it,per,ubic))
 	}
 		
+	def Duelo armarDuelo(Retador ret){
+		try{
+			realizarDuelo(ret,ret.obtenerOponente)
+		}
+		catch (Exception e){ throw new NoHayOponenteException()	}
+	}
+	
+	/**
+	 * Obtiene un oponente de la lista de posibles cargada en el Sistema. Por default, la posicion sera BOTTOM
+	 */
 	def Retador obtenerOponente(Retador it){
 		val contrincante = oponentesPosibles.head
-		new Retador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM, new NoIniciador)
+		new NoIniciador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM)
 	}
 	
 	def elegirPersonajeAlAzar(Jugador jugador) {
@@ -47,16 +41,23 @@ class Sistema {
 		oponentesPosibles.isEmpty
 	}
 	
+	/**
+	 * @return lista de Jugadores posibles
+	 */
 	def oponentesPosibles(Retador retador){
 		jugadores.filter[it.mismoRankingSinSerElMismo(retador.jugador)].toList
 	}	
 	
+	/**
+	 * evalua 2 jugadores y devuelve true si no son el mismo y poseen el mismo ranking
+	 */
 	def mismoRankingSinSerElMismo(Jugador it, Jugador jug2){
 		ranking.equals(jug2.ranking)  && nombre != jug2.nombre
 	}	
 		
-	def Duelo realizarDuelo(Retador it, Retador ret2){
-		val duelo = new Duelo(it,ret2)
+	def Duelo realizarDuelo(Retador it, Retador ret){
+		
+		val duelo = new Duelo(it,ret)
 		duelo.realizarse
 		duelo
 	}
@@ -66,17 +67,17 @@ class Sistema {
 		den.castigar
 	}
 	
-	/**
-	 * 
-	 */
-	def Retador dameAMRX(Retador it) {
+	
+	def Bot dameAMRX(Retador it) {
 		val cantPersonajesRandom =new Random().nextInt(it.jugador.estadisticasPersonajes.size )
 		generarMRX(it,cantPersonajesRandom)
 	}
+	
 	def generarMRX(Retador it, int nroAzaroso){
 		val personajeRandom = it.jugador.estadisticasPersonajes.map[personaje].get(nroAzaroso)
-		val bot = new Jugador("MR.X",this,it.jugador.estadisticasPersonajes)
-		new Retador(bot,personajeRandom,Ubicacion.BOTTOM,new NoIniciador)
+		val estadisticas = it.jugador.estadisticasPersonajes
+		val bot = new Jugador("MR.X",estadisticas)
+		new Bot(bot,personajeRandom,Ubicacion.BOTTOM)
 	}
 	
 }
