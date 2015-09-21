@@ -21,9 +21,12 @@ class Duelo {
 		this.pelea(retador,retado)
 	}
 		
+<<<<<<< HEAD
 	/**
 	 * ejecuta la pelea entre retadores, aplicando las actualizaciones de estadisticas necesarias segun el caso
 	 */
+=======
+>>>>>>> 93831069d58af8936f73e90b6fd1ec40286e6e36
 	def void pelea(Retador it,Retador ret) {
 		switch it {
 		  case esMasPoderosoQue(ret)   : aplicar(new Victoria(it,ret))

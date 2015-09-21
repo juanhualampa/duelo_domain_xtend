@@ -47,10 +47,12 @@ class DueloTest {
 		val estadisticasPersonajesParaPerdedor = new ArrayList<EstadisticasPersonajes>()
 		estadisticasPersonajesParaPerdedor.add(est2)
 		
-		this.jugador1 = new Jugador("Luciano",sis,estadisticasPersonajesParaGanador )
-		this.jugador2 = new Jugador("Juan",sis,estadisticasPersonajesParaPerdedor)
-		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador)
-		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador)
+		this.jugador1 = new Jugador("Luciano",estadisticasPersonajesParaGanador )
+		this.jugador2 = new Jugador("Juan",estadisticasPersonajesParaPerdedor)
+		jugador1.setSistema(sis)
+		jugador2.setSistema(sis)
+		this.ret1 = new Iniciador(jugador1, per1,ubi1)
+		this.ret2 = new NoIniciador(jugador2, per2, ubi2)
 	}
 		
 	@Test 
@@ -79,8 +81,8 @@ class DueloTest {
 		assertEquals(0,jugador1.duelos.size)
 		jugador1.iniciarDuelo(per1,ubi1)
 		assertEquals(1,jugador1.duelos.size)
-		val veredictoParaElJugador1 = jugador1.duelos.get(0).retador.veredicto
-		val veredictoParaElJugador2 = jugador1.duelos.get(0).retado.veredicto
+		val veredictoParaElJugador1 = jugador1.duelos.get(0).resultado.v1
+		val veredictoParaElJugador2 = jugador1.duelos.get(0).resultado.v2
 		assertTrue(veredictoParaElJugador1 instanceof Ganador)
 		assertTrue(veredictoParaElJugador2 instanceof Perdedor)
 	}
@@ -90,8 +92,8 @@ class DueloTest {
 		assertEquals(0,jugador2.duelos.size)
 		jugador2.iniciarDuelo(per2,ubi1)
 		assertEquals(1,jugador2.duelos.size)
-		val veredictoParaElJugador2 = jugador2.duelos.get(0).retador.veredicto
-		val veredictoParaElJugador1 = jugador2.duelos.get(0).retado.veredicto
+		val veredictoParaElJugador2 = jugador2.duelos.get(0).resultado.v1
+		val veredictoParaElJugador1 = jugador2.duelos.get(0).resultado.v2
 		assertTrue(veredictoParaElJugador2 instanceof Perdedor)
 		assertTrue(veredictoParaElJugador1 instanceof Ganador)
 	}
@@ -102,8 +104,8 @@ class DueloTest {
 		assertEquals(0,jugador1.duelos.size)
 		jugador1.iniciarDuelo(per2,ubi1)
 		assertEquals(1,jugador1.duelos.size)
-		val veredictoParaElJugador1 = jugador1.duelos.get(0).retador.veredicto
-		val veredictoParaElJugador2 = jugador1.duelos.get(0).retado.veredicto
+		val veredictoParaElJugador1 = jugador1.duelos.get(0).resultado.v1
+		val veredictoParaElJugador2 = jugador1.duelos.get(0).resultado.v2
 		assertTrue(veredictoParaElJugador1 instanceof Empate)
 		assertTrue(veredictoParaElJugador2 instanceof Empate)
 	}

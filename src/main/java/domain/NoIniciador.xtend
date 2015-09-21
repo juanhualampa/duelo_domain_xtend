@@ -1,14 +1,9 @@
 package domain
 
-class NoIniciador extends Inicio{
+class NoIniciador extends Retador{
 	
-	override actualizarEstadisticas(Retador it) {
-		estadisticas(personaje).agregarUnaParticipacion		
-		it.veredicto.actualizarEstadisticasSegunVeredicto(it)
-	}
-		
-	override aString() {
-		"No-Iniciador"
+	new(Jugador jugador, Personaje personaje, Ubicacion ubicacion) {
+		super(jugador,personaje,ubicacion)
 	}
 	
 	

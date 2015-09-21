@@ -12,13 +12,17 @@ import domain.Descripcion
 import domain.Denuncia
 import org.uqbar.commons.model.ObservableUtils
 
+/**
+ * Representa una denuncia en el contexto de la vista, agurpando:
+ * el jugador denunciante, el denunciado, el motivo de la denuncia,
+ *  el duelo al que corresponde la misma y la descripcion de la denuncia
+ */
 @Observable
 @Accessors
 class DenunciaAppModel {
 	
 	Jugador denunciante
 	Jugador denunciado
-	//String motivo
 	Motivo unMotivo
 	Duelo duelo
 	String palabrasDescripcion
@@ -35,13 +39,14 @@ class DenunciaAppModel {
 	}
 	
 	def boolean isPuedeDenunciar(){
-		tengoMotivo && !(palabrasDescripcion.isEmpty)
+		tengoMotivo //&& !(palabrasDescripcion.isEmpty)
 	}
 	
 	def tengoMotivo() {
 		unMotivo != null
 	}
 	
+	//selector de motivo:
 	def setUnMotivo(Motivo motivo){
 		unMotivo = motivo
 		ObservableUtils.firePropertyChanged(this,"puedeDenunciar")
@@ -61,14 +66,23 @@ class DenunciaAppModel {
 		new Denuncia(duelo,unMotivo,unaDescripcion)
 	}
 	
+	/**
+	 * lista de motivos posibles de denuncia
+	 */
 	def motivosPosibles(){
 		#[  new AbusoDeHabilidad, new ComunicacionAbusiva, new FeedIntencional ]
 	}
 	
+	/**
+	 * devuelve true o false dependiendo de si la denuncia es valida o no.
+	 */
 	def calcularValidez() {
 		denuncia.calcularValidez
 	}
 	
+	/**
+	 * tras evaluar, efectiviza la denuncia
+	 */
 	def efectivizarDenuncia() {
 		this.denuncia.castigar
 	}

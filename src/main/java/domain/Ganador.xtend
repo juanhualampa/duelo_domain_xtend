@@ -1,21 +1,30 @@
 package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.Random
 
 @Accessors
-class Ganador implements Veredicto{
+class Ganador extends Veredicto{
 	
-	override actualizarEstadisticasSegunVeredicto(Retador it) {
-		actualizarUsandoInicio(it,it.inicio)
+	new(Retador r1) {
+		super(r1)
 	}
 	
-	def dispatch actualizarUsandoInicio(Retador it, Iniciador inicio) {
-		estadisticas(it.personaje).agregarUnaVictoria
-		estadisticas(it.personaje).mejorUbicacion = ubicacion
+	def dispatch actualizarse(Iniciador it) {
+		paraInicializadores(it)
+		estadisticas(personaje).agregarUnaVictoria
+		estadisticas(personaje).mejorUbicacion = ubicacion		
+		val nroAlAzar = new Random().nextInt(100)
+		estadisticas(personaje).calificacion = new CalculadorDeCalificaciones().calcular(it,nroAlAzar)
 	}
-	
-	def dispatch actualizarUsandoInicio(Retador it, NoIniciador inicio) {
+		
+	def dispatch actualizarse(NoIniciador it) {
 		estadisticas(personaje).sumarKill
+		estadisticas(personaje).agregarUnaParticipacion	
 	}
+	
+	def dispatch actualizarse(Bot inicio) {
+	}
+	
 	
 }
