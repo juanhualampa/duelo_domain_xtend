@@ -5,7 +5,6 @@ import org.uqbar.commons.utils.Observable
 
 /**
  * Clase que agrupa un jugador, personaje y ubicacion para un duelo.
- * Posee una instancia de inicio y veredicto
  */
 @Accessors
 @Observable

@@ -44,7 +44,7 @@ class Duelo {
 	}
 	
 	def sonIgualDePoderosos(Retador it, Retador ret){
-		it.poderDeAtaque > ret.poderDeAtaque
+		it.poderDeAtaque == ret.poderDeAtaque
 	}
 	
 	def boolean involucraA(Jugador jug) {

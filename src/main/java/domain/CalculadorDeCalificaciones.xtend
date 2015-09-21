@@ -2,6 +2,9 @@ package domain
 
 import java.util.List
 
+/**
+ * Representa un calculador de calificaciones que recibe un retador y un numero al azar.
+ */
 class CalculadorDeCalificaciones {
 	
 	def Calificacion calcular(Retador it, int nroAlAzar) {

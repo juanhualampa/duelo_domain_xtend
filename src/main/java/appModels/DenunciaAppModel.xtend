@@ -83,10 +83,6 @@ class DenunciaAppModel {
 	/**
 	 * tras evaluar, efectiviza la denuncia
 	 */
-	def efectivizarDenuncia() {
-		this.denuncia.castigar
-	}
-	
 	def cambioMotivoSiNoEsValido() {
 		denuncia.cambioMotivoSiNoEsValido
 	}
