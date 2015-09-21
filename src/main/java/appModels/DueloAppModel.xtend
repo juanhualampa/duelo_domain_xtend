@@ -3,13 +3,11 @@ package appModels
 import domain.Duelo
 import domain.EstadisticasPersonajes
 import org.uqbar.commons.utils.Observable
-import domain.Retador
 import domain.Jugador
 import org.eclipse.xtend.lib.annotations.Accessors
 import domain.Victoria
 import domain.Derrota
 import domain.Empatados
-import domain.Resultado
 import org.uqbar.commons.model.ObservableUtils
 
 @Observable

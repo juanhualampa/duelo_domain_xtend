@@ -2,13 +2,9 @@ package domain
 
 class Empatados extends Resultado {
 	
-	new(Retador retador, Retador retador2) {
-		this.retador1 = retador
-		this.retador2 = retador2
+	new(Retador r1, Retador r2) {
+		super(r1, r2)
 	}
 	
-	override aplicarActualizacionesAEstadisticas(Duelo it) {
-		retador.aplicarVeredicto(new Empate)
-		retado.aplicarVeredicto(new Empate)
-	}
+	
 }

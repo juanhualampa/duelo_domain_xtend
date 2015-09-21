@@ -1,13 +1,14 @@
 package domain
 
-class Bot extends Inicio{
+import org.uqbar.commons.utils.Observable
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
+@Observable
+class Bot extends Retador{
 	
-	override actualizarEstadisticas(Retador ret) {
-		
-	}
-	
-	override aString() {
-		"BOT"
+	new(Jugador jugador, Personaje personaje, Ubicacion ubicacion) {
+		super(jugador,personaje,ubicacion)
 	}
 	
 }

@@ -34,8 +34,8 @@ class DenunciaTest {
 			Arrays.asList("La ducha"),ubi1)
 		this.per2 = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
 		
-		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador())
-		this.ret2 = new Retador(jugador2, per2, ubi2,new NoIniciador())		
+		this.ret1 = new Iniciador(jugador1, per1,ubi1)
+		this.ret2 = new NoIniciador(jugador2, per2, ubi2)		
 		this.duelo    = new Duelo( ret1, ret2)
 		this.unMotivo = new AbusoDeHabilidad();	
 		this.est1= new EstadisticasPersonajes(per1)

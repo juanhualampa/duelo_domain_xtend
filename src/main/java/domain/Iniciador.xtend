@@ -1,19 +1,22 @@
 package domain
 import java.util.Random
+import org.eclipse.xtend.lib.annotations.Accessors
 
-class Iniciador extends Inicio{
+@Accessors
+class Iniciador extends Retador{
 	
-	override actualizarEstadisticas(Retador it) {
-		estadisticas(personaje).agregarUnaParticipacion
-		estadisticas(personaje).ubicacionesUsadas.add(ubicacion)		
-		veredicto.actualizarEstadisticasSegunVeredicto(it)
-		val nroAlAzar = new Random().nextInt(100)
-		estadisticas(personaje).calificacion = new CalculadorDeCalificaciones().calcular(it,nroAlAzar)
+	new(Jugador jugador, Personaje personaje, Ubicacion ubicacion) {
+		super(jugador,personaje, ubicacion)
+	}
+	
+	new() {
+		super()
 	}
 		
-	override aString() {
-		"Iniciador"
-	}
+//		
+//	override aString() {
+//		"Iniciador"
+//	}
 	
 	
 	

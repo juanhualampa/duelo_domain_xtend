@@ -30,7 +30,7 @@ class MrXTest {
 		
 		this.jugador1 = new Jugador("Luciano",Arrays.asList(est1, est2))
 		jugador1.setSistema(sis)
-		this.ret1 = new Retador(jugador1, per1,ubi1,new Iniciador())
+		this.ret1 = new Iniciador(jugador1, per1,ubi1)
 	}
 	
 	@Test 

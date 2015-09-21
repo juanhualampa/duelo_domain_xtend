@@ -10,25 +10,17 @@ class Duelo {
 	Retador retador	
 	Retador retado		
 	Resultado resultado
-	Sistema sistema;
 	
 	new(Retador ret1,  Retador ret2  )
 	{
 		this.retador = ret1
 		this.retado = ret2
 	}
-	
-	new(Sistema sis, Retador ret1,  Retador ret2)
-	{
-		this.retador = ret1
-		this.retado = ret2
-		this.sistema = sis;
-	}
-	
+		
 	def void realizarse(){
-		this.pelea(this.retador,this.retado)
+		this.pelea(retador,retado)
 	}
-	
+		
 	def void pelea(Retador it,Retador ret) {
 		switch it {
 		  case esMasPoderosoQue(ret)   : aplicar(new Victoria(it,ret))
@@ -39,9 +31,9 @@ class Duelo {
 	
 	def aplicar(Resultado r){			
 		resultado = r
-		this.actualizarEstadisticas
-		r.retador1.agregarDuelos(this) 
-		r.retador2.agregarDuelos(this)
+		r.actualizarEstadisticas
+		r.v1.retador.agregarDuelos(this) 
+		r.v1.retador.agregarDuelos(this)
 	}
 	
 	def agregarDuelos(Retador it,Duelo duelo) {
@@ -52,13 +44,10 @@ class Duelo {
 		it.poderDeAtaque > ret.poderDeAtaque
 	}
 	
-	def void actualizarEstadisticas() {
-		resultado.aplicarActualizacionesAEstadisticas(this)
-	}
-	
 	def boolean involucraA(Jugador jug) {
 		this.retador.jugador.equals(jug) || this.retado.jugador.equals(jug)
 	}
+	
 	
 	
 }

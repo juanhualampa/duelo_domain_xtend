@@ -3,17 +3,31 @@ package domain
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class Perdedor implements Veredicto{
+class Perdedor extends Veredicto{
 	
-	override actualizarEstadisticasSegunVeredicto(Retador it) {
-		actualizarUsandoInicio(it,it.inicio)
+	new(Retador retador) {
+		super(retador)
 	}
 	
-	def dispatch actualizarUsandoInicio(Retador it, Iniciador inicio) {
+	def dispatch actualizarse(Iniciador it) {	
+		paraInicializadores(it)	
 	}
-	
-	def dispatch actualizarUsandoInicio(Retador it, NoIniciador inicio) {
+		
+	def dispatch actualizarse(NoIniciador it) {
 		estadisticas(personaje).sumarDeads
 	}
+	
+	def dispatch actualizarse(Bot inicio) {
+	}
+		
+	
+//	def dispatch actualizarUsandoInicio(NoIniciador ret) {
+//		estadisticas(personaje).sumarDeads
+//	}
+//	
+//	def dispatch actualizarUsandoInicio(Bot ret) {
+//		estadisticas(personaje).sumarDeads
+//	}
+	
 	
 }

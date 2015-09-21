@@ -23,9 +23,8 @@ class RetarADueloAppModel {
 	new(Jugador jugador){
 		personajeABuscar = "";
 		this.jugador = jugador
-		this.retador = new Retador
+		this.retador = new Iniciador
 		this.retador.jugador = this.jugador
-		this.retador.inicio = new Iniciador
 	}
 	
 	def setUbicacionSeleccionada(Ubicacion ubicacion){
