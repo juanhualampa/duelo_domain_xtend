@@ -69,8 +69,4 @@ class DenunciaAppModel {
 		denuncia.calcularValidez
 	}
 	
-	def efectivizarDenuncia() {
-		this.denuncia.castigar
-	}
-	
 }

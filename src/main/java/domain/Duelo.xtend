@@ -32,11 +32,15 @@ class Duelo {
 	def aplicar(Resultado r){			
 		resultado = r
 		r.actualizarEstadisticas
-		r.v1.retador.agregarDuelos(this) 
-		r.v1.retador.agregarDuelos(this)
+		retador.agregarDuelos(this) 
+		retado.agregarDuelos(this)
 	}
 	
-	def agregarDuelos(Retador it,Duelo duelo) {
+	def dispatch agregarDuelos(Bot retador, Duelo duelo){
+		
+	}	
+	
+	def dispatch agregarDuelos(Retador it, Duelo duelo){
 		jugador.duelos.add(duelo)
 	}
 	

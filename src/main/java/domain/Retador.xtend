@@ -29,5 +29,6 @@ abstract class Retador {
 	
 	def estadisticas(Personaje it) {
 		jugador.estadisticas(it)
-	}	
+	}
+	
 }
