@@ -30,13 +30,12 @@ class DenunciaTest {
 		this.jugador2 = new Jugador("Juan",sis)
 		this.ubi1 = Ubicacion.TOP;
 		this.ubi2 = Ubicacion.BOTTOM;
-		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
-			Arrays.asList("La ducha"),ubi1)
+		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"), Arrays.asList("La ducha"),ubi1)
 		this.per2 = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
 		
 		this.ret1 = new Iniciador(jugador1, per1,ubi1)
 		this.ret2 = new NoIniciador(jugador2, per2, ubi2)		
-		this.duelo    = new Duelo( ret1, ret2)
+		this.duelo = new Duelo( ret1, ret2)
 		this.unMotivo = new AbusoDeHabilidad();	
 		this.est1= new EstadisticasPersonajes(per1)
 		this.est2= new EstadisticasPersonajes(per2)
@@ -79,6 +78,14 @@ class DenunciaTest {
 		assertEquals(1,jugador1.denuncias.size)	
 	}
 	
+	@Test
+	def testCambioDeMotivo() {
+		jugador1.duelos.add(duelo)
+		jugador2.duelos.add(duelo)
+		otraDescripcion= new Descripcion("denuncio")
+		jugador1.denunciarAJugador(jugador2,unMotivo,otraDescripcion)
+		assertTrue(jugador1.denuncias.get(0).unMotivo instanceof AbusoDelSistemaDeDenuncias )
+	}
 	
 	
 }

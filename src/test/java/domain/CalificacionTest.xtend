@@ -182,9 +182,4 @@ class CalificacionTest {
 		assertEquals("NOOB",ret1.estadisticas(per2).calificacion.categoria)
 	}
 	
-	
-	
-
-
-	
 }

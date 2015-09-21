@@ -39,7 +39,7 @@ class DenunciaAppModel {
 	}
 	
 	def boolean isPuedeDenunciar(){
-		tengoMotivo //&& !(palabrasDescripcion.isEmpty)
+		tengoMotivo && !(palabrasDescripcion.isEmpty)
 	}
 	
 	def tengoMotivo() {
@@ -85,6 +85,10 @@ class DenunciaAppModel {
 	 */
 	def efectivizarDenuncia() {
 		this.denuncia.castigar
+	}
+	
+	def cambioMotivoSiNoEsValido() {
+		denuncia.cambioMotivoSiNoEsValido
 	}
 	
 }

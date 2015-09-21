@@ -21,12 +21,14 @@ class Denuncia {
     	this.unaDescripcion = unaDescripcion
     }
     
-    def void castigar() {
-    	if(calcularValidez)
-    		unMotivo.evaluarse(this,contexto)
-    	else
-    		new AbusoDelSistemaDeDenuncias().evaluarse(this,contexto)    		
+    def castigar() {
+    	cambioMotivoSiNoEsValido
+    	this.unMotivo.evaluarse(this)    
     }
+	
+	def cambioMotivoSiNoEsValido() {
+    		this.unMotivo = new AbusoDelSistemaDeDenuncias()
+	}
 	
 	def boolean calcularValidez() {
 		// TODO: FALTA VER EN EL REGEX PARA EL CASO EN QUE ALGUIEN SOLO PONGA BARRAS ESPACIADORAS, OSEA
@@ -36,6 +38,10 @@ class Denuncia {
 	
 	def getMotivosPosibles(){
 		#[new ComunicacionAbusiva, new AbusoDeHabilidad, new FeedIntencional]
+	}
+	
+	def aplicarPenalidad(Retador retador) {
+		retador.jugador.recibioDenuncia(this)
 	}
 
 }
