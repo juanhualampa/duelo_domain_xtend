@@ -4,20 +4,23 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import org.uqbar.commons.utils.Observable
 import java.util.Random
+import java.util.ArrayList
 
 @Observable
 @Accessors
 class Sistema {
 	List<Jugador> jugadores = newArrayList	
-	Retador oponentePorDefecto
-	
+		
 	/**
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
 	def Duelo iniciarReto(Jugador it, Personaje per ,Ubicacion ubic){
 		armarDuelo(new Iniciador(it,per,ubic))
 	}
-		
+	
+	/**
+	 * Arma un duelo para el retador. Si no lo consigue, lanza la excepcion
+	 */
 	def Duelo armarDuelo(Retador ret){
 		try{
 			realizarDuelo(ret,ret.obtenerOponente)
@@ -25,20 +28,21 @@ class Sistema {
 		catch (Exception e){ throw new NoHayOponenteException()	}
 	}
 	
-	/**
-	 * Obtiene un oponente de la lista de posibles cargada en el Sistema. Por default, la posicion sera BOTTOM
-	 */
 	def Retador obtenerOponente(Retador it){
-		val contrincante = oponentesPosibles.head
-		new NoIniciador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM)
+		oponentesPosibles(it).head
 	}
 	
-	def elegirPersonajeAlAzar(Jugador jugador) {
-		jugador.estadisticasPersonajes.get(0).personaje
+	def List<Retador> oponentesPosibles(Retador ret) {
+		val jugadoresYpersonajes = 	jugadoresDistintosAlRetadorConCalifacionesSimilares(ret).toJugadorYPersonaje(ret)
+		jugadoresYpersonajes.toRetadores
 	}
-		
-	def noHayOponente(Retador it){
-		oponentesPosibles.isEmpty
+	
+	def List<Jugador> jugadoresDistintosAlRetadorConCalifacionesSimilares(Retador ret){
+		jugadores.filter[nombre != ret.jugador.nombre && conEstadisticasSimilaresA(ret)].toList
+	}
+	
+	def conEstadisticasSimilaresA(Jugador it,Retador ret) {
+		estadisticasPersonajes.similaresA(ret.estadisticas(ret.personaje))
 	}
 	
 	/**
@@ -48,15 +52,31 @@ class Sistema {
 		jugadores.filter[it.mismoRankingSinSerElMismo(retador.jugador)].toList
 	}	
 	
-	/**
-	 * evalua 2 jugadores y devuelve true si no son el mismo y poseen el mismo ranking
-	 */
-	def mismoRankingSinSerElMismo(Jugador it, Jugador jug2){
-		ranking.equals(jug2.ranking)  && nombre != jug2.nombre
-	}	
+	def List<Retador> toRetadores(List<Pair<Jugador, Personaje>> pares){
+		pares.map[(new NoIniciador(it.key,it.value,it.value.ubicacionIdeal))]
+	}
+	
+	def Pair<Jugador,Personaje> jugadorYPersonaje(Jugador jugador, EstadisticasPersonajes est) {
+		jugador -> personajeCompatible(jugador.estadisticasPersonajes,est)
+	}
+	
+	def Personaje personajeCompatible (List<EstadisticasPersonajes> lista , EstadisticasPersonajes est){
+		lista.filter[it.esSimilarA(est)].head.personaje
+	}
+	
+	def boolean similaresA(List<EstadisticasPersonajes> list, EstadisticasPersonajes est){
+		list.exists[it.esSimilarA(est)]
+	}
+	
+	def boolean esSimilarA(EstadisticasPersonajes est1, EstadisticasPersonajes est2) {
+		est1.calificacion.categoria.equals(est2.calificacion.categoria)
+	}			
+	
+	def noHayOponente(Retador it){
+		oponentesPosibles.isEmpty
+	}
 		
-	def Duelo realizarDuelo(Retador it, Retador ret){
-		
+	def Duelo realizarDuelo(Retador it, Retador ret){		
 		val duelo = new Duelo(it,ret)
 		duelo.realizarse
 		duelo
@@ -65,8 +85,7 @@ class Sistema {
 	def denunciarJugador(Duelo duelo , Motivo mot, Descripcion desc) {
 		val den = new Denuncia(duelo,mot,desc)
 		den.castigar
-	}
-	
+	}	
 	
 	def Bot dameAMRX(Retador it) {
 		val cantPersonajesRandom =new Random().nextInt(it.jugador.estadisticasPersonajes.size )

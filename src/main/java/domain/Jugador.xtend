@@ -10,7 +10,7 @@ import java.util.List
  */
 @Accessors
 @Observable
-class Jugador {
+class Jugador extends Entity{
 	List<EstadisticasPersonajes> estadisticasPersonajes	
 	int cantDePeleasGanadas
 	List<Denuncia> denuncias	
@@ -19,6 +19,7 @@ class Jugador {
 	List<Duelo> duelos	
 	Sistema sistema
 	
+
 	new(String Nombre,Sistema sis){
 		estadisticasPersonajes = new ArrayList<EstadisticasPersonajes>()
 		cantDePeleasGanadas = 0
@@ -30,6 +31,7 @@ class Jugador {
 		this.sistema = sis
 		sistema.jugadores.add(this)
 	}
+	new(){}
 	
 	new(String nombre, List<EstadisticasPersonajes> estadisticasPersonajes){
 		this.estadisticasPersonajes = estadisticasPersonajes
@@ -62,6 +64,9 @@ class Jugador {
 		ranking = this.calificacion() / 500
 	}	
 	
+	/**
+	 * 
+	 */
 	def Duelo iniciarDuelo (Personaje personaje ,Ubicacion ubic){
 		sistema.iniciarReto(this, personaje, ubic)
 	}

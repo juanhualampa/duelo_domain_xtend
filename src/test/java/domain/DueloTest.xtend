@@ -24,8 +24,7 @@ class DueloTest {
 		this.sis = new Sistema()	
 		this.ubi1 = Ubicacion.TOP;
 		this.ubi2 = Ubicacion.BOTTOM;	
-		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
-			Arrays.asList("La ducha"),ubi1)
+		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"), Arrays.asList("La ducha"),ubi1)
 		this.per2 = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
 		
 		val calGanadora = new Calificacion("RAMPAGE",100)
@@ -55,12 +54,7 @@ class DueloTest {
 		this.ret2 = new NoIniciador(jugador2, per2, ubi2)
 	}
 		
-	@Test 
-	def testDosJugadoresTienenElMismoRanking(){		
-		assertTrue(sis.mismoRankingSinSerElMismo(jugador1,jugador2))
-		assertEquals(jugador1.calificacion,jugador2.calificacion)
-		
-	}
+	
 	
 	/*
 	@Test 
