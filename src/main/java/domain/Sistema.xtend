@@ -10,8 +10,7 @@ import java.util.ArrayList
 @Accessors
 class Sistema {
 	List<Jugador> jugadores = newArrayList	
-	Retador oponentePorDefecto
-	
+		
 	/**
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
 	 */
@@ -36,8 +35,11 @@ class Sistema {
 	}
 	
 	def List<Jugador> jugadoresDistintosAlRetadorConCalifacionesSimilares(Retador ret){
-		jugadores.filter[nombre != ret.jugador.nombre &&
-			estadisticasPersonajes.esSimilarA(ret.estadisticas(ret.personaje))].toList
+		jugadores.filter[nombre != ret.jugador.nombre && conEstadisticasSimilaresA(ret)].toList
+	}
+	
+	def conEstadisticasSimilaresA(Jugador it,Retador ret) {
+		estadisticasPersonajes.similaresA(ret.estadisticas(ret.personaje))
 	}
 	
 	def toJugadorYPersonaje(List<Jugador> js, Retador ret){
@@ -45,24 +47,24 @@ class Sistema {
 	}	
 	
 	def List<Retador> toRetadores(List<Pair<Jugador, Personaje>> pares){
-		pares.map[(new NoIniciador(it.key,it.value,Ubicacion.BOTTOM))]
-	}
-	
-	def Personaje personajeCompatible (List<EstadisticasPersonajes> lista , EstadisticasPersonajes est){
-		lista.filter[it.esSimilarA(est)].head.personaje
+		pares.map[(new NoIniciador(it.key,it.value,it.value.ubicacionIdeal))]
 	}
 	
 	def Pair<Jugador,Personaje> jugadorYPersonaje(Jugador jugador, EstadisticasPersonajes est) {
 		jugador -> personajeCompatible(jugador.estadisticasPersonajes,est)
 	}
 	
-	def boolean esSimilarA(List<EstadisticasPersonajes> list, EstadisticasPersonajes est){
+	def Personaje personajeCompatible (List<EstadisticasPersonajes> lista , EstadisticasPersonajes est){
+		lista.filter[it.esSimilarA(est)].head.personaje
+	}
+	
+	def boolean similaresA(List<EstadisticasPersonajes> list, EstadisticasPersonajes est){
 		list.exists[it.esSimilarA(est)]
 	}
 	
 	def boolean esSimilarA(EstadisticasPersonajes est1, EstadisticasPersonajes est2) {
 		est1.calificacion.categoria.equals(est2.calificacion.categoria)
-	}		
+	}			
 	
 	def noHayOponente(Retador it){
 		oponentesPosibles.isEmpty
@@ -77,8 +79,7 @@ class Sistema {
 	def denunciarJugador(Duelo duelo , Motivo mot, Descripcion desc) {
 		val den = new Denuncia(duelo,mot,desc)
 		den.castigar
-	}
-	
+	}	
 	
 	def Bot dameAMRX(Retador it) {
 		val cantPersonajesRandom =new Random().nextInt(it.jugador.estadisticasPersonajes.size )

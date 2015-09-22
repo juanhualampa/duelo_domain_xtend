@@ -20,19 +20,15 @@ class RetarADueloAppModel {
 	String personajeABuscar
 	Jugador jugador
 	PersonajePuntaje personajeConPuntaje
-	Retador retador
 	Ubicacion ubicacionSeleccionada
 	
 	new(Jugador jugador){
 		personajeABuscar = "";
 		this.jugador = jugador
-		this.retador = new Iniciador
-		this.retador.jugador = this.jugador
 	}
 	
 	def setUbicacionSeleccionada(Ubicacion ubicacion){
 		ubicacionSeleccionada = ubicacion
-		this.retador.ubicacion = ubicacionSeleccionada
 	}
 	
 	def isEligioPersonaje(){
@@ -49,7 +45,6 @@ class RetarADueloAppModel {
 	
 	def void setPersonajeConPuntaje(PersonajePuntaje per) {
 		this.personajeConPuntaje = per
-		this.retador.personaje = personajeConPuntaje.personaje
 		cambioPuedeJugar
 		ObservableUtils.firePropertyChanged(this,"estadisticaPersonajeSeleccionado")
 	}
@@ -107,6 +102,10 @@ class RetarADueloAppModel {
 		estadisticaPersonajeSeleccionado.dameSusPropiedades
 	}
 	
+	def retador(){
+		new Iniciador(this.jugador,this.personajeSeleccionado,this.ubicacionSeleccionada)
+	}
+	
 	def dameSusPropiedades(EstadisticasPersonajes it) {
 		#[new Pair("Jugadas",vecesUsadoAntesDelDuelo),
 			new Pair("Ganadas",vecesQueGanoDuelo),
@@ -120,5 +119,6 @@ class RetarADueloAppModel {
 	def obtenerDuelo(Ubicacion ubicacion) {
 		this.jugador.iniciarDuelo(personajeSeleccionado,ubicacion)
 	}
+	
 
 }
