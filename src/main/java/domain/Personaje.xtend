@@ -3,10 +3,11 @@ package domain
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.Entity
 
 @Observable
 @Accessors
-class Personaje {
+class Personaje  extends Entity {
 
 	Ubicacion ubicacionIdeal
 	List<String> especialidades
@@ -19,6 +20,8 @@ class Personaje {
 		this.ubicacionIdeal = ubicacionIdeal
 		this.especialidades = especialidades
 	}
+	
+	new() {	}
 	
 	override toString(){
 		this.nombre

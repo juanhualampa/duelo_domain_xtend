@@ -3,10 +3,11 @@ package domain
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.model.Entity
 
 @Accessors
 @Observable
-class EstadisticasPersonajes {
+class EstadisticasPersonajes extends Entity {
 	
 	int vecesUsadoAntesDelDuelo
 	int vecesQueGanoDuelo	
@@ -45,6 +46,8 @@ class EstadisticasPersonajes {
 		this.mejorUbicacion = mejorUbicacion
 		this.calificacion = calificacion	
 	}
+	
+	new() {	}
 	
 	def void agregarUnaParticipacion() {
 		vecesUsadoAntesDelDuelo += 1

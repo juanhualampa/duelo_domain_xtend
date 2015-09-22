@@ -39,19 +39,26 @@ class Sistema {
 	
 	def List<Jugador> jugadoresDistintosAlRetadorConCalifacionesSimilares(Retador ret){
 		jugadores.filter[nombre != ret.jugador.nombre && conEstadisticasSimilaresA(ret)].toList
+<<<<<<< HEAD
+	}
+	
+	def conEstadisticasSimilaresA(Jugador it,Retador ret) {
+		estadisticasPersonajes.similaresA(ret.estadisticas(ret.personaje))
+=======
+>>>>>>> 206425b7952420260aaa3726058d4e2632ae624e
 	}
 	
 	def conEstadisticasSimilaresA(Jugador it,Retador ret) {
 		estadisticasPersonajes.similaresA(ret.estadisticas(ret.personaje))
 	}
 	
-	/**
-	 * @return lista de Jugadores posibles
-	 */
-	def oponentesPosibles(Retador retador){
-		jugadores.filter[it.mismoRankingSinSerElMismo(retador.jugador)].toList
+<<<<<<< HEAD
+=======
+	def toJugadorYPersonaje(List<Jugador> js, Retador ret){
+		js.map[it.jugadorYPersonaje(ret.estadisticas(ret.personaje))].toList
 	}	
 	
+>>>>>>> 206425b7952420260aaa3726058d4e2632ae624e
 	def List<Retador> toRetadores(List<Pair<Jugador, Personaje>> pares){
 		pares.map[(new NoIniciador(it.key,it.value,it.value.ubicacionIdeal))]
 	}

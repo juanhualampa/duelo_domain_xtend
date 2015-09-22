@@ -4,6 +4,7 @@ import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import java.util.List
+import org.uqbar.commons.model.Entity
 
 /**
  * Representa a un jugador del sistema. El mismo posee las estadisticas para cada personaje.
