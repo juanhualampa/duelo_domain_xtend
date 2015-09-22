@@ -4,6 +4,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import org.uqbar.commons.utils.Observable
 import java.util.Random
+import java.util.ArrayList
 
 @Observable
 @Accessors
@@ -25,47 +26,49 @@ class Sistema {
 		catch (Exception e){ throw new NoHayOponenteException()	}
 	}
 	
-	/**
-	 * Obtiene un oponente de la lista de posibles cargada en el Sistema. Por default, la posicion sera BOTTOM
-	 */
 	def Retador obtenerOponente(Retador it){
-		val contrincante = oponentesPosibles.head
-		new NoIniciador(contrincante,contrincante.elegirPersonaje(it),Ubicacion.BOTTOM)
+		oponentesPosibles(it).head
 	}
 	
-	def Personaje elegirPersonaje(Jugador it, Retador ret) {
-		estadisticasPersonajes.filter[contieneAlgunRivalPara(ret)].head.personaje
+	def List<Retador> oponentesPosibles(Retador ret) {
+		val jugadoresYpersonajes = 	jugadoresDistintosAlRetadorConCalifacionesSimilares(ret).toJugadorYPersonaje(ret)
+		jugadoresYpersonajes.toRetadores
 	}
-		
+	
+	def List<Jugador> jugadoresDistintosAlRetadorConCalifacionesSimilares(Retador ret){
+		jugadores.filter[nombre != ret.jugador.nombre &&
+			estadisticasPersonajes.esSimilarA(ret.estadisticas(ret.personaje))].toList
+	}
+	
+	def toJugadorYPersonaje(List<Jugador> js, Retador ret){
+		js.map[it.jugadorYPersonaje(ret.estadisticas(ret.personaje))].toList
+	}	
+	
+	def List<Retador> toRetadores(List<Pair<Jugador, Personaje>> pares){
+		pares.map[(new NoIniciador(it.key,it.value,Ubicacion.BOTTOM))]
+	}
+	
+	def Personaje personajeCompatible (List<EstadisticasPersonajes> lista , EstadisticasPersonajes est){
+		lista.filter[it.esSimilarA(est)].head.personaje
+	}
+	
+	def Pair<Jugador,Personaje> jugadorYPersonaje(Jugador jugador, EstadisticasPersonajes est) {
+		jugador -> personajeCompatible(jugador.estadisticasPersonajes,est)
+	}
+	
+	def boolean esSimilarA(List<EstadisticasPersonajes> list, EstadisticasPersonajes est){
+		list.exists[it.esSimilarA(est)]
+	}
+	
+	def boolean esSimilarA(EstadisticasPersonajes est1, EstadisticasPersonajes est2) {
+		est1.calificacion.categoria.equals(est2.calificacion.categoria)
+	}		
+	
 	def noHayOponente(Retador it){
 		oponentesPosibles.isEmpty
 	}
-	
-	/**
-	 * @return lista de Jugadores posibles
-	 */
-	def oponentesPosibles(Retador retador){
-		jugadores.filter[it.mismoRankingSinSerElMismo(retador)].toList
-	}	
-	
-	/**
-	 * evalua 2 jugadores y devuelve true si no son el mismo y poseen el mismo ranking
-	 */
-	def mismoRankingSinSerElMismo(Jugador jug, Retador ret){
-		//ranking.equals(jug2.ranking)  && nombre != jug2.nombre
-		jug.nombre != ret.jugador.nombre && jug.estadisticasPersonajes.exists[contieneAlgunRivalPara(ret)]
-	}
-	
-	def boolean contieneAlgunRivalPara(EstadisticasPersonajes est, Retador ret){
-		est.calificacion.nro.similar(ret.estadisticas(ret.personaje).calificacion.nro)
-	}
-	
-	def similar(Integer it, int i) {
-		it >= i + 5 || it <= i + 5
-	}
 		
-	def Duelo realizarDuelo(Retador it, Retador ret){
-		
+	def Duelo realizarDuelo(Retador it, Retador ret){		
 		val duelo = new Duelo(it,ret)
 		duelo.realizarse
 		duelo

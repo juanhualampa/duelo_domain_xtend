@@ -59,7 +59,7 @@ class RetarADueloAppModel {
 		personajeABuscar = nombre
 		ObservableUtils.firePropertyChanged(this,"personajesConPuntaje",this.personajesConPuntaje)
 	}
-	
+		
 	def setPersonajesConPuntajes(List<PersonajePuntaje> p){
 		p
 	}
@@ -82,7 +82,7 @@ class RetarADueloAppModel {
 			jugador.estadisticas(personajeConPuntaje.personaje)
 		}		
 	}
-	
+		
 	def datosDeEstadisticas(){
 		estadisticaPersonajeSeleccionado.dameSusPropiedades
 	}
