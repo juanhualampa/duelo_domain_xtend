@@ -80,7 +80,6 @@ class DenunciaAppModel {
 		denuncia.calcularValidez
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * tras evaluar, efectiviza la denuncia
 	 */
@@ -88,6 +87,4 @@ class DenunciaAppModel {
 		denuncia.cambioMotivoSiNoEsValido
 	}
 	
-=======
->>>>>>> 2829e9ff264d4274452a7621921b44b7fb15ea41
 }

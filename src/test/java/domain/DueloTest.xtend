@@ -55,12 +55,7 @@ class DueloTest {
 		this.ret2 = new NoIniciador(jugador2, per2, ubi2)
 	}
 		
-	@Test 
-	def testDosJugadoresTienenElMismoRanking(){		
-		assertTrue(sis.mismoRankingSinSerElMismo(jugador1,jugador2))
-		assertEquals(jugador1.calificacion,jugador2.calificacion)
-		
-	}
+	
 	
 	/*
 	@Test 

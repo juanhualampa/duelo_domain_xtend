@@ -30,11 +30,11 @@ class Sistema {
 	 */
 	def Retador obtenerOponente(Retador it){
 		val contrincante = oponentesPosibles.head
-		new NoIniciador(contrincante,contrincante.elegirPersonajeAlAzar,Ubicacion.BOTTOM)
+		new NoIniciador(contrincante,contrincante.elegirPersonaje(it),Ubicacion.BOTTOM)
 	}
 	
-	def elegirPersonajeAlAzar(Jugador jugador) {
-		jugador.estadisticasPersonajes.get(0).personaje
+	def Personaje elegirPersonaje(Jugador it, Retador ret) {
+		estadisticasPersonajes.filter[contieneAlgunRivalPara(ret)].head.personaje
 	}
 		
 	def noHayOponente(Retador it){
@@ -45,15 +45,24 @@ class Sistema {
 	 * @return lista de Jugadores posibles
 	 */
 	def oponentesPosibles(Retador retador){
-		jugadores.filter[it.mismoRankingSinSerElMismo(retador.jugador)].toList
+		jugadores.filter[it.mismoRankingSinSerElMismo(retador)].toList
 	}	
 	
 	/**
 	 * evalua 2 jugadores y devuelve true si no son el mismo y poseen el mismo ranking
 	 */
-	def mismoRankingSinSerElMismo(Jugador it, Jugador jug2){
-		ranking.equals(jug2.ranking)  && nombre != jug2.nombre
-	}	
+	def mismoRankingSinSerElMismo(Jugador jug, Retador ret){
+		//ranking.equals(jug2.ranking)  && nombre != jug2.nombre
+		jug.nombre != ret.jugador.nombre && jug.estadisticasPersonajes.exists[contieneAlgunRivalPara(ret)]
+	}
+	
+	def boolean contieneAlgunRivalPara(EstadisticasPersonajes est, Retador ret){
+		est.calificacion.nro.similar(ret.estadisticas(ret.personaje).calificacion.nro)
+	}
+	
+	def similar(Integer it, int i) {
+		it >= i + 5 || it <= i + 5
+	}
 		
 	def Duelo realizarDuelo(Retador it, Retador ret){
 		
