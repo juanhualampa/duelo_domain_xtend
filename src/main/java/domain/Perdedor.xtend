@@ -19,15 +19,5 @@ class Perdedor extends Veredicto{
 	
 	def dispatch actualizarse(Bot inicio) {
 	}
-		
-	
-//	def dispatch actualizarUsandoInicio(NoIniciador ret) {
-//		estadisticas(personaje).sumarDeads
-//	}
-//	
-//	def dispatch actualizarUsandoInicio(Bot ret) {
-//		estadisticas(personaje).sumarDeads
-//	}
-	
 	
 }
