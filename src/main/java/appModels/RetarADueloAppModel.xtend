@@ -9,6 +9,9 @@ import domain.Jugador
 import domain.Ubicacion
 import domain.Retador
 import domain.Iniciador
+import org.uqbar.commons.model.UserException
+import java.util.regex.Pattern
+import java.util.regex.Matcher
 
 @Accessors
 @Observable
@@ -55,9 +58,26 @@ class RetarADueloAppModel {
 		ObservableUtils.firePropertyChanged(this, "eligioPersonaje", this.eligioPersonaje)
 	}
 	
+//	def setPersonajeABuscar(String nombre){
+//		personajeABuscar = nombre
+//		ObservableUtils.firePropertyChanged(this,"personajesConPuntaje",this.personajesConPuntaje)
+//	}
+
 	def setPersonajeABuscar(String nombre){
+		if (!esAlfanumerico(nombre))
+			throw new UserException("Solo se admiten caracteres alfanumericos.")
 		personajeABuscar = nombre
 		ObservableUtils.firePropertyChanged(this,"personajesConPuntaje",this.personajesConPuntaje)
+	}
+	
+	def esAlfanumerico(String nombre) {
+		  var Pattern r = Pattern.compile("[0-9A-Za-z ]*");
+		  var Matcher m = r.matcher(nombre);
+		  if(m.matches){
+		  	return true
+		  }else{
+		  	return false
+		  }
 	}
 		
 	def setPersonajesConPuntajes(List<PersonajePuntaje> p){
