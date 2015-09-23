@@ -6,7 +6,6 @@ import java.util.ArrayList
 import java.util.Arrays
 import retador.Retador
 import duelos.Duelo
-import retador.NoIniciador
 import retador.Iniciador
 import veredicto.CalculadorDeCalificaciones
 import java.util.List
@@ -39,12 +38,6 @@ class CalificacionTest {
 	List<Ubicacion> ubicacionesNoRampage
 	List<Ubicacion> ubicacionesNoDominador
 		
-	def agregandoDuelos(Jugador jug, int veces){
-		(1..veces).forEach[
-			jug.duelos.add(new Duelo(retadorQueGana,retadorQuePierde))
-		]
-	}
-	
 	@Before
 	def void setUp() {
 		this.sis = new Sistema
