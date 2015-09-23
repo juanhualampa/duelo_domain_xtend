@@ -5,6 +5,12 @@ import java.util.List
 import org.uqbar.commons.utils.Observable
 import java.util.Random
 import java.util.ArrayList
+import duelos.Duelo
+import retador.Retador
+import retador.Iniciador
+import retador.NoIniciador
+import duelos.Motivo
+import retador.Bot
 
 @Observable
 @Accessors
@@ -17,10 +23,7 @@ class Sistema {
 	def Duelo iniciarReto(Jugador it, Personaje per ,Ubicacion ubic){
 		armarDuelo(new Iniciador(it,per,ubic))
 	}
-	
-	/**
-	 * Arma un duelo para el retador. Si no lo consigue, lanza la excepcion
-	 */
+
 	def Duelo armarDuelo(Retador ret){
 		try{
 			realizarDuelo(ret,ret.obtenerOponente)
@@ -39,26 +42,16 @@ class Sistema {
 	
 	def List<Jugador> jugadoresDistintosAlRetadorConCalifacionesSimilares(Retador ret){
 		jugadores.filter[nombre != ret.jugador.nombre && conEstadisticasSimilaresA(ret)].toList
-<<<<<<< HEAD
-	}
-	
-	def conEstadisticasSimilaresA(Jugador it,Retador ret) {
-		estadisticasPersonajes.similaresA(ret.estadisticas(ret.personaje))
-=======
->>>>>>> 206425b7952420260aaa3726058d4e2632ae624e
 	}
 	
 	def conEstadisticasSimilaresA(Jugador it,Retador ret) {
 		estadisticasPersonajes.similaresA(ret.estadisticas(ret.personaje))
 	}
 	
-<<<<<<< HEAD
-=======
 	def toJugadorYPersonaje(List<Jugador> js, Retador ret){
 		js.map[it.jugadorYPersonaje(ret.estadisticas(ret.personaje))].toList
 	}	
 	
->>>>>>> 206425b7952420260aaa3726058d4e2632ae624e
 	def List<Retador> toRetadores(List<Pair<Jugador, Personaje>> pares){
 		pares.map[(new NoIniciador(it.key,it.value,it.value.ubicacionIdeal))]
 	}

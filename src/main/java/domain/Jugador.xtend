@@ -20,7 +20,6 @@ class Jugador extends Entity{
 	List<Duelo> duelos	
 	Sistema sistema
 	
-
 	new(String Nombre,Sistema sis){
 		estadisticasPersonajes = new ArrayList<EstadisticasPersonajes>()
 		cantDePeleasGanadas = 0
@@ -65,9 +64,6 @@ class Jugador extends Entity{
 		ranking = this.calificacion() / 500
 	}	
 	
-	/**
-	 * 
-	 */
 	def Duelo iniciarDuelo (Personaje personaje ,Ubicacion ubic){
 		sistema.iniciarReto(this, personaje, ubic)
 	}

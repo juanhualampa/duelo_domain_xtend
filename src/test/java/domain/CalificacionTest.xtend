@@ -32,10 +32,8 @@ class CalificacionTest {
 		this.sis = new Sistema()	
 		this.ubi1 = Ubicacion.TOP;
 		this.ubi2 = Ubicacion.BOTTOM;	
-		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
-			Arrays.asList("La ducha"),ubi1)
+		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"), Arrays.asList("La ducha"),ubi1)
 		this.per2 = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
-		
 		
 		calGanadora = new Calificacion("RAMPAGE",100)
 		calPerdedora = new Calificacion("NOOB",5)
@@ -62,7 +60,18 @@ class CalificacionTest {
 		jugador2.setSistema(sis)
 		this.ret2 = new NoIniciador(jugador2, per2, ubi2)
 	}
-
+	
+	
+	/**
+	 * test para calificacion por defecto para un jugador que no ha efectuado duelos con ese personaje. Se da x default: NOOB
+	 */
+	@Test 
+	def testEntraPorCalicacionPorDefecto(){		
+		ret1 = new Iniciador(jugador1, per2,ubi1)
+		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
+		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,3)
+		assertEquals("NOOB",ret1.estadisticas(per2).calificacion.categoria)
+	}
 	
 	@Test 
 	def testSetDeCalicacionRampage(){		
@@ -71,16 +80,7 @@ class CalificacionTest {
 		ret1.estadisticas(per2).calificacion = new Calificacion("RAMPAGE",100)
 		assertEquals("RAMPAGE",ret1.estadisticas(per2).calificacion.categoria)
 	}
-
-	@Test 
-	def testEntraPorCalicacionPorDefecto(){		
-		this.ret1 = new Iniciador(jugador1, per2,ubi1)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,3)
-		assertEquals("NOOB",ret1.estadisticas(per2).calificacion.categoria)
-	}
 	
-		
 	@Test 
 	def testEntraPorCalicacionPorRampage(){		
 		this.ret1 = new Iniciador(jugador1, per2,ubi1)
@@ -110,7 +110,7 @@ class CalificacionTest {
 		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,95)
 		assertNotEquals("RAMPAGE",ret1.estadisticas(per2).calificacion.categoria)
 	}
-		
+	
 	@Test 
 	def testEntraPorCalicacionPorDominador(){		
 		this.ret1 = new Iniciador(jugador1, per2,ubi1)
