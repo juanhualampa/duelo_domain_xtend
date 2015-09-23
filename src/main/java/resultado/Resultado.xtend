@@ -11,9 +11,6 @@ import retador.Retador
 @Observable
 abstract class Resultado {
 	
-	Retador retador
-	Retador retado
-	
-	def void actualizarEstadisticas()
+	def void actualizarEstadisticas(Retador retador,Retador retado )
 	
 }

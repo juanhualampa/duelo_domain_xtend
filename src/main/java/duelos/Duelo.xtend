@@ -37,7 +37,7 @@ class Duelo {
 	
 	def aplicar(Resultado r){			
 		resultado = r
-		r.actualizarEstadisticas
+		//r.actualizarEstadisticas
 		retador.agregarDuelos(this) 
 		retado.agregarDuelos(this)
 	}
