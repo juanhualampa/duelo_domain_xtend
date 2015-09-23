@@ -1,5 +1,8 @@
-package domain
+package retador
 import org.eclipse.xtend.lib.annotations.Accessors
+import domain.Jugador
+import domain.Personaje
+import domain.Ubicacion
 
 @Accessors
 class Iniciador extends Retador{

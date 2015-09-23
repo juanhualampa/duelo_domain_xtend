@@ -1,7 +1,11 @@
-package domain
+package veredicto
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.Random
+import retador.Retador
+import retador.Iniciador
+import retador.NoIniciador
+import retador.Bot
 
 @Accessors
 class Ganador extends Veredicto{

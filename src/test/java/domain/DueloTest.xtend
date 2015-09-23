@@ -4,6 +4,12 @@ import org.junit.Test
 import static org.junit.Assert.*
 import java.util.ArrayList
 import java.util.Arrays
+import retador.Retador
+import retador.Iniciador
+import retador.NoIniciador
+import veredicto.Ganador
+import veredicto.Perdedor
+import veredicto.Empate
 
 class DueloTest {
 	Jugador jugador1

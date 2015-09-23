@@ -1,6 +1,13 @@
-package domain
+package veredicto
 
 import java.util.List
+import retador.Retador
+import duelos.Duelo
+import domain.Calificacion
+import domain.Jugador
+import domain.Personaje
+import domain.Ubicacion
+import domain.EstadisticasPersonajes
 
 /**
  * Representa un calculador de calificaciones que recibe un retador y un numero al azar.

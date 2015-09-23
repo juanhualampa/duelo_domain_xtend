@@ -1,7 +1,14 @@
-package domain
+package duelos
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import retador.Retador
+import retador.Bot
+import domain.Jugador
+import resultado.Victoria
+import resultado.Derrota
+import resultado.Empatados
+import resultado.Resultado
 
 @Accessors
 @Observable

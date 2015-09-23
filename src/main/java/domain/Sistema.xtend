@@ -5,6 +5,12 @@ import java.util.List
 import org.uqbar.commons.utils.Observable
 import java.util.Random
 import java.util.ArrayList
+import duelos.Duelo
+import retador.Retador
+import retador.Iniciador
+import retador.NoIniciador
+import duelos.Motivo
+import retador.Bot
 
 @Observable
 @Accessors

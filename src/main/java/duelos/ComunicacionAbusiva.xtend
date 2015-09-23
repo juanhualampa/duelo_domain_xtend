@@ -1,4 +1,4 @@
-package domain
+package duelos
 
 import org.uqbar.commons.utils.Observable
 

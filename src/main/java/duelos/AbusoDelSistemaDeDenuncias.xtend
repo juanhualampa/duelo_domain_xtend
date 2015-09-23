@@ -1,5 +1,5 @@
-package domain
-
+package duelos
+import domain.Denuncia
 /**
  * El jugador abusa del sistema de denuncias
  */

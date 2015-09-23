@@ -4,6 +4,11 @@ import org.junit.Test
 import static org.junit.Assert.*
 import java.util.ArrayList
 import java.util.Arrays
+import retador.Retador
+import duelos.Duelo
+import retador.NoIniciador
+import retador.Iniciador
+import veredicto.CalculadorDeCalificaciones
 
 class CalificacionTest {
 	
