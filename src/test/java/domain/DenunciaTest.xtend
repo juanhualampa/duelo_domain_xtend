@@ -3,6 +3,13 @@ import org.junit.Before
 import org.junit.Test
 import static org.junit.Assert.*
 import java.util.Arrays
+import retador.Retador
+import duelos.Duelo
+import duelos.Motivo
+import retador.Iniciador
+import retador.NoIniciador
+import duelos.AbusoDeHabilidad
+import duelos.AbusoDelSistemaDeDenuncias
 
 class DenunciaTest {
 	Jugador jugador1

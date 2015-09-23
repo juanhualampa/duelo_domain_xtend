@@ -3,14 +3,14 @@ package appModels
 import domain.Jugador
 import org.uqbar.commons.utils.Observable
 import org.eclipse.xtend.lib.annotations.Accessors
-import domain.Duelo
-import domain.Motivo
-import domain.AbusoDeHabilidad
-import domain.ComunicacionAbusiva
-import domain.FeedIntencional
+import duelos.Motivo
+import duelos.AbusoDeHabilidad
+import duelos.ComunicacionAbusiva
+import duelos.FeedIntencional
 import domain.Descripcion
 import domain.Denuncia
 import org.uqbar.commons.model.ObservableUtils
+import duelos.Duelo
 
 /**
  * Representa una denuncia en el contexto de la vista, agurpando:

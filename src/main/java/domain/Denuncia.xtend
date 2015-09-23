@@ -2,6 +2,10 @@ package domain
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import retador.Retador
+import duelos.Duelo
+import duelos.Motivo
+import duelos.AbusoDelSistemaDeDenuncias
 
 /**
  * Modela una denuncia de un jugador a otro. 
@@ -36,11 +40,7 @@ class Denuncia {
 		//QUE LOS ESPACIOS NO VALGAN COMO PALABRAS
 		 return (unaDescripcion.poseeAlMenos20Caracteres || unaDescripcion.sonAlMenos3Palabras)
 	}
-	
-	def getMotivosPosibles(){
-		#[new ComunicacionAbusiva, new AbusoDeHabilidad, new FeedIntencional]
-	}
-	
+		
 	def aplicarPenalidad(Retador retador) {
 		retador.jugador.recibioDenuncia(this)
 	}

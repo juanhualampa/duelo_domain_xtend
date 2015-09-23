@@ -7,7 +7,7 @@ import domain.EstadisticasPersonajes
 import org.uqbar.commons.model.ObservableUtils
 import domain.Jugador
 import domain.Ubicacion
-import domain.Iniciador
+import retador.Iniciador
 import org.uqbar.commons.model.UserException
 import java.util.regex.Pattern
 
@@ -40,7 +40,7 @@ class RetarADueloAppModel {
 	def ubicacionesPosibles(){
 		#[Ubicacion.TOP,Ubicacion.MIDDLE,Ubicacion.JUNGLE,Ubicacion.BOTTOM]
 	}
-	
+		
 	def void setPersonajeConPuntaje(PersonajePuntaje per) {
 		this.personajeConPuntaje = per
 		cambioPuedeJugar
@@ -53,13 +53,17 @@ class RetarADueloAppModel {
 	
 	def setPersonajeABuscar(String nombre){
 		if (nombre.noEsAlfanumerico)
-			throw new UserException("Solo se admiten caracteres alfanumericos.")
+			throw new UserException("Solo se disponen de personajes con nombres de caracteres alfanumericos !")
 		personajeABuscar = nombre
 		ObservableUtils.firePropertyChanged(this,"personajesConPuntaje",this.personajesConPuntaje)
 	}
 	
 	def noEsAlfanumerico(String nombre) {
 		  ! Pattern.compile("[0-9A-Za-z ]*").matcher(nombre).matches
+	}
+	
+	def sistema(){
+		this.jugador.sistema
 	}
 		
 	def setPersonajesConPuntajes(List<PersonajePuntaje> p){

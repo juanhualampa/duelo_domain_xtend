@@ -1,7 +1,7 @@
-package domain
+package duelos
 
 import org.eclipse.xtend.lib.annotations.Accessors
-
+import domain.Denuncia
 @Accessors
 abstract class Motivo {
 	
@@ -11,7 +11,7 @@ abstract class Motivo {
 		this.nombre = nombre;
 	}
     def Integer peso()
-    def void evaluarse(Denuncia denuncia){
+    def void evaluarse( Denuncia denuncia){
       	denuncia.aplicarPenalidad(denuncia.contexto.retado)
     }
 		  

@@ -1,7 +1,10 @@
-package domain
+package retador
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import domain.Jugador
+import domain.Personaje
+import domain.Ubicacion
 
 /**
  * Clase que agrupa un jugador, personaje y ubicacion para un duelo.

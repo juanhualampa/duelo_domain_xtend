@@ -1,6 +1,7 @@
-package domain
+package veredicto
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import retador.Retador
 
 @Accessors
 abstract class Veredicto {

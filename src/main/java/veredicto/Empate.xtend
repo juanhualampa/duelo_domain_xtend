@@ -1,4 +1,9 @@
-package domain
+package veredicto
+
+import retador.Retador
+import retador.Iniciador
+import retador.NoIniciador
+import retador.Bot
 
 class Empate extends Veredicto{
 		

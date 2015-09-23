@@ -1,6 +1,6 @@
 package appModels
 
-import domain.Retador
+import retador.Retador
 import domain.Sistema
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable

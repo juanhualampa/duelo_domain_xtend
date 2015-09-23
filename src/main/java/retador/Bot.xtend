@@ -1,7 +1,10 @@
-package domain
+package retador
 
 import org.uqbar.commons.utils.Observable
 import org.eclipse.xtend.lib.annotations.Accessors
+import domain.Jugador
+import domain.Personaje
+import domain.Ubicacion
 
 @Accessors
 @Observable

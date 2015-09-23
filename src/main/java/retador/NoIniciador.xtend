@@ -1,4 +1,8 @@
-package domain
+package retador
+
+import domain.Jugador
+import domain.Personaje
+import domain.Ubicacion
 
 class NoIniciador extends Retador{
 	
