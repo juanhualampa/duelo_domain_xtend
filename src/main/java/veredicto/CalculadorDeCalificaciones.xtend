@@ -24,13 +24,14 @@ class CalculadorDeCalificaciones {
 		}
 	}
 	
-	def boolean cumpleConRequisitosRampage(Retador it, int nroAlAzar){
+	def boolean cumpleConRequisitosRampage(Retador ret, int nroAlAzar){
 		/*
 		 * Asumi que lo que me piden son las estadisticas de todos los duelos con este personaje
 		 * (me fijo si son al menos 5 en la posIdeal del personaje que uso el retador)
 		 */
-		 jugador.duelos.hayDuelosConPersonajeYUbicacionIdealEnAlMenos(jugador,personaje,5) &&
-		esNroAlAzarMayorA(nroAlAzar,90)
+		 //jugador.duelos.hayDuelosConPersonajeYUbicacionIdealEnAlMenos(jugador,personaje,5)
+		 ret.estadisticas(ret.personaje).ubicacionesUsadas.filter[it.equals(ret.personaje.ubicacionIdeal)].size >= 5 
+		 && esNroAlAzarMayorA(nroAlAzar,90)
 	}
 	
 	def boolean hayDuelosConPersonajeYUbicacionIdealEnAlMenos(List<Duelo> duelos, Jugador j, Personaje personaje, int veces){
@@ -47,21 +48,22 @@ class CalculadorDeCalificaciones {
 	}
 	
 	
-	def cumpleConRequisitosManco(Retador ret, int nroAlAzar){
-		ret.ubicacion.esUbicacionIdeal(ret.personaje.ubicacionIdeal) && esNroAlAzarMayorA(nroAlAzar,30)
+	def cumpleConRequisitosManco(Retador it, int nroAlAzar){
+		ubicacion.esUbicacionIdeal(personaje.ubicacionIdeal) && esNroAlAzarMayorA(nroAlAzar,30)
 	}
 	
 	def cumpleConRequisitosKilling(Retador it, int nroAlAzar){
 		esNroAlAzarMayorA(nroAlAzar,50)
 	}
 		
-	def boolean cumpleConRequisitosDominador(Retador it, int nroAlAzar){
+	def boolean cumpleConRequisitosDominador(Retador ret, int nroAlAzar){
 		/*
 		 * Esto pasa cuando el jugador tiene experiencia previa 
 		 * (de al menos dos duelos) jugando con este u otros personajes en la posición ideal 
 		 * para este y además sacó un numero al azar > a 70
 		 */
-		usasteCualquierPersonajeEnUbicacionIdealMasDe(2) && esNroAlAzarMayorA(nroAlAzar,70)
+		ret.jugador.estadisticasPersonajes.exists[it.usasteAlPersonajeEnUbicacionIdealAlMenos(ret,2)] && 
+		esNroAlAzarMayorA(nroAlAzar,70)
 	}	
 	
 	def boolean hayDuelosConCualquierPesonajeYUbicacionIdealEnAlMenos(List<Duelo> duelos, Jugador j,  int veces){
