@@ -23,19 +23,16 @@ class Duelo {
 		this.retador = ret1
 		this.retado = ret2
 	}
-		
-	def void realizarse(){
-		this.pelea(retador,retado)
-	}
-		
+	
 	/**
 	 * ejecuta la pelea entre retadores, aplicando las actualizaciones de estadisticas necesarias segun el caso
 	 */
-	def void pelea(Retador it,Retador ret) {
-		switch it {
-		  case esMasPoderosoQue(ret)   : aplicar(new Victoria(it,ret))
-		  case ret.esMasPoderosoQue(it): aplicar(new Derrota(it,ret))
-		  default                  : aplicar(new Empatados(it,ret))
+	 //TODO: observers?
+	def void realizarse(){
+		switch retador {
+		  case retador.esMasPoderosoQue(retado)		: aplicar(new Victoria(retador, retado))
+		  case retado.esMasPoderosoQue(retador)		: aplicar(new Derrota(retador, retado))
+		  default									: aplicar(new Empatados(retador, retado))
 		} 
 	}
 	
