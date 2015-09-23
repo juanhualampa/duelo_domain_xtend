@@ -4,7 +4,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import retador.Retador
 
 @Accessors
-abstract class Veredicto {
+abstract class ActualizadorDeStats {
 	
 	Retador retador	
 	

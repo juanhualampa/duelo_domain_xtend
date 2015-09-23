@@ -7,8 +7,8 @@ import retador.Bot
 import domain.Jugador
 import resultado.Victoria
 import resultado.Derrota
-import resultado.Empatados
 import resultado.Resultado
+import resultado.Empate
 
 @Accessors
 @Observable
@@ -27,12 +27,11 @@ class Duelo {
 	/**
 	 * ejecuta la pelea entre retadores, aplicando las actualizaciones de estadisticas necesarias segun el caso
 	 */
-	 //TODO: observers?
 	def void realizarse(){
 		switch retador {
 		  case retador.esMasPoderosoQue(retado)		: aplicar(new Victoria(retador, retado))
 		  case retado.esMasPoderosoQue(retador)		: aplicar(new Derrota(retador, retado))
-		  default									: aplicar(new Empatados(retador, retado))
+		  default									: aplicar(new Empate(retador, retado))
 		} 
 	}
 	

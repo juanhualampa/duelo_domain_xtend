@@ -7,9 +7,12 @@ import java.util.Arrays
 import retador.Retador
 import retador.Iniciador
 import retador.NoIniciador
-import veredicto.Ganador
-import veredicto.Perdedor
-import veredicto.Empate
+import veredicto.ActualizadorGanador
+import veredicto.ActualizadorEmpate
+import veredicto.ActualizadorPerdedor
+import resultado.Victoria
+import resultado.Derrota
+import resultado.Empate
 
 class DueloTest {
 	Jugador jugadorGanador
@@ -110,10 +113,8 @@ class DueloTest {
 		assertEquals(0,jugadorGanador.duelos.size)
 		jugadorGanador.iniciarDuelo(wolverine,middle)
 		assertEquals(1,jugadorGanador.duelos.size)
-		val veredictoParaElJugador1 = jugadorGanador.duelos.get(0).resultado.getResultadoRetador
-		val veredictoParaElRival = jugadorGanador.duelos.get(0).resultado.getResultadoRetado
-		assertTrue(veredictoParaElJugador1 instanceof Ganador)
-		assertTrue(veredictoParaElRival instanceof Perdedor)
+		val resultadoJugador1 = jugadorGanador.duelos.get(0).resultado
+		assertTrue(resultadoJugador1 instanceof Victoria)
 	}
 	
 	@Test 
@@ -121,10 +122,8 @@ class DueloTest {
 		assertEquals(0,jugadorPerdedor.duelos.size)
 		jugadorPerdedor.iniciarDuelo(wolverine,top)
 		assertEquals(1,jugadorPerdedor.duelos.size)
-		val veredictoParaElJugador2 = jugadorPerdedor.duelos.get(0).resultado.resultadoRetador
-		val veredictoParaElJugador1 = jugadorPerdedor.duelos.get(0).resultado.resultadoRetado
-		assertTrue(veredictoParaElJugador2 instanceof Perdedor)
-		assertTrue(veredictoParaElJugador1 instanceof Ganador)
+		val resultadoJugador1 = jugadorPerdedor.duelos.get(0).resultado
+		assertTrue(resultadoJugador1 instanceof Derrota)
 	}
 	
 	@Test 
@@ -133,10 +132,8 @@ class DueloTest {
 		assertEquals(0,jugadorGanador.duelos.size)
 		jugadorGanador.iniciarDuelo(ciclope,top)
 		assertEquals(1,jugadorGanador.duelos.size)
-		val veredictoParaElJugador1 = jugadorGanador.duelos.get(0).resultado.getResultadoRetador
-		val veredictoParaElJugador2 = jugadorGanador.duelos.get(0).resultado.getResultadoRetado
-		assertTrue(veredictoParaElJugador1 instanceof Empate)
-		assertTrue(veredictoParaElJugador2 instanceof Empate)
+		val resultadoJugador1 = jugadorGanador.duelos.get(0).resultado
+		assertTrue(resultadoJugador1 instanceof Empate)
 	}
 	
 }

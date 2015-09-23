@@ -19,22 +19,24 @@ class Sistema {
 		
 	/**
 	 * Toma un retador y una ubicacion y le busca un contrincante de su nivel
+	 * @throws NoHayOponenteException si no encontro rival
 	 */
 	def Duelo iniciarReto(Jugador it, Personaje per ,Ubicacion ubic){
-		armarDuelo(new Iniciador(it,per,ubic))
-	}
-
-	def Duelo armarDuelo(Retador ret){
-		try{
-			realizarDuelo(ret,ret.obtenerOponente)
-		}
-		catch (Exception e){ throw new NoHayOponenteException()	}
+		val ret = new Iniciador(it,per,ubic)
+		try
+			realizarDuelo(ret, ret.obtenerOponente)
+		catch (Exception e)
+			throw new NoHayOponenteException
 	}
 	
+	//extension method
 	def Retador obtenerOponente(Retador it){
 		oponentesPosibles(it).head
 	}
 	
+	/**
+	 * devuelve la lista de oponenetes posibles para el retador
+	 */
 	def List<Retador> oponentesPosibles(Retador ret) {
 		val jugadoresYpersonajes = 	jugadoresDistintosAlRetadorConCalifacionesSimilares(ret).toJugadorYPersonaje(ret)
 		jugadoresYpersonajes.toRetadores
@@ -53,11 +55,11 @@ class Sistema {
 	}	
 	
 	def List<Retador> toRetadores(List<Pair<Jugador, Personaje>> pares){
-		pares.map[(new NoIniciador(it.key,it.value,it.value.ubicacionIdeal))]
+		pares.map[(new NoIniciador(it.key, it.value, it.value.ubicacionIdeal))]
 	}
 	
 	def Pair<Jugador,Personaje> jugadorYPersonaje(Jugador jugador, EstadisticasPersonajes est) {
-		jugador -> personajeCompatible(jugador.estadisticasPersonajes,est)
+		jugador -> personajeCompatible(jugador.estadisticasPersonajes, est)
 	}
 	
 	def Personaje personajeCompatible (List<EstadisticasPersonajes> lista , EstadisticasPersonajes est){
@@ -95,8 +97,8 @@ class Sistema {
 	def generarMRX(Retador it, int nroAzaroso){
 		val personajeRandom = it.jugador.estadisticasPersonajes.map[personaje].get(nroAzaroso)
 		val estadisticas = it.jugador.estadisticasPersonajes
-		val bot = new Jugador("MR.X",estadisticas)
-		new Bot(bot,personajeRandom,Ubicacion.BOTTOM)
+		val bot = new Jugador("MR.X", estadisticas)
+		new Bot(bot, personajeRandom, Ubicacion.BOTTOM)
 	}
 	
 }

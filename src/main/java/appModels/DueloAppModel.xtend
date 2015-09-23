@@ -7,8 +7,8 @@ import domain.Jugador
 import org.eclipse.xtend.lib.annotations.Accessors
 import resultado.Victoria
 import resultado.Derrota
-import resultado.Empatados
 import org.uqbar.commons.model.ObservableUtils
+import resultado.Empate
 
 @Observable
 @Accessors
@@ -69,7 +69,7 @@ class DueloAppModel {
 		msj = "Celebra tu victoria"
 	}
 	
-	def dispatch display(Empatados resultado){
+	def dispatch display(Empate resultado){
 		title = "Empataste contra "+ nombreRetado
 		copete = "Empataste: " + nombreRetador +" "+  this.duelo.retador.poderDeAtaque + " puntos contra "
 		+ this.duelo.retado.poderDeAtaque

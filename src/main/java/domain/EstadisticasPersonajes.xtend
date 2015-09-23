@@ -69,6 +69,9 @@ class EstadisticasPersonajes extends Entity {
 		vecesAssist += 1
 	}
 	
+	/**
+	 * devuelve el poder de ataque del personaje para el jugador
+	 */
 	def poderDeAtaque() {
 		calificacion.nro + ((vecesKills + vecesAssist / 2 - vecesDeads) * vecesUsadoAntesDelDuelo)
 	}

@@ -30,6 +30,8 @@ abstract class Retador {
 	}
 	
 	def esMasPoderosoQue(Retador it){
+//		println(this.jugador+"poder de ataque"+this.poderDeAtaque)
+//		println(it.jugador+"poder de ataque retado"+it.poderDeAtaque)
 		this.poderDeAtaque > it.poderDeAtaque
 	}
 	

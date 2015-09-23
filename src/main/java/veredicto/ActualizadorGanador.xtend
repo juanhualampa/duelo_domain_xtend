@@ -8,7 +8,7 @@ import retador.NoIniciador
 import retador.Bot
 
 @Accessors
-class Ganador extends Veredicto{
+class ActualizadorGanador extends ActualizadorDeStats{
 	
 	new(Retador r1) {
 		super(r1)

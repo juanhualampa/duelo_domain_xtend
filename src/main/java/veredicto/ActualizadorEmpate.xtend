@@ -5,7 +5,7 @@ import retador.Iniciador
 import retador.NoIniciador
 import retador.Bot
 
-class Empate extends Veredicto{
+class ActualizadorEmpate extends ActualizadorDeStats{
 		
 	new(Retador r1) {
 		super(r1)
