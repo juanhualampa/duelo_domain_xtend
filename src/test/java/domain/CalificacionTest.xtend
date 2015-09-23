@@ -12,179 +12,208 @@ import veredicto.CalculadorDeCalificaciones
 
 class CalificacionTest {
 	
-	Jugador jugador1
-	Jugador jugador2
+	Jugador jugadorGanador
+	Jugador jugadorPerdedor
+	Jugador jugadorQueEmpata1
 	Sistema sis
-	Ubicacion ubi1
-	Ubicacion ubi2		
-	Personaje per1 
-	Personaje per2
-	Retador ret1 
-	Retador ret2 
-	EstadisticasPersonajes est1
-	EstadisticasPersonajes est2	
-	Calificacion calGanadora	
-	Calificacion calPerdedora
+	Ubicacion top
+	Ubicacion bottom		
+	Ubicacion jungle
+	Ubicacion middle
+	Personaje wolverine 
+	Personaje gambito
+	Personaje ciclope	
+	Personaje bestia
+	Retador retadorQueGana 
+	Retador retadorQuePierde 
+	EstadisticasPersonajes estadisticasDeUnRampage
+	EstadisticasPersonajes estadisticasDeUnNoob	
+	EstadisticasPersonajes estadisticaDeUnDominador
+	EstadisticasPersonajes estadisticasDeUnKillingSpread
+	Calificacion rampage
+	Calificacion killing_spread 
+	Calificacion noob 
+	Calificacion dominador
+	EstadisticasPersonajes estadisticasDeOtroRampage
 	
+		
 	def agregandoDuelos(Jugador jug, int veces){
 		(1..veces).forEach[
-			jug.duelos.add(new Duelo(ret1,ret2))
+			jug.duelos.add(new Duelo(retadorQueGana,retadorQuePierde))
 		]
 	}
 	
 	@Before
 	def void setUp() {
-		this.sis = new Sistema()	
-		this.ubi1 = Ubicacion.TOP;
-		this.ubi2 = Ubicacion.BOTTOM;	
-		this.per1 = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
-			Arrays.asList("La ducha"),ubi1)
-		this.per2 = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
+		this.sis = new Sistema
+		this.top = Ubicacion.TOP
+		this.bottom = Ubicacion.BOTTOM	
+		this.middle = Ubicacion.MIDDLE
+		this.jungle = Ubicacion.JUNGLE
+		this.wolverine = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
+			Arrays.asList("La ducha"),top)
+		this.bestia = new Personaje("Bestia",Arrays.asList("Ser azul", "Ser inteligente"),
+			Arrays.asList("Las tijeras"),middle)
+		this.gambito = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
+		this.ciclope = new Personaje("Ciclope", Arrays.asList("Rayos laser","Lentes copados"),Arrays.asList("Cualquier otra cosa"),Ubicacion.JUNGLE)
 		
 		
-		calGanadora = new Calificacion("RAMPAGE",100)
-		calPerdedora = new Calificacion("NOOB",5)
 		
 		val ubicacionesUsadas = new ArrayList<Ubicacion>
-		ubicacionesUsadas.addAll(Arrays.asList(ubi1,ubi2,ubi1,ubi2,ubi1,ubi1,ubi1,ubi1))
+		ubicacionesUsadas.addAll(Arrays.asList(top,bottom,top,bottom))
 		
 		val ubicacionesUsadas2 = new ArrayList<Ubicacion>
-		ubicacionesUsadas.addAll(Arrays.asList(ubi1,ubi2))
+		ubicacionesUsadas.addAll(Arrays.asList(top,bottom))
 		
-		est1 = new EstadisticasPersonajes(per1,10,4, 3, 1, 5, ubicacionesUsadas, ubi1,calGanadora)
-		est2 = new EstadisticasPersonajes(per2,4,1, 1, 1, 1, ubicacionesUsadas2, ubi1,calPerdedora)
+		rampage = new Calificacion("RAMPAGE",100)
+		killing_spread = new Calificacion("KILLING_SPREAD",60)
+		noob = new Calificacion("NOOB",5)
+		dominador = new Calificacion("DOMINADOR",80)
 		
-		val estadisticasPersonajesParaGanador = new ArrayList<EstadisticasPersonajes>()
-		estadisticasPersonajesParaGanador.add(est1)
-		estadisticasPersonajesParaGanador.add(est2)
 		
-		val estadisticasPersonajesParaPerdedor = new ArrayList<EstadisticasPersonajes>()
-		estadisticasPersonajesParaPerdedor.add(est2)
+		estadisticasDeUnRampage = new EstadisticasPersonajes(wolverine,120,80, 30, 10, 50, ubicacionesUsadas, top,rampage)
+		estadisticasDeUnNoob = new EstadisticasPersonajes(gambito,4,1, 1, 1, 1, ubicacionesUsadas2, top,noob)		
+		estadisticaDeUnDominador = new EstadisticasPersonajes(ciclope,12,8, 3, 1, 5, ubicacionesUsadas2, top,dominador)
+		estadisticasDeUnKillingSpread = new EstadisticasPersonajes(bestia,4,1, 1, 1, 1, ubicacionesUsadas2, middle,killing_spread)
+		estadisticasDeOtroRampage = new EstadisticasPersonajes(wolverine,30,18, 10, 6, 5, ubicacionesUsadas, top,rampage)
+				
+		val estadisticasPersonajesParaGanador = new ArrayList<EstadisticasPersonajes>
+		estadisticasPersonajesParaGanador.add(estadisticasDeUnRampage)
+		estadisticasPersonajesParaGanador.add(estadisticaDeUnDominador)
 		
-		this.jugador1 = new Jugador("Luciano",estadisticasPersonajesParaGanador )
-		this.jugador2 = new Jugador("Juan",estadisticasPersonajesParaPerdedor)
-		jugador1.setSistema(sis)
-		jugador2.setSistema(sis)
-		this.ret2 = new NoIniciador(jugador2, per2, ubi2)
+		val estadisticasPersonajesParaPerdedor = new ArrayList<EstadisticasPersonajes>
+		estadisticasPersonajesParaPerdedor.add(estadisticasDeUnNoob)
+		estadisticasPersonajesParaPerdedor.add(estadisticasDeOtroRampage)
+		estadisticasPersonajesParaPerdedor.add(estadisticasDeUnKillingSpread)
+		
+		val estadisticasPersonajesParaEmpatar = new ArrayList<EstadisticasPersonajes>
+		estadisticasPersonajesParaEmpatar.add(estadisticaDeUnDominador)
+		
+		this.jugadorGanador = new Jugador("Luciano",estadisticasPersonajesParaGanador)
+		this.jugadorPerdedor = new Jugador("Juan",estadisticasPersonajesParaPerdedor)
+		this.jugadorQueEmpata1 = new Jugador("Guido",estadisticasPersonajesParaEmpatar)
+		
+		jugadorGanador.setSistema(sis)
+		jugadorPerdedor.setSistema(sis)
+		jugadorQueEmpata1.setSistema(sis)
+		
 	}
 
 	
 	@Test 
 	def testSetDeCalicacionRampage(){		
-		this.ret1 = new Iniciador(jugador1, per2,ubi1)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new Calificacion("RAMPAGE",100)
-		assertEquals("RAMPAGE",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,top)
+		assertEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new Calificacion("RAMPAGE",100)
+		assertEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 
 	@Test 
 	def testEntraPorCalicacionPorDefecto(){		
-		this.ret1 = new Iniciador(jugador1, per2,ubi1)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,3)
-		assertEquals("NOOB",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,bottom)
+		assertEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,3)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 		
 	@Test 
 	def testEntraPorCalicacionPorRampage(){		
-		this.ret1 = new Iniciador(jugador1, per2,ubi1)
-		agregandoDuelos(jugador1,5)
-		assertEquals(5,jugador1.duelos.size)
-		assertEquals(calGanadora,ret1.estadisticas(per1).calificacion)
-		ret1.estadisticas(per1).calificacion = new CalculadorDeCalificaciones().calcular(ret1,95)
-		assertEquals("RAMPAGE",ret1.estadisticas(per1).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,bottom)
+		assertEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,95)
+		assertEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 	@Test 
 	def testNoEntraPorCalicacionPorRampagePorNoTenerCantidadDeDuelosPrevios(){		
-		this.ret1 = new Iniciador(jugador1, per2,ubi1)
-		agregandoDuelos(jugador1,3)
-		assertEquals(3,jugador1.duelos.size)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,95)
-		assertNotEquals("RAMPAGE",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,bottom)
+		agregandoDuelos(jugadorGanador,3)
+		assertEquals(3,jugadorGanador.duelos.size)
+		assertEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,95)
+		assertNotEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 	@Test 
 	def testNoEntraPorCalicacionPorRampagePorNoTenerUbicacionIdeal(){	
-		this.ret1 = new Iniciador(jugador1, per2,Ubicacion.JUNGLE)	
-		agregandoDuelos(jugador1,5)
-		assertEquals(5,jugador1.duelos.size)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,95)
-		assertNotEquals("RAMPAGE",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,top)	
+		agregandoDuelos(jugadorGanador,5)
+		assertEquals(5,jugadorGanador.duelos.size)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,95)
+		assertNotEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 		
 	@Test 
 	def testEntraPorCalicacionPorDominador(){		
-		this.ret1 = new Iniciador(jugador1, per2,ubi1)
-		agregandoDuelos(jugador1,2)
-		assertEquals(2,jugador1.duelos.size)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per1).calificacion = new CalculadorDeCalificaciones().calcular(ret1,85)
-		assertEquals("DOMINADOR",ret1.estadisticas(per1).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,middle)
+		agregandoDuelos(jugadorGanador,2)
+		assertEquals(2,jugadorGanador.duelos.size)
+		assertEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,85)
+		assertEquals("DOMINADOR",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 	@Test 
 	def testNoEntraPorCalicacionPorDominadorPorCantDuelosPrevios(){		
-		this.ret1 = new Iniciador(jugador1, per2,ubi1)
-		agregandoDuelos(jugador1,1)
-		assertEquals(1,jugador1.duelos.size)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,85)
-		assertNotEquals("DOMINADOR",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,middle)
+		agregandoDuelos(jugadorGanador,1)
+		assertEquals(1,jugadorGanador.duelos.size)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,85)
+		assertNotEquals("DOMINADOR",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 	@Test 
 	def testNoEntraPorCalicacionPorDominadorPorUbicacion(){		
-		this.ret1 = new Iniciador(jugador1, per2,Ubicacion.JUNGLE)
-		agregandoDuelos(jugador1,5)
-		assertEquals(5,jugador1.duelos.size)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,85)
-		assertNotEquals("DOMINADOR",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,middle)
+		agregandoDuelos(jugadorGanador,5)
+		assertEquals(5,jugadorGanador.duelos.size)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,85)
+		assertNotEquals("DOMINADOR",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 	@Test 
 	def testEntraPorCalicacionPorKillingSpread(){		
-		this.ret1 = new Iniciador(jugador1, per2,ubi1)
-		agregandoDuelos(jugador1,5)
-		assertEquals(5,jugador1.duelos.size)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,65)
-		assertEquals("KILLING_SPREAD",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,middle)
+		agregandoDuelos(jugadorGanador,5)
+		assertEquals(5,jugadorGanador.duelos.size)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,65)
+		assertEquals("KILLING_SPREAD",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 	@Test 
 	def testEntraPorCalicacionPorManco(){	
-		this.ret1 = new Iniciador(jugador1, per2,Ubicacion.MIDDLE)
-		agregandoDuelos(jugador1,5)
-		assertEquals(5,jugador1.duelos.size)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,35)
-		assertEquals("MANCO",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,middle)
+		agregandoDuelos(jugadorGanador,5)
+		assertEquals(5,jugadorGanador.duelos.size)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,35)
+		assertEquals("MANCO",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 	@Test 
 	def testNoEntraPorCalicacionPorMancoDebidoAlaUbicacion(){		
-		this.ret1 = new Iniciador(jugador1, per2,Ubicacion.JUNGLE)
-		agregandoDuelos(jugador1,5)
-		assertEquals(5,jugador1.duelos.size)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,35)
-		assertNotEquals("MANCO",ret1.estadisticas(per2).calificacion.categoria)
-		assertEquals("NOOB",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,middle)
+		agregandoDuelos(jugadorGanador,5)
+		assertEquals(5,jugadorGanador.duelos.size)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,35)
+		assertNotEquals("MANCO",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 	@Test 
 	def testEntraPorCalicacionPorNoob(){		
-		this.ret1 = new Iniciador(jugador1, per2,ubi1)
-		agregandoDuelos(jugador1,1)
-		assertEquals(1,jugador1.duelos.size)
-		assertEquals(calPerdedora,ret1.estadisticas(per2).calificacion)
-		ret1.estadisticas(per2).calificacion = new CalculadorDeCalificaciones().calcular(ret1,5)
-		assertEquals("NOOB",ret1.estadisticas(per2).calificacion.categoria)
+		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,middle)
+		agregandoDuelos(jugadorGanador,1)
+		assertEquals(1,jugadorGanador.duelos.size)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,5)
+		assertEquals("NOOB",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 	
 }
