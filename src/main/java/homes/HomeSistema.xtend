@@ -12,27 +12,49 @@ import domain.Jugador
 
 class HomeSistema {
 	
-	Jugador jugador1
-	Jugador jugador2
-	Jugador jugador3
 	Sistema sis
+	//JUGADORES
+	Jugador jugadorUno
+	Jugador jugadorDos
+	Jugador jugadorTres
+	//UBICACIONES
 	Ubicacion top
 	Ubicacion bottom		
 	Ubicacion jungle
 	Ubicacion middle
+	//PERSONAJES
 	Personaje wolverine 
 	Personaje gambito
 	Personaje ciclope	
 	Personaje bestia
-	EstadisticasPersonajes estadisticasDeUnRampage
-	EstadisticasPersonajes estadisticasDeUnNoob	
-	EstadisticasPersonajes estadisticaDeUnDominador
-	EstadisticasPersonajes estadisticasDeUnKillingSpread
+	Personaje magneto
+	
+	//STATS PERSONAJES
+	EstadisticasPersonajes statsRampage
+	EstadisticasPersonajes statsDominador
+	EstadisticasPersonajes statsKillingSpread
+	EstadisticasPersonajes statsManco
+	EstadisticasPersonajes statsNoob
+	
+	EstadisticasPersonajes statsRampageDos
+	EstadisticasPersonajes statsDominadorDos
+	EstadisticasPersonajes statsKillingSpreadDos
+	EstadisticasPersonajes statsMancoDos
+	EstadisticasPersonajes statsNoobDos
+	
+	EstadisticasPersonajes statsRampageTres
+	EstadisticasPersonajes statsDominadorTres
+	EstadisticasPersonajes statsKillingSpreadTres
+	EstadisticasPersonajes statsMancoTres
+	EstadisticasPersonajes statsNoobTres
+	
+	//CALIFICACIONES PERSONAJES
 	Calificacion rampage
 	Calificacion killing_spread 
-	Calificacion noob 
+	Calificacion noob
+	Calificacion manco
 	Calificacion dominador
-	EstadisticasPersonajes estadisticasDeOtroRampage
+	
 	List<Ubicacion> ubicacionesNoRampage
 	List<Ubicacion> ubicacionesNoDominador
 		
@@ -42,13 +64,14 @@ class HomeSistema {
 		this.bottom = Ubicacion.BOTTOM	
 		this.middle = Ubicacion.MIDDLE
 		this.jungle = Ubicacion.JUNGLE
-		this.wolverine = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
-			Arrays.asList("La ducha"),top)
-		this.bestia = new Personaje("Bestia",Arrays.asList("Ser azul", "Ser inteligente"),
-			Arrays.asList("Las tijeras"),middle)
-		this.gambito = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
-		this.ciclope = new Personaje("Ciclope", Arrays.asList("Rayos laser","Lentes copados"),Arrays.asList("Cualquier otra cosa"),Ubicacion.JUNGLE)
 		
+		this.wolverine = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"), Arrays.asList("La ducha"), top)
+		this.bestia = new Personaje("Bestia", Arrays.asList("Ser azul", "Ser inteligente"), Arrays.asList("Las tijeras"), middle)
+		this.gambito = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"), middle)
+		this.ciclope = new Personaje("Ciclope", Arrays.asList("Rayos laser","Lentes copados"),Arrays.asList("Cualquier otra cosa"), jungle)
+		this.magneto = new Personaje("Magneto", Arrays.asList("Usar casco","Volar"),Arrays.asList("Caminar"), bottom)
+		
+		//UBICACIONES
 		val ubicacionesRampage = new ArrayList<Ubicacion>
 		ubicacionesRampage.addAll(Arrays.asList(top,top,top,top,top,bottom))
 		
@@ -58,42 +81,74 @@ class HomeSistema {
 		ubicacionesNoDominador = new ArrayList<Ubicacion>
 		ubicacionesNoDominador.addAll(Arrays.asList(top,jungle,bottom,middle))
 		
-		
+		//CALIFICACIONES SETEADAS PARA EVITAR RANDOM
 		rampage = new Calificacion("RAMPAGE",100)
-		killing_spread = new Calificacion("KILLING_SPREAD",60)
-		noob = new Calificacion("NOOB",5)
 		dominador = new Calificacion("DOMINADOR",80)
+		killing_spread = new Calificacion("KILLING_SPREAD",60)
+		manco = new Calificacion("MANCO",40)
+		noob = new Calificacion("NOOB",5)
+		
+		//STATS PERSONAJES JUGADOR UNO
+		//NO HAY RIVAL PARA PERSONAJE EN MANCO
+		statsRampage = new EstadisticasPersonajes(wolverine,120,80, 30, 10, 50, ubicacionesRampage, top,rampage)
+		statsDominador = new EstadisticasPersonajes(ciclope,12,8, 3, 1, 5, ubicacionesNoDominador, top,dominador)
+		statsKillingSpread = new EstadisticasPersonajes(bestia,4,1, 1, 1, 1, ubicacionesNoDominador, middle,killing_spread)
+		statsManco = new EstadisticasPersonajes(magneto,10,8, 10, 6, 5, ubicacionesNoRampage, top,manco)
+		statsNoob = new EstadisticasPersonajes(gambito,4,1, 1, 1, 1, ubicacionesNoDominador, top,noob)	
+		
+		//AGREGO PERSONAJES JUGADOR UNO
+		val statsJugadorUno = new ArrayList<EstadisticasPersonajes>
+		statsJugadorUno.add(statsRampage)
+		statsJugadorUno.add(statsDominador)
+		statsJugadorUno.add(statsKillingSpread)
+		statsJugadorUno.add(statsManco)
+		statsJugadorUno.add(statsNoob)
 		
 		
-		estadisticasDeUnRampage = new EstadisticasPersonajes(wolverine,120,80, 30, 10, 50, ubicacionesRampage, top,rampage)
-		estadisticasDeUnNoob = new EstadisticasPersonajes(gambito,4,1, 1, 1, 1, ubicacionesNoDominador, top,noob)		
-		estadisticaDeUnDominador = new EstadisticasPersonajes(ciclope,12,8, 3, 1, 5, ubicacionesNoDominador, top,dominador)
-		estadisticasDeUnKillingSpread = new EstadisticasPersonajes(bestia,4,1, 1, 1, 1, ubicacionesNoDominador, middle,killing_spread)
-		estadisticasDeOtroRampage = new EstadisticasPersonajes(wolverine,30,18, 10, 6, 5, ubicacionesNoRampage, top,rampage)
-				
-		val estadisticasPersonajesParaGanador = new ArrayList<EstadisticasPersonajes>
-		estadisticasPersonajesParaGanador.add(estadisticasDeUnRampage)
-		estadisticasPersonajesParaGanador.add(estadisticaDeUnDominador)
+		//STATS PERSONAJES JUGADOR DOS
+		statsRampageDos = new EstadisticasPersonajes(gambito,80, 60, 20, 10, 15, ubicacionesRampage, top, noob)
+		statsDominadorDos = new EstadisticasPersonajes(bestia, 15, 8, 3, 1, 5, ubicacionesNoDominador, top, killing_spread)
+		statsKillingSpreadDos = new EstadisticasPersonajes(ciclope, 4, 1, 1, 1, 1, ubicacionesNoDominador, middle, dominador)
+//		statsMancoDos = new EstadisticasPersonajes(magneto,10,8, 10, 6, 5, ubicacionesNoRampage, top, manco)
+		statsNoobDos = new EstadisticasPersonajes(wolverine, 4, 1, 1, 1, 1, ubicacionesNoDominador, top, rampage)
 		
-		val estadisticasPersonajesParaPerdedor = new ArrayList<EstadisticasPersonajes>
-		estadisticasPersonajesParaPerdedor.add(estadisticasDeUnNoob)
-		estadisticasPersonajesParaPerdedor.add(estadisticasDeOtroRampage)
-		estadisticasPersonajesParaPerdedor.add(estadisticasDeUnKillingSpread)
+		//AGREGO PERSONAJES JUGADOR DOS
+		val statsJugadorDos = new ArrayList<EstadisticasPersonajes>
+		statsJugadorUno.add(statsRampageDos)
+		statsJugadorUno.add(statsDominadorDos)
+		statsJugadorUno.add(statsKillingSpreadDos)
+//		statsJugadorUno.add(statsMancoDos)
+		statsJugadorUno.add(statsNoobDos)
 		
-		val estadisticasPersonajesParaEmpatar = new ArrayList<EstadisticasPersonajes>
-		estadisticasPersonajesParaEmpatar.add(estadisticaDeUnDominador)
 		
-		this.jugador1 = new Jugador("Luciano",estadisticasPersonajesParaGanador)
-		this.jugador2 = new Jugador("Juan",estadisticasPersonajesParaPerdedor)
-		this.jugador3 = new Jugador("Guido",estadisticasPersonajesParaEmpatar)
+		//STATS PERSONAJES JUGADOR TRES
+		statsRampageTres = new EstadisticasPersonajes(gambito,120,80, 30, 10, 50, ubicacionesRampage, top,rampage)
+		statsDominadorTres = new EstadisticasPersonajes(bestia,12,8, 3, 1, 5, ubicacionesNoDominador, top,dominador)
+		statsKillingSpreadTres = new EstadisticasPersonajes(wolverine,4,1, 1, 1, 1, ubicacionesNoDominador, middle,killing_spread)
+//		statsMancoTres = new EstadisticasPersonajes(magneto,10,8, 10, 6, 5, ubicacionesNoRampage, top, manco)
+		statsNoobTres = new EstadisticasPersonajes(ciclope, 4, 1, 1, 1, 1, ubicacionesNoDominador, top, noob)
 		
-		jugador1.setSistema(sis)
-		jugador2.setSistema(sis)
-		jugador3.setSistema(sis)		
+		//AGREGO PERSONAJES JUGADOR DOS
+		val statsJugadorTres = new ArrayList<EstadisticasPersonajes>
+		statsJugadorUno.add(statsRampageTres)
+		statsJugadorUno.add(statsDominadorTres)
+		statsJugadorUno.add(statsKillingSpreadTres)
+//		statsJugadorUno.add(statsMancoTres)
+		statsJugadorUno.add(statsNoobTres)
+		
+		//ASIGNO STATS A LOS JUGADORES
+		this.jugadorUno = new Jugador("Luciano",statsJugadorUno)
+		this.jugadorDos = new Jugador("Juan",statsJugadorDos)
+		this.jugadorTres = new Jugador("Guido",statsJugadorTres)
+		
+		//ASIGNO SISTEMA A LOS JUGADORES
+		jugadorUno.setSistema(sis)
+		jugadorDos.setSistema(sis)
+		jugadorTres.setSistema(sis)		
 	}
 		
 	def jugador(){
-		jugador1
+		jugadorUno
 	}
 		
 }
