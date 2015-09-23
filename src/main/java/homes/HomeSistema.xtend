@@ -91,10 +91,10 @@ class HomeSistema {
 		//STATS PERSONAJES JUGADOR UNO
 		//NO HAY RIVAL PARA PERSONAJE EN MANCO
 		statsRampage = new EstadisticasPersonajes(wolverine,120,80, 30, 10, 50, ubicacionesRampage, top,rampage)
-		statsDominador = new EstadisticasPersonajes(ciclope,12,8, 3, 1, 5, ubicacionesNoDominador, top,dominador)
-		statsKillingSpread = new EstadisticasPersonajes(bestia,4,1, 1, 1, 1, ubicacionesNoDominador, middle,killing_spread)
-		statsManco = new EstadisticasPersonajes(magneto,10,8, 10, 6, 5, ubicacionesNoRampage, top,manco)
-		statsNoob = new EstadisticasPersonajes(gambito,4,1, 1, 1, 1, ubicacionesNoDominador, top,noob)	
+		statsDominador = new EstadisticasPersonajes(ciclope,12, 8, 3, 1, 5, ubicacionesNoDominador, top,dominador)
+		statsKillingSpread = new EstadisticasPersonajes(bestia, 4, 1, 1, 1, 1, ubicacionesNoDominador, middle,killing_spread)
+		statsManco = new EstadisticasPersonajes(magneto, 10, 8, 10, 6, 5, ubicacionesNoRampage, top,manco)
+		statsNoob = new EstadisticasPersonajes(gambito, 3, 0, 0, 2, 1, ubicacionesNoDominador, top,noob)	
 		
 		//AGREGO PERSONAJES JUGADOR UNO
 		val statsJugadorUno = new ArrayList<EstadisticasPersonajes>
@@ -106,35 +106,35 @@ class HomeSistema {
 		
 		
 		//STATS PERSONAJES JUGADOR DOS
-		statsRampageDos = new EstadisticasPersonajes(gambito,80, 60, 20, 10, 15, ubicacionesRampage, top, noob)
-		statsDominadorDos = new EstadisticasPersonajes(bestia, 15, 8, 3, 1, 5, ubicacionesNoDominador, top, killing_spread)
-		statsKillingSpreadDos = new EstadisticasPersonajes(ciclope, 4, 1, 1, 1, 1, ubicacionesNoDominador, middle, dominador)
+		statsRampageDos = new EstadisticasPersonajes(gambito,80, 60, 20, 10, 15, ubicacionesRampage, top, rampage)
+		statsDominadorDos = new EstadisticasPersonajes(bestia, 15, 8, 4, 2, 6, ubicacionesNoDominador, top, dominador)
+		statsKillingSpreadDos = new EstadisticasPersonajes(ciclope, 5, 2, 3, 0, 1, ubicacionesNoDominador, middle, killing_spread)
 //		statsMancoDos = new EstadisticasPersonajes(magneto,10,8, 10, 6, 5, ubicacionesNoRampage, top, manco)
-		statsNoobDos = new EstadisticasPersonajes(wolverine, 4, 1, 1, 1, 1, ubicacionesNoDominador, top, rampage)
+		statsNoobDos = new EstadisticasPersonajes(wolverine, 4, 3, 1, 2, 1, ubicacionesNoDominador, top, noob)
 		
 		//AGREGO PERSONAJES JUGADOR DOS
 		val statsJugadorDos = new ArrayList<EstadisticasPersonajes>
-		statsJugadorUno.add(statsRampageDos)
-		statsJugadorUno.add(statsDominadorDos)
-		statsJugadorUno.add(statsKillingSpreadDos)
-//		statsJugadorUno.add(statsMancoDos)
-		statsJugadorUno.add(statsNoobDos)
+		statsJugadorDos.add(statsRampageDos)
+		statsJugadorDos.add(statsDominadorDos)
+		statsJugadorDos.add(statsKillingSpreadDos)
+//		statsJugadorDos.add(statsMancoDos)
+		statsJugadorDos.add(statsNoobDos)
 		
 		
 		//STATS PERSONAJES JUGADOR TRES
-		statsRampageTres = new EstadisticasPersonajes(gambito,120,80, 30, 10, 50, ubicacionesRampage, top,rampage)
-		statsDominadorTres = new EstadisticasPersonajes(bestia,12,8, 3, 1, 5, ubicacionesNoDominador, top,dominador)
-		statsKillingSpreadTres = new EstadisticasPersonajes(wolverine,4,1, 1, 1, 1, ubicacionesNoDominador, middle,killing_spread)
+		statsRampageTres = new EstadisticasPersonajes(ciclope, 35, 30, 25, 4, 1, ubicacionesRampage, top,rampage)
+		statsDominadorTres = new EstadisticasPersonajes(wolverine, 25, 15, 13, 2, 2, ubicacionesNoDominador, top,dominador)
+		statsKillingSpreadTres = new EstadisticasPersonajes(bestia, 15, 10, 8, 1, 1, ubicacionesNoDominador, middle,killing_spread)
 //		statsMancoTres = new EstadisticasPersonajes(magneto,10,8, 10, 6, 5, ubicacionesNoRampage, top, manco)
-		statsNoobTres = new EstadisticasPersonajes(ciclope, 4, 1, 1, 1, 1, ubicacionesNoDominador, top, noob)
+		statsNoobTres = new EstadisticasPersonajes(gambito, 2, 1, 0, 1, 0, ubicacionesNoDominador, top, noob)
 		
 		//AGREGO PERSONAJES JUGADOR DOS
 		val statsJugadorTres = new ArrayList<EstadisticasPersonajes>
-		statsJugadorUno.add(statsRampageTres)
-		statsJugadorUno.add(statsDominadorTres)
-		statsJugadorUno.add(statsKillingSpreadTres)
-//		statsJugadorUno.add(statsMancoTres)
-		statsJugadorUno.add(statsNoobTres)
+		statsJugadorTres.add(statsRampageTres)
+		statsJugadorTres.add(statsDominadorTres)
+		statsJugadorTres.add(statsKillingSpreadTres)
+//		statsJugadorTres.add(statsMancoTres)
+		statsJugadorTres.add(statsNoobTres)
 		
 		//ASIGNO STATS A LOS JUGADORES
 		this.jugadorUno = new Jugador("Luciano",statsJugadorUno)
