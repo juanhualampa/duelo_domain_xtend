@@ -9,8 +9,8 @@ import veredicto.Ganador
 class Derrota extends Resultado{
 		
 	new(Retador r1, Retador r2) {
-		this.v1 = new Perdedor(r1)
-		this.v2 = new Ganador(r2)
+		this.resultadoRetador = new Perdedor(r1)
+		this.resultadoRetado = new Ganador(r2)
 	}
 	
 }

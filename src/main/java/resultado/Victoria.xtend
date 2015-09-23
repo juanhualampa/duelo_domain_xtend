@@ -10,13 +10,13 @@ import veredicto.Perdedor
 class Victoria extends Resultado{	
 	
 	new(Retador r1, Retador r2){
-		this.v1 = new Ganador(r1)
-		this.v2 = new Perdedor(r2)
+		this.resultadoRetador = new Ganador(r1)
+		this.resultadoRetado = new Perdedor(r2)
 	}
 			
 	override actualizarEstadisticas() {
-		v1.aplicarActualizacion
-		v2.aplicarActualizacion
+		getResultadoRetador.aplicarActualizacion
+		getResultadoRetado.aplicarActualizacion
 	}
 	
 	

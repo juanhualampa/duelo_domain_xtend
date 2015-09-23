@@ -8,13 +8,13 @@ import veredicto.Veredicto
 @Observable
 abstract class Resultado {
 	
-	Veredicto v1
-	Veredicto v2
+	Veredicto resultadoRetador
+	Veredicto resultadoRetado
 	
 	
 	def void actualizarEstadisticas() {
-		v1.aplicarActualizacion
-		v2.aplicarActualizacion
+		resultadoRetador.aplicarActualizacion
+		resultadoRetado.aplicarActualizacion
 	}
 	
 }

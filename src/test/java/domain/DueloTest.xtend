@@ -30,8 +30,10 @@ class DueloTest {
 	Retador retadorQueEmpata
 	EstadisticasPersonajes estadisticasDeUnRampage
 	EstadisticasPersonajes estadisticasDeUnNoob	
-	EstadisticasPersonajes otraEstadisticaDeUnRampage
-	EstadisticasPersonajes estadisticasDeUnKillingSpread		
+	EstadisticasPersonajes estadisticaDeUnDominador
+	EstadisticasPersonajes estadisticasDeUnKillingSpread
+	
+	EstadisticasPersonajes estadisticasDeOtroRampage
 	
 	
 	@Before
@@ -51,6 +53,7 @@ class DueloTest {
 		val rampage = new Calificacion("RAMPAGE",100)
 		val killing_spread = new Calificacion("KILLING_SPREAD",60)
 		val calPerdedora = new Calificacion("NOOB",5)
+		val dominador = new Calificacion("DOMINADOR",80)
 		
 		val ubicacionesUsadas = new ArrayList<Ubicacion>
 		ubicacionesUsadas.addAll(Arrays.asList(top,bottom,top,bottom))
@@ -60,20 +63,21 @@ class DueloTest {
 		
 		estadisticasDeUnRampage = new EstadisticasPersonajes(wolverine,120,80, 30, 10, 50, ubicacionesUsadas, top,rampage)
 		estadisticasDeUnNoob = new EstadisticasPersonajes(gambito,4,1, 1, 1, 1, ubicacionesUsadas2, top,calPerdedora)		
-		otraEstadisticaDeUnRampage = new EstadisticasPersonajes(ciclope,120,80, 30, 10, 50, ubicacionesUsadas2, top,rampage)
-		estadisticasDeUnKillingSpread = new EstadisticasPersonajes(bestia,4,1, 1, 1, 1, ubicacionesUsadas2, top,killing_spread)
-		
+		estadisticaDeUnDominador = new EstadisticasPersonajes(ciclope,12,8, 3, 1, 5, ubicacionesUsadas2, top,dominador)
+		estadisticasDeUnKillingSpread = new EstadisticasPersonajes(bestia,4,1, 1, 1, 1, ubicacionesUsadas2, middle,killing_spread)
+		estadisticasDeOtroRampage = new EstadisticasPersonajes(wolverine,30,18, 10, 6, 5, ubicacionesUsadas, top,rampage)
 				
 		val estadisticasPersonajesParaGanador = new ArrayList<EstadisticasPersonajes>
 		estadisticasPersonajesParaGanador.add(estadisticasDeUnRampage)
-		estadisticasPersonajesParaGanador.add(estadisticasDeUnKillingSpread)
+		estadisticasPersonajesParaGanador.add(estadisticaDeUnDominador)
 		
 		val estadisticasPersonajesParaPerdedor = new ArrayList<EstadisticasPersonajes>
 		estadisticasPersonajesParaPerdedor.add(estadisticasDeUnNoob)
+		estadisticasPersonajesParaPerdedor.add(estadisticasDeOtroRampage)
 		estadisticasPersonajesParaPerdedor.add(estadisticasDeUnKillingSpread)
 		
 		val estadisticasPersonajesParaEmpatar = new ArrayList<EstadisticasPersonajes>
-		estadisticasPersonajesParaEmpatar.add(otraEstadisticaDeUnRampage)
+		estadisticasPersonajesParaEmpatar.add(estadisticaDeUnDominador)
 		
 		this.jugadorGanador = new Jugador("Luciano",estadisticasPersonajesParaGanador)
 		this.jugadorPerdedor = new Jugador("Juan",estadisticasPersonajesParaPerdedor)
@@ -83,9 +87,6 @@ class DueloTest {
 		jugadorPerdedor.setSistema(sis)
 		jugadorQueEmpata1.setSistema(sis)
 		
-		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,top)
-		this.retadorQuePierde = new NoIniciador(jugadorPerdedor, gambito, bottom)
-		this.retadorQueEmpata = new NoIniciador(jugadorQueEmpata1, bestia, bottom)
 	}
 		
 	
@@ -106,23 +107,22 @@ class DueloTest {
 	
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElPrimero(){
-		this.retadorQuePierde = new NoIniciador(jugadorPerdedor, gambito, bottom)
 		assertEquals(0,jugadorGanador.duelos.size)
-		jugadorGanador.iniciarDuelo(wolverine,top)
+		jugadorGanador.iniciarDuelo(wolverine,middle)
 		assertEquals(1,jugadorGanador.duelos.size)
-		val veredictoParaElJugador1 = jugadorGanador.duelos.get(0).resultado.v1
-		val veredictoParaElJugador2 = jugadorGanador.duelos.get(0).resultado.v2
+		val veredictoParaElJugador1 = jugadorGanador.duelos.get(0).resultado.getResultadoRetador
+		val veredictoParaElRival = jugadorGanador.duelos.get(0).resultado.getResultadoRetado
 		assertTrue(veredictoParaElJugador1 instanceof Ganador)
-		assertTrue(veredictoParaElJugador2 instanceof Perdedor)
+		assertTrue(veredictoParaElRival instanceof Perdedor)
 	}
 	
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElSegundo(){		
 		assertEquals(0,jugadorPerdedor.duelos.size)
-		jugadorPerdedor.iniciarDuelo(ciclope,top)
+		jugadorPerdedor.iniciarDuelo(wolverine,top)
 		assertEquals(1,jugadorPerdedor.duelos.size)
-		val veredictoParaElJugador2 = jugadorPerdedor.duelos.get(0).resultado.v1
-		val veredictoParaElJugador1 = jugadorPerdedor.duelos.get(0).resultado.v2
+		val veredictoParaElJugador2 = jugadorPerdedor.duelos.get(0).resultado.resultadoRetador
+		val veredictoParaElJugador1 = jugadorPerdedor.duelos.get(0).resultado.resultadoRetado
 		assertTrue(veredictoParaElJugador2 instanceof Perdedor)
 		assertTrue(veredictoParaElJugador1 instanceof Ganador)
 	}
@@ -131,10 +131,10 @@ class DueloTest {
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConEmpate(){
 		
 		assertEquals(0,jugadorGanador.duelos.size)
-		jugadorGanador.iniciarDuelo(gambito,top)
+		jugadorGanador.iniciarDuelo(ciclope,top)
 		assertEquals(1,jugadorGanador.duelos.size)
-		val veredictoParaElJugador1 = jugadorGanador.duelos.get(0).resultado.v1
-		val veredictoParaElJugador2 = jugadorGanador.duelos.get(0).resultado.v2
+		val veredictoParaElJugador1 = jugadorGanador.duelos.get(0).resultado.getResultadoRetador
+		val veredictoParaElJugador2 = jugadorGanador.duelos.get(0).resultado.getResultadoRetado
 		assertTrue(veredictoParaElJugador1 instanceof Empate)
 		assertTrue(veredictoParaElJugador2 instanceof Empate)
 	}
