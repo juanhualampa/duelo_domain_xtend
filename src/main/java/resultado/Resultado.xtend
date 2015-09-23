@@ -2,7 +2,7 @@ package resultado
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-import veredicto.ActualizadorDeStats
+import retador.Retador
 
 /**
  * Representa el resultado de un duelo, posee el Ganador y Perdedor
@@ -11,12 +11,9 @@ import veredicto.ActualizadorDeStats
 @Observable
 abstract class Resultado {
 	
-	ActualizadorDeStats resultadoRetador
-	ActualizadorDeStats resultadoRetado
+	Retador retador
+	Retador retado
 	
-	def void actualizarEstadisticas() {
-		resultadoRetador.aplicarActualizacion
-		resultadoRetado.aplicarActualizacion
-	}
+	def void actualizarEstadisticas()
 	
 }

@@ -7,10 +7,6 @@ import retador.Bot
 
 class ActualizadorEmpate extends ActualizadorDeStats{
 		
-	new(Retador r1) {
-		super(r1)
-	}
-	
 	def dispatch actualizarse(Iniciador it) {
 		estadisticas(it.personaje).agregarAssist
 	}

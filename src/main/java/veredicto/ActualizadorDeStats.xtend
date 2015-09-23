@@ -6,14 +6,14 @@ import retador.Retador
 @Accessors
 abstract class ActualizadorDeStats {
 	
-	Retador retador	
 	
-	new(Retador r1){
-		this.retador = r1
+	
+	new(){
+		
 	}
 	
-	def void aplicarActualizacion(){
-		this.actualizarse(retador)
+	def void aplicarActualizacion(Retador it){
+		this.actualizarse(it)
 	}
 	
 	def paraInicializadores(Retador it){		

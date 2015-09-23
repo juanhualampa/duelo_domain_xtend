@@ -4,10 +4,15 @@ import retador.Retador
 import veredicto.ActualizadorEmpate
 
 class Empate extends Resultado {
-	
-	new(Retador r1, Retador r2) {
-		this.resultadoRetador = new ActualizadorEmpate(r1)
-		this.resultadoRetado = new ActualizadorEmpate(r2)
+		
+	new(Retador r1, Retador r2){
+		this.retador = r1
+		this.retado = r2
+	}
+			
+	override actualizarEstadisticas() {
+		new ActualizadorEmpate().aplicarActualizacion(retador)
+		new ActualizadorEmpate().aplicarActualizacion(retado)
 	}
 	
 	

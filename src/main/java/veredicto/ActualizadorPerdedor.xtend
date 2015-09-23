@@ -9,10 +9,6 @@ import retador.Bot
 @Accessors
 class ActualizadorPerdedor extends ActualizadorDeStats{
 	
-	new(Retador retador) {
-		super(retador)
-	}
-	
 	def dispatch actualizarse(Iniciador it) {	
 		paraInicializadores(it)	
 	}

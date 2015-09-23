@@ -8,9 +8,14 @@ import veredicto.ActualizadorPerdedor
 @Accessors
 class Derrota extends Resultado{
 		
-	new(Retador r1, Retador r2) {
-		this.resultadoRetador = new ActualizadorPerdedor(r1)
-		this.resultadoRetado = new ActualizadorGanador(r2)
+	new(Retador r1, Retador r2){
+		this.retador = r1
+		this.retado = r2
+	}
+			
+	override actualizarEstadisticas() {
+		new ActualizadorPerdedor().aplicarActualizacion(retador)
+		new ActualizadorGanador().aplicarActualizacion(retado)		
 	}
 	
 }
