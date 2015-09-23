@@ -4,17 +4,19 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import veredicto.Veredicto
 
+/**
+ * Representa el resultado de un duelo, posee el Ganador y Perdedor
+ */
 @Accessors
 @Observable
 abstract class Resultado {
 	
-	Veredicto v1
-	Veredicto v2
-	
+	Veredicto resultadoRetador
+	Veredicto resultadoRetado
 	
 	def void actualizarEstadisticas() {
-		v1.aplicarActualizacion
-		v2.aplicarActualizacion
+		resultadoRetador.aplicarActualizacion
+		resultadoRetado.aplicarActualizacion
 	}
 	
 }
