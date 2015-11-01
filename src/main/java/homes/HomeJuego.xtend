@@ -10,9 +10,9 @@ import domain.EstadisticasPersonajes
 import domain.Jugador
 import domain.Juego
 
-class HomeSistema {
+class HomeJuego {
 	
-	Juego sis
+	Juego juego
 	//JUGADORES
 	Jugador jugadorUno
 	Jugador jugadorDos
@@ -59,27 +59,25 @@ class HomeSistema {
 	List<Ubicacion> ubicacionesNoDominador
 		
 	new() {
-		this.sis = new Juego
+		this.juego = new Juego
 		this.top = Ubicacion.TOP
 		this.bottom = Ubicacion.BOTTOM	
 		this.middle = Ubicacion.MIDDLE
 		this.jungle = Ubicacion.JUNGLE
 		
-		this.wolverine = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"), Arrays.asList("La ducha"), top)
-		this.bestia = new Personaje("Bestia", Arrays.asList("Ser azul", "Ser inteligente"), Arrays.asList("Las tijeras"), middle)
-		this.gambito = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"), middle)
-		this.ciclope = new Personaje("Ciclope", Arrays.asList("Rayos laser","Lentes copados"),Arrays.asList("Cualquier otra cosa"), jungle)
-		this.magneto = new Personaje("Magneto", Arrays.asList("Usar casco","Volar"),Arrays.asList("Caminar"), bottom)
+		this.wolverine = new Personaje("Wolverine",	#["Araniar", "Llorar!"],#["La ducha"], top
+		)
+		this.bestia = new Personaje("Bestia", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle)
+		this.gambito = new Personaje("Gambito", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle)
+		this.ciclope = new Personaje("Ciclope", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle)
+		this.magneto = new Personaje("Magneto", #["Usar casco","Volar"],#["Caminar"], bottom)
 		
 		//UBICACIONES
-		val ubicacionesRampage = new ArrayList<Ubicacion>
-		ubicacionesRampage.addAll(Arrays.asList(top,top,top,top,top,bottom))
+		val ubicacionesRampage = #[top,top,top,top,top,bottom]
 		
-		ubicacionesNoRampage = new ArrayList<Ubicacion>
-		ubicacionesNoRampage.addAll(Arrays.asList(top,jungle,top,middle))
+		ubicacionesNoRampage = #[top,jungle,top,middle]
 		
-		ubicacionesNoDominador = new ArrayList<Ubicacion>
-		ubicacionesNoDominador.addAll(Arrays.asList(top,jungle,bottom,middle))
+		ubicacionesNoDominador = #[top,jungle,bottom,middle]
 		
 		//CALIFICACIONES SETEADAS PARA EVITAR RANDOM
 		rampage = new Calificacion("RAMPAGE",100)
@@ -97,13 +95,7 @@ class HomeSistema {
 		statsNoob = new EstadisticasPersonajes(gambito, 3, 0, 0, 2, 1, ubicacionesNoDominador, top,noob)	
 		
 		//AGREGO PERSONAJES JUGADOR UNO
-		val statsJugadorUno = new ArrayList<EstadisticasPersonajes>
-		statsJugadorUno.add(statsRampage)
-		statsJugadorUno.add(statsDominador)
-		statsJugadorUno.add(statsKillingSpread)
-		statsJugadorUno.add(statsManco)
-		statsJugadorUno.add(statsNoob)
-		
+		val statsJugadorUno = #[statsRampage,statsDominador,statsKillingSpread,statsManco,statsNoob]
 		
 		//STATS PERSONAJES JUGADOR DOS
 		statsRampageDos = new EstadisticasPersonajes(gambito,80, 60, 20, 10, 15, ubicacionesRampage, top, rampage)
@@ -113,13 +105,7 @@ class HomeSistema {
 		statsNoobDos = new EstadisticasPersonajes(wolverine, 4, 3, 1, 2, 1, ubicacionesNoDominador, top, noob)
 		
 		//AGREGO PERSONAJES JUGADOR DOS
-		val statsJugadorDos = new ArrayList<EstadisticasPersonajes>
-		statsJugadorDos.add(statsRampageDos)
-		statsJugadorDos.add(statsDominadorDos)
-		statsJugadorDos.add(statsKillingSpreadDos)
-//		statsJugadorDos.add(statsMancoDos)
-		statsJugadorDos.add(statsNoobDos)
-		
+		val statsJugadorDos = #[statsRampageDos,statsDominadorDos,statsKillingSpreadDos,statsNoobDos]
 		
 		//STATS PERSONAJES JUGADOR TRES
 		statsRampageTres = new EstadisticasPersonajes(ciclope, 35, 30, 25, 4, 1, ubicacionesRampage, top,rampage)
@@ -129,22 +115,17 @@ class HomeSistema {
 		statsNoobTres = new EstadisticasPersonajes(gambito, 2, 1, 0, 1, 0, ubicacionesNoDominador, top, noob)
 		
 		//AGREGO PERSONAJES JUGADOR DOS
-		val statsJugadorTres = new ArrayList<EstadisticasPersonajes>
-		statsJugadorTres.add(statsRampageTres)
-		statsJugadorTres.add(statsDominadorTres)
-		statsJugadorTres.add(statsKillingSpreadTres)
-//		statsJugadorTres.add(statsMancoTres)
-		statsJugadorTres.add(statsNoobTres)
+		val statsJugadorTres = #[statsRampageTres,statsDominadorTres,statsKillingSpreadTres,statsNoobTres]
 		
 		//ASIGNO STATS A LOS JUGADORES
 		this.jugadorUno = new Jugador("Luciano",statsJugadorUno)
 		this.jugadorDos = new Jugador("Juan",statsJugadorDos)
 		this.jugadorTres = new Jugador("Guido",statsJugadorTres)
 		
-		//ASIGNO SISTEMA A LOS JUGADORES
-		jugadorUno.registrarEn(sis)
-		jugadorDos.registrarEn(sis)
-		jugadorTres.registrarEn(sis)		
+		//REGISTRO A LOS JUGADORES EN EL JUEGO
+		jugadorUno.registrarEn(juego)
+		jugadorDos.registrarEn(juego)
+		jugadorTres.registrarEn(juego)		
 	}
 	
 		

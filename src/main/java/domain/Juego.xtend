@@ -30,15 +30,11 @@ class Juego {
 		if(noHayOponente(it)){
 			throw new NoHayOponenteException
 		}
-		oponente(it)
+		retadorPara(it)
 	}
 	
 	def noHayOponente(Retador ret){
-		oponente(ret) == null
-	}
-	
-	def Retador oponente(Retador ret){
-		retadorPara(ret)
+		retadorPara(ret) == null
 	}
 	
 	def Retador retadorPara(Retador ret){
