@@ -8,7 +8,7 @@ import retador.Iniciador
 
 class MrXTest {
 	Jugador jugador1
-	Juego sis 
+	Juego juego 
 	Ubicacion ubi1
 	Ubicacion ubi2		
 	Personaje per1 
@@ -20,7 +20,7 @@ class MrXTest {
 	
 	@Before
 	def void setUp() {
-		this.sis = new Juego()		
+		this.juego = new Juego()		
 		
 		this.ubi1 = Ubicacion.TOP;
 		this.ubi2 = Ubicacion.BOTTOM;
@@ -31,20 +31,20 @@ class MrXTest {
 		this.est2= new EstadisticasPersonajes(per2)
 		
 		this.jugador1 = new Jugador("Luciano",Arrays.asList(est1, est2))
-		jugador1.registrarEn(sis)
+		jugador1.registrarEn(juego)
 		this.ret1 = new Iniciador(jugador1, per1,ubi1)
 	}
 	
 	@Test 
 	def testsNoHayOponenteParaEsteJugador(){	
-		assertTrue(sis.noHayOponente(ret1))
+		assertTrue(juego.noHayOponente(ret1))
 	}
 	
 	@Test 
 	def testsComoNoHayOponenteParaEsteJugadorPeleaConMrX(){	
 		assertEquals(0,jugador1.duelos.size)
-		assertTrue(sis.noHayOponente(ret1))
-		val duelo = sis.realizarDuelo(ret1,sis.dameAMRX(ret1))
+		assertTrue(juego.noHayOponente(ret1))
+		val duelo = juego.realizarDuelo(ret1,juego.dameAMRX(ret1))
 		assertEquals(1,jugador1.duelos.size)
 		assertEquals("MR.X",duelo.retado.jugador.nombre)
 		assertEquals(Ubicacion.BOTTOM,duelo.retado.ubicacion)

@@ -26,41 +26,40 @@ class Juego {
 		realizarDuelo(ret, ret.obtenerOponente)
 	}
 	
-	//extension method
 	def Retador obtenerOponente(Retador it){
-		if(noHayOponente){
+		if(noHayOponente(it)){
 			throw new NoHayOponenteException
 		}
-		oponentesPosibles(it).head
+		oponente(it)
 	}
 	
-	def List<Retador> oponentesPosibles(Retador ret) {
-		val jugadoresYpersonajes = 	jugadoresDistintosAlRetadorConCalifacionesSimilares(ret).toJugadorYPersonaje(ret)
-		jugadoresYpersonajes.toRetadores
+	def noHayOponente(Retador ret){
+		oponente(ret) == null
 	}
 	
-	def List<Jugador> jugadoresDistintosAlRetadorConCalifacionesSimilares(Retador ret){
-		jugadores.filter[nombre != ret.jugador.nombre && conEstadisticasSimilaresA(ret)].toList
+	def Retador oponente(Retador ret){
+		retadorPara(ret)
+	}
+	
+	def Retador retadorPara(Retador ret){
+		val jugador = jugadores.findFirst[nombre != ret.jugador.nombre && conEstadisticasSimilaresA(ret)]
+		this.toRetadores(toJugadorYPersonaje(jugador,ret.estadisticas(ret.personaje)))
 	}
 	
 	def conEstadisticasSimilaresA(Jugador it,Retador ret) {
 		estadisticasPersonajes.similaresA(ret.estadisticas(ret.personaje))
 	}
-	
-	def toJugadorYPersonaje(List<Jugador> js, Retador ret){
-		js.map[it.jugadorYPersonaje(ret.estadisticas(ret.personaje))].toList
-	}	
-	
-	def List<Retador> toRetadores(List<Pair<Jugador, Personaje>> pares){
-		pares.map[(new NoIniciador(it.key, it.value, it.value.ubicacionIdeal))]
+		
+	def Retador toRetadores(Pair<Jugador, Personaje> it){
+		new NoIniciador(it.key, it.value, it.value.ubicacionIdeal)
 	}
 	
-	def Pair<Jugador,Personaje> jugadorYPersonaje(Jugador jugador, EstadisticasPersonajes est) {
+	def Pair<Jugador,Personaje> toJugadorYPersonaje(Jugador jugador, EstadisticasPersonajes est) {
 		jugador -> personajeCompatible(jugador.estadisticasPersonajes, est)
 	}
 	
 	def Personaje personajeCompatible (List<EstadisticasPersonajes> lista , EstadisticasPersonajes est){
-		lista.filter[it.esSimilarA(est)].head.personaje
+		lista.findFirst[it.esSimilarA(est)].personaje
 	}
 	
 	def boolean similaresA(List<EstadisticasPersonajes> list, EstadisticasPersonajes est){
@@ -71,10 +70,6 @@ class Juego {
 		est1.calificacion.categoria.equals(est2.calificacion.categoria)
 	}			
 	
-	def noHayOponente(Retador it){
-		oponentesPosibles.isEmpty
-	}
-		
 	def Duelo realizarDuelo(Retador it, Retador ret){		
 		val duelo = new Duelo(it,ret)
 		duelo.realizarse
