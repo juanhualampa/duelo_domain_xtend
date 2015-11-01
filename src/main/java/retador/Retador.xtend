@@ -5,6 +5,7 @@ import org.uqbar.commons.utils.Observable
 import domain.Jugador
 import domain.Personaje
 import domain.Ubicacion
+import duelos.Duelo
 
 /**
  * Clase que agrupa un jugador, personaje y ubicacion para un duelo.
@@ -30,8 +31,6 @@ abstract class Retador {
 	}
 	
 	def esMasPoderosoQue(Retador it){
-//		println(this.jugador+"poder de ataque"+this.poderDeAtaque)
-//		println(it.jugador+"poder de ataque retado"+it.poderDeAtaque)
 		this.poderDeAtaque > it.poderDeAtaque
 	}
 	
@@ -39,4 +38,13 @@ abstract class Retador {
 		jugador.estadisticas(it)
 	}
 	
+	def agregarDuelosAJugador(Duelo duelo){
+		this.jugador.agregarDuelo(duelo)
+	}
+	
+	def void aplicarActualizacionAlGanar(Duelo duelo)
+	
+	def void aplicarActualizacionAlPerder(Duelo duelo)
+	
+	def void aplicarActualizacionAlEmpatar(Duelo duelo)
 }

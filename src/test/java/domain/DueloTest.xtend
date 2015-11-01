@@ -7,9 +7,6 @@ import java.util.Arrays
 import retador.Retador
 import retador.Iniciador
 import retador.NoIniciador
-import veredicto.ActualizadorGanador
-import veredicto.ActualizadorEmpate
-import veredicto.ActualizadorPerdedor
 import resultado.Victoria
 import resultado.Derrota
 import resultado.Empate

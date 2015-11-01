@@ -1,4 +1,4 @@
-package veredicto
+package calculadorDeCalificaciones
 
 import java.util.List
 import retador.Retador

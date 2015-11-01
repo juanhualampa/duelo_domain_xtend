@@ -7,7 +7,7 @@ import java.util.Arrays
 import retador.Retador
 import duelos.Duelo
 import retador.Iniciador
-import veredicto.CalculadorDeCalificaciones
+import calculadorDeCalificaciones.CalculadorDeCalificaciones
 import java.util.List
 
 class CalificacionTest {

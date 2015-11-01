@@ -94,5 +94,9 @@ class Jugador extends Entity{
 	def agregarEstadisticaPara(Personaje it) {
 		estadisticasPersonajes.add(new EstadisticasPersonajes(it))
 	}
+	
+	def void agregarDuelo(Duelo duelo){
+		duelos.add(duelo)
+	}
 		
 }
