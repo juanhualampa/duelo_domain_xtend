@@ -14,7 +14,7 @@ import retador.Bot
 
 @Observable
 @Accessors
-class Sistema {
+class Juego {
 	List<Jugador> jugadores = newArrayList	
 		
 	/**
@@ -23,20 +23,17 @@ class Sistema {
 	 */
 	def Duelo iniciarReto(Jugador it, Personaje per ,Ubicacion ubic){
 		val ret = new Iniciador(it,per,ubic)
-		try
-			realizarDuelo(ret, ret.obtenerOponente)
-		catch (Exception e)
-			throw new NoHayOponenteException
+		realizarDuelo(ret, ret.obtenerOponente)
 	}
 	
 	//extension method
 	def Retador obtenerOponente(Retador it){
+		if(noHayOponente){
+			throw new NoHayOponenteException
+		}
 		oponentesPosibles(it).head
 	}
 	
-	/**
-	 * devuelve la lista de oponenetes posibles para el retador
-	 */
 	def List<Retador> oponentesPosibles(Retador ret) {
 		val jugadoresYpersonajes = 	jugadoresDistintosAlRetadorConCalifacionesSimilares(ret).toJugadorYPersonaje(ret)
 		jugadoresYpersonajes.toRetadores

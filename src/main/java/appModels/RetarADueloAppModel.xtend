@@ -63,7 +63,7 @@ class RetarADueloAppModel {
 	}
 	
 	def sistema(){
-		this.jugador.sistema
+		this.jugador.getJuego
 	}
 		
 	def setPersonajesConPuntajes(List<PersonajePuntaje> p){

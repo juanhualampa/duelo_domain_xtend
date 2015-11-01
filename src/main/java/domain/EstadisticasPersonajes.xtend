@@ -1,13 +1,13 @@
 package domain
 
-import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.model.Entity
 
 @Accessors
 @Observable
-class EstadisticasPersonajes extends Entity {
+class EstadisticasPersonajes extends Entity{
 	
 	int vecesUsadoAntesDelDuelo
 	int vecesQueGanoDuelo	
@@ -69,11 +69,15 @@ class EstadisticasPersonajes extends Entity {
 		vecesAssist += 1
 	}
 	
+	def nombrePersonaje(){
+		personaje.nombre
+	}
+	
 	/**
 	 * devuelve el poder de ataque del personaje para el jugador
 	 */
 	def poderDeAtaque() {
-		calificacion.nro + ((vecesKills + vecesAssist / 2 - vecesDeads) * vecesUsadoAntesDelDuelo)
+		calificacion.nro + ((vecesKills + vecesAssist / 2 - vecesDeads) * vecesUsadoAntesDelDuelo) 
 	}
 		
 }

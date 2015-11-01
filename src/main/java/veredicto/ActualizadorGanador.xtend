@@ -1,17 +1,16 @@
 package veredicto
 
-import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.Random
-import retador.Retador
+import org.eclipse.xtend.lib.annotations.Accessors
+import retador.Bot
 import retador.Iniciador
 import retador.NoIniciador
-import retador.Bot
 
 @Accessors
 class ActualizadorGanador extends ActualizadorDeStats{
 		
 	def dispatch actualizarse(Iniciador it) {
-		paraInicializadores(it)
+		paraInicializadores()
 		estadisticas(personaje).agregarUnaVictoria
 		estadisticas(personaje).mejorUbicacion = ubicacion		
 		val nroAlAzar = new Random().nextInt(100)

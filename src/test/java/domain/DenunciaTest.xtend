@@ -14,7 +14,7 @@ import duelos.AbusoDelSistemaDeDenuncias
 class DenunciaTest {
 	Jugador jugador1
 	Jugador jugador2
-	Sistema sis 
+	Juego sis 
 	Ubicacion ubi1
 	Ubicacion ubi2		
 	Personaje per1 
@@ -32,7 +32,7 @@ class DenunciaTest {
 	
 	@Before
 	def void setUp() {
-		this.sis = new Sistema()		
+		this.sis = new Juego()		
 		this.jugador1 = new Jugador("Luciano",sis)
 		this.jugador2 = new Jugador("Juan",sis)
 		this.ubi1 = Ubicacion.TOP;

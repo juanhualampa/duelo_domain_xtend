@@ -14,5 +14,11 @@ class Iniciador extends Retador{
 	new() {
 		super()
 	}
+	
+	def paraInicializadores(){		
+		estadisticas(personaje).agregarUnaParticipacion
+		estadisticas(personaje).ubicacionesUsadas.add(ubicacion)
+	}
+	
 		
 }

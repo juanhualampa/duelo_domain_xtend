@@ -15,7 +15,7 @@ class CalificacionTest {
 	Jugador jugadorGanador
 	Jugador jugadorPerdedor
 	Jugador jugadorQueEmpata1
-	Sistema sis
+	Juego sis
 	Ubicacion top
 	Ubicacion bottom		
 	Ubicacion jungle
@@ -40,15 +40,14 @@ class CalificacionTest {
 		
 	@Before
 	def void setUp() {
-		this.sis = new Sistema
+		this.sis = new Juego
 		this.top = Ubicacion.TOP
 		this.bottom = Ubicacion.BOTTOM	
 		this.middle = Ubicacion.MIDDLE
 		this.jungle = Ubicacion.JUNGLE
-		this.wolverine = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),
-			Arrays.asList("La ducha"),top)
-		this.bestia = new Personaje("Bestia",Arrays.asList("Ser azul", "Ser inteligente"),
-			Arrays.asList("Las tijeras"),middle)
+		
+		this.wolverine = new Personaje("Wolverine", Arrays.asList("Araniar", "Llorar!"),Arrays.asList("La ducha"),top)
+		this.bestia = new Personaje("Bestia",Arrays.asList("Ser azul", "Ser inteligente"),Arrays.asList("Las tijeras"),middle)
 		this.gambito = new Personaje("Gambito", Arrays.asList("Tirarte cartitas","Tirar los perros"),Arrays.asList("Cualquier otra cosa"),Ubicacion.MIDDLE)
 		this.ciclope = new Personaje("Ciclope", Arrays.asList("Rayos laser","Lentes copados"),Arrays.asList("Cualquier otra cosa"),Ubicacion.JUNGLE)
 		
@@ -90,9 +89,9 @@ class CalificacionTest {
 		this.jugadorPerdedor = new Jugador("Juan",estadisticasPersonajesParaPerdedor)
 		this.jugadorQueEmpata1 = new Jugador("Guido",estadisticasPersonajesParaEmpatar)
 		
-		jugadorGanador.setSistema(sis)
-		jugadorPerdedor.setSistema(sis)
-		jugadorQueEmpata1.setSistema(sis)		
+		jugadorGanador.registrarEn(sis)
+		jugadorPerdedor.registrarEn(sis)
+		jugadorQueEmpata1.registrarEn(sis)		
 	}
 
 	
@@ -125,8 +124,10 @@ class CalificacionTest {
 	def testNoEntraPorCalicacionPorRampagePorNoTenerCantidadDeDuelosPrevios(){			
 		this.retadorQueGana = new Iniciador(jugadorGanador, wolverine,bottom)
 		assertEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
+
 		retadorQueGana.estadisticas(wolverine).ubicacionesUsadas = ubicacionesNoRampage
 		retadorQueGana.estadisticas(wolverine).calificacion = new CalculadorDeCalificaciones().calcular(retadorQueGana,95)
+
 		assertNotEquals("RAMPAGE",retadorQueGana.estadisticas(wolverine).calificacion.categoria)
 	}
 			

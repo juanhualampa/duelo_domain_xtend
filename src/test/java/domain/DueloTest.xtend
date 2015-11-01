@@ -19,7 +19,7 @@ class DueloTest {
 	Jugador jugadorPerdedor
 	Jugador jugadorQueEmpata1
 	Jugador jugadorQueEmpata2	
-	Sistema sis
+	Juego sis
 	Ubicacion top
 	Ubicacion bottom		
 	Ubicacion jungle
@@ -41,7 +41,7 @@ class DueloTest {
 	
 	@Before
 	def void setUp() {
-		this.sis = new Sistema
+		this.sis = new Juego
 		this.top = Ubicacion.TOP
 		this.bottom = Ubicacion.BOTTOM	
 		this.middle = Ubicacion.MIDDLE
@@ -86,9 +86,9 @@ class DueloTest {
 		this.jugadorPerdedor = new Jugador("Juan",estadisticasPersonajesParaPerdedor)
 		this.jugadorQueEmpata1 = new Jugador("Guido",estadisticasPersonajesParaEmpatar)
 		
-		jugadorGanador.setSistema(sis)
-		jugadorPerdedor.setSistema(sis)
-		jugadorQueEmpata1.setSistema(sis)
+		jugadorGanador.registrarEn(sis)
+		jugadorPerdedor.registrarEn(sis)
+		jugadorQueEmpata1.registrarEn(sis)
 		
 	}
 		
@@ -120,7 +120,7 @@ class DueloTest {
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElSegundo(){		
 		assertEquals(0,jugadorPerdedor.duelos.size)
-		jugadorPerdedor.iniciarDuelo(wolverine,top)
+		jugadorPerdedor.iniciarDuelo(gambito,middle)
 		assertEquals(1,jugadorPerdedor.duelos.size)
 		val resultadoJugador1 = jugadorPerdedor.duelos.get(0).resultado
 		assertTrue(resultadoJugador1 instanceof Derrota)

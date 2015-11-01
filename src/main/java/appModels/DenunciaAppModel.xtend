@@ -77,7 +77,7 @@ class DenunciaAppModel {
 	 * devuelve true o false dependiendo de si la denuncia es valida o no.
 	 */
 	def calcularValidez() {
-		denuncia.calcularValidez
+		denuncia.calcularValidez()
 	}
 	
 	/**

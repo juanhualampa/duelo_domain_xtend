@@ -14,40 +14,37 @@ import duelos.Duelo
 @Accessors
 @Observable
 class Jugador extends Entity{
-	List<EstadisticasPersonajes> estadisticasPersonajes	
-	int cantDePeleasGanadas
-	List<Denuncia> denuncias	
-	Integer ranking
 	String nombre
+	List<EstadisticasPersonajes> estadisticasPersonajes	
+	List<Denuncia> denuncias	
 	List<Duelo> duelos	
-	Sistema sistema
+	Juego juego
 	
-	new(String Nombre,Sistema sis){
+	new(String Nombre,Juego juego){
 		estadisticasPersonajes = new ArrayList<EstadisticasPersonajes>()
-		cantDePeleasGanadas = 0
 		denuncias = newArrayList
-		ranking = 0
 		duelos = newArrayList
 		denuncias = newArrayList
 		this.nombre = Nombre;
-		this.sistema = sis
-		sistema.jugadores.add(this)
+		registrarEn(juego)
 	}
 	new(){}
 	
 	new(String nombre, List<EstadisticasPersonajes> estadisticasPersonajes){
 		this.estadisticasPersonajes = estadisticasPersonajes
-		cantDePeleasGanadas = 0
 		denuncias = newArrayList
-		ranking = 0
 		duelos = newArrayList
 		denuncias = newArrayList
 		this.nombre = nombre
 	}
 	
-	def setSistema(Sistema sis){
-		this.sistema = sis
-		this.sistema.jugadores.add(this)
+	new(String nombre) {
+		this.nombre = nombre
+	}
+		
+	def void registrarEn(Juego sis){
+		this.juego = sis
+		this.juego.jugadores.add(this)
 	}
 		
 	def recibioDenuncia(Denuncia denuncia) {
@@ -63,20 +60,19 @@ class Jugador extends Entity{
 	}
 	
 	def Integer getRanking(){
-		ranking = this.calificacion() / 500
+		this.calificacion() / 500
 	}	
 	
 	def Duelo iniciarDuelo (Personaje personaje ,Ubicacion ubic){
-		sistema.iniciarReto(this, personaje, ubic)
+		juego.iniciarReto(this, personaje, ubic)
 	}
 		
 	def Integer calificacion(){
-		(promedioDeCalificacionesDePersonajes - pesoDeDenuncias ) * cantDePeleasGanadas
-		// aunque nos piden 		pesoDeDenuncias  * cantDePeleasGanadas
+		(promedioDeCalificacionesDePersonajes - pesoDeDenuncias ) 
 	}
 			
 	 def denunciarAJugador(Jugador jug, Motivo mot, Descripcion desc) {
-	 	sistema.denunciarJugador(obtenerUltimoDueloContra(jug), mot, desc)
+	 	juego.denunciarJugador(obtenerUltimoDueloContra(jug), mot, desc)
 	 }
 	
 	def Duelo obtenerUltimoDueloContra(Jugador jugador) {

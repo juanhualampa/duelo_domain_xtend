@@ -1,18 +1,18 @@
 package appModels
 
 import retador.Retador
-import domain.Sistema
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
+import domain.Juego
 
 @Accessors
 @Observable
 class MrxAppModel {
 	
 	Retador retador	
-	Sistema sistema
+	Juego sistema
 	
-	new(Retador retador, Sistema sis) {
+	new(Retador retador, Juego sis) {
 		this.retador = retador
 		this.sistema = sis
 	}

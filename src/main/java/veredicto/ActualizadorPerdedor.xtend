@@ -9,10 +9,6 @@ import retador.Bot
 @Accessors
 class ActualizadorPerdedor extends ActualizadorDeStats{
 	
-	def dispatch actualizarse(Iniciador it) {	
-		paraInicializadores(it)	
-	}
-		
 	def dispatch actualizarse(NoIniciador it) {
 		estadisticas(personaje).sumarDeads
 	}

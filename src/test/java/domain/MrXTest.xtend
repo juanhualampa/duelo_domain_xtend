@@ -8,7 +8,7 @@ import retador.Iniciador
 
 class MrXTest {
 	Jugador jugador1
-	Sistema sis 
+	Juego sis 
 	Ubicacion ubi1
 	Ubicacion ubi2		
 	Personaje per1 
@@ -20,7 +20,7 @@ class MrXTest {
 	
 	@Before
 	def void setUp() {
-		this.sis = new Sistema()		
+		this.sis = new Juego()		
 		
 		this.ubi1 = Ubicacion.TOP;
 		this.ubi2 = Ubicacion.BOTTOM;
@@ -31,7 +31,7 @@ class MrXTest {
 		this.est2= new EstadisticasPersonajes(per2)
 		
 		this.jugador1 = new Jugador("Luciano",Arrays.asList(est1, est2))
-		jugador1.setSistema(sis)
+		jugador1.registrarEn(sis)
 		this.ret1 = new Iniciador(jugador1, per1,ubi1)
 	}
 	

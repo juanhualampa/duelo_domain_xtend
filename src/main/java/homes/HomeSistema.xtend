@@ -7,12 +7,12 @@ import java.util.Arrays
 import domain.Personaje
 import domain.Calificacion
 import domain.EstadisticasPersonajes
-import domain.Sistema
 import domain.Jugador
+import domain.Juego
 
 class HomeSistema {
 	
-	Sistema sis
+	Juego sis
 	//JUGADORES
 	Jugador jugadorUno
 	Jugador jugadorDos
@@ -59,7 +59,7 @@ class HomeSistema {
 	List<Ubicacion> ubicacionesNoDominador
 		
 	new() {
-		this.sis = new Sistema
+		this.sis = new Juego
 		this.top = Ubicacion.TOP
 		this.bottom = Ubicacion.BOTTOM	
 		this.middle = Ubicacion.MIDDLE
@@ -142,9 +142,14 @@ class HomeSistema {
 		this.jugadorTres = new Jugador("Guido",statsJugadorTres)
 		
 		//ASIGNO SISTEMA A LOS JUGADORES
-		jugadorUno.setSistema(sis)
-		jugadorDos.setSistema(sis)
-		jugadorTres.setSistema(sis)		
+		jugadorUno.registrarEn(sis)
+		jugadorDos.registrarEn(sis)
+		jugadorTres.registrarEn(sis)		
+	}
+	
+		
+	def posiciones(){
+		return #[Ubicacion.TOP,Ubicacion.BOTTOM,Ubicacion.MIDDLE, Ubicacion.JUNGLE]
 	}
 		
 	def jugador(){
