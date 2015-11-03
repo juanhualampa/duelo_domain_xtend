@@ -21,6 +21,14 @@ class Personaje  extends Entity {
 		this.especialidades = especialidades
 	}
 	
+	new(Integer id,String nombre,List<String> especialidades, List<String> debilidades ,Ubicacion ubicacionIdeal){
+		this.id = id
+		this.nombre = nombre
+		this.debilidades = debilidades
+		this.ubicacionIdeal = ubicacionIdeal
+		this.especialidades = especialidades
+	}
+	
 	new() {	}
 	
 	override toString(){

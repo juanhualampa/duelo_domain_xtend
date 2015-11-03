@@ -63,11 +63,11 @@ class HomeJuego {
 		this.middle = Ubicacion.MIDDLE
 		this.jungle = Ubicacion.JUNGLE
 		
-		val wolverine = new Personaje("Wolverine",	#["Araniar", "Llorar!"],#["La ducha"], top)
-		val bestia = new Personaje("Bestia", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle)
-		val gambito = new Personaje("Gambito", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle)
-		val ciclope = new Personaje("Ciclope", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle)
-		val magneto = new Personaje("Magneto", #["Usar casco","Volar"],#["Caminar"], bottom)
+		val wolverine = new Personaje(1,"Wolverine",	#["Araniar", "Llorar!"],#["La ducha"], top)
+		val bestia = new Personaje(2,"Bestia", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle)
+		val gambito = new Personaje(3,"Gambito", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle)
+		val ciclope = new Personaje(4,"Ciclope", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle)
+		val magneto = new Personaje(5,"Magneto", #["Usar casco","Volar"],#["Caminar"], bottom)
 		
 		this.personajes = #[wolverine,bestia,gambito,ciclope,magneto]
 		
