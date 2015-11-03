@@ -76,11 +76,15 @@ class Jugador extends Entity{
 	 }
 	
 	def Duelo obtenerUltimoDueloContra(Jugador jugador) {
-		this.duelos.filter[it.involucraA(jugador)].last
+		this.duelos.findLast[it.involucraA(jugador)]
+	}
+	
+	def EstadisticasPersonajes estadisticas(Integer nro){
+		estadisticasPersonajes.findFirst[it.personaje.id.equals(nro)]
 	}
 	
 	def EstadisticasPersonajes estadisticas(Personaje p){
-		estadisticasPersonajes.filter[it.personaje.equals(p)].head
+		estadisticasPersonajes.findFirst[it.personaje.equals(p)]
 	}
 	
 	def poderDeAtaque(Personaje personaje) {

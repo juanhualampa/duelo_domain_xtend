@@ -1,15 +1,15 @@
 package homes
 
-import java.util.List
-import java.util.ArrayList
-import domain.Ubicacion
-import java.util.Arrays
-import domain.Personaje
 import domain.Calificacion
 import domain.EstadisticasPersonajes
-import domain.Jugador
 import domain.Juego
+import domain.Jugador
+import domain.Personaje
+import domain.Ubicacion
+import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class HomeJuego {
 	
 	Juego juego
@@ -23,12 +23,9 @@ class HomeJuego {
 	Ubicacion jungle
 	Ubicacion middle
 	//PERSONAJES
-	Personaje wolverine 
-	Personaje gambito
-	Personaje ciclope	
-	Personaje bestia
-	Personaje magneto
 	
+	
+		
 	//STATS PERSONAJES
 	EstadisticasPersonajes statsRampage
 	EstadisticasPersonajes statsDominador
@@ -55,6 +52,7 @@ class HomeJuego {
 	Calificacion manco
 	Calificacion dominador
 	
+	List<Personaje> personajes
 	List<Ubicacion> ubicacionesNoRampage
 	List<Ubicacion> ubicacionesNoDominador
 		
@@ -65,12 +63,13 @@ class HomeJuego {
 		this.middle = Ubicacion.MIDDLE
 		this.jungle = Ubicacion.JUNGLE
 		
-		this.wolverine = new Personaje("Wolverine",	#["Araniar", "Llorar!"],#["La ducha"], top
-		)
-		this.bestia = new Personaje("Bestia", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle)
-		this.gambito = new Personaje("Gambito", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle)
-		this.ciclope = new Personaje("Ciclope", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle)
-		this.magneto = new Personaje("Magneto", #["Usar casco","Volar"],#["Caminar"], bottom)
+		val wolverine = new Personaje("Wolverine",	#["Araniar", "Llorar!"],#["La ducha"], top)
+		val bestia = new Personaje("Bestia", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle)
+		val gambito = new Personaje("Gambito", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle)
+		val ciclope = new Personaje("Ciclope", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle)
+		val magneto = new Personaje("Magneto", #["Usar casco","Volar"],#["Caminar"], bottom)
+		
+		this.personajes = #[wolverine,bestia,gambito,ciclope,magneto]
 		
 		//UBICACIONES
 		val ubicacionesRampage = #[top,top,top,top,top,bottom]
@@ -128,9 +127,21 @@ class HomeJuego {
 		jugadorTres.registrarEn(juego)		
 	}
 	
+	def jugadorSeleccionado(){
+		jugadorUno
+	}
 		
-	def posiciones(){
-		return #[Ubicacion.TOP,Ubicacion.BOTTOM,Ubicacion.MIDDLE, Ubicacion.JUNGLE]
+	def estadisticas(Integer idJugador){
+		juego.jugadores.findFirst[it.id.equals(idJugador)].estadisticasPersonajes
+	}
+	
+	def estadisticasDePersonajeSeleccionado(Integer idPersonaje, Integer idJugador){
+		estadisticas(idJugador).findFirst[personaje.id.equals(idPersonaje)]
+	}
+		
+	def caracteristicas(Integer idPersonaje){
+		val personaje =personajes.findFirst[id.equals(idPersonaje)]
+		#[personaje.especialidades,personaje.debilidades,personaje.ubicacionIdeal]
 	}
 		
 	def jugador(){
