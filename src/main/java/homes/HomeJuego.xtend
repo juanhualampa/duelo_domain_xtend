@@ -69,7 +69,6 @@ class HomeJuego {
 		val pudge = new Personaje(4,"Pudge", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle,'assets/images/pudge.png')
 		val witchdoctor = new Personaje(5,"Witchdoctor", #["Usar casco","Volar"],#["Caminar"], bottom,'assets/images/witchdoctor.png')
 		val viper = new Personaje(6,"Viper", #["Ni idea","Volar"],#["Saltar"], bottom,'assets/images/viper.png')
-		
 		this.personajes = #[amumu,ahri,olaf,pudge,witchdoctor,viper]
 		
 		//UBICACIONES
@@ -137,7 +136,7 @@ class HomeJuego {
 		juego.jugadores.findFirst[it.id.equals(idJugador)].estadisticasPersonajes
 	}
 	
-	def estadisticasDePersonajeSeleccionado(Integer idPersonaje, Integer idJugador){
+	def estadisticasDePersonajeSeleccionado(Integer idJugador,Integer idPersonaje){
 		estadisticas(idJugador).findFirst[personaje.id.equals(idPersonaje)]
 	}
 		

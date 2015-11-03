@@ -11,6 +11,7 @@ import retador.Iniciador
 import org.uqbar.commons.model.UserException
 import java.util.regex.Pattern
 import homes.HomeJuego
+import java.util.HashMap
 
 @Accessors
 @Observable
@@ -112,13 +113,22 @@ class RetarADueloAppModel {
 	}
 	
 	def dameSusPropiedades(EstadisticasPersonajes it) {
-		#[new Pair("Jugadas",vecesUsadoAntesDelDuelo),
-			new Pair("Ganadas",vecesQueGanoDuelo),
-			new Pair("Kills",vecesKills),	
-			new Pair("Deads",vecesDeads),	
-			new Pair("Assists",vecesAssist),
-			new Pair("Mejor ubicacion",mejorUbicacion),
-			new Pair("Puntaje",calificacion.categoria)]
+//		#[new Pair("Jugadas",vecesUsadoAntesDelDuelo),
+//			new Pair("Ganadas",vecesQueGanoDuelo),
+//			new Pair("Kills",vecesKills),	
+//			new Pair("Deads",vecesDeads),	
+//			new Pair("Assists",vecesAssist),
+//			new Pair("Mejor ubicacion",mejorUbicacion),
+//			new Pair("Puntaje",calificacion.categoria)]
+		val nose = new HashMap<String, Object>();
+		nose.put("Jugadas",vecesUsadoAntesDelDuelo)
+		nose.put("Ganadas",vecesQueGanoDuelo)
+		nose.put("Kills",vecesKills)
+		nose.put("Deads",vecesDeads)	
+		nose.put("Assists",vecesAssist)
+		nose.put("Mejor ubicacion",mejorUbicacion)
+		nose.put("Puntaje",calificacion.categoria)
+		nose
 	}
 	
 	def obtenerDuelo(Integer idJugador,Ubicacion ubicacion) {
