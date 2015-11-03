@@ -28,6 +28,15 @@ class Jugador extends Entity{
 		this.nombre = Nombre;
 		registrarEn(juego)
 	}
+	new(Integer id,String nombre, List<EstadisticasPersonajes> estadisticasPersonajes){
+		this.id = id
+		this.estadisticasPersonajes = estadisticasPersonajes
+		denuncias = newArrayList
+		duelos = newArrayList
+		denuncias = newArrayList
+		this.nombre = nombre
+	}
+	
 	new(){}
 	
 	new(String nombre, List<EstadisticasPersonajes> estadisticasPersonajes){

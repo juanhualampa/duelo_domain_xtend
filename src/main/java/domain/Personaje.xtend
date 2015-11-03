@@ -13,6 +13,7 @@ class Personaje  extends Entity {
 	List<String> especialidades
 	List<String> debilidades
 	String nombre
+	String source
 	
 	new(String nombre,List<String> especialidades, List<String> debilidades ,Ubicacion ubicacionIdeal){
 		this.nombre = nombre
@@ -28,6 +29,16 @@ class Personaje  extends Entity {
 		this.ubicacionIdeal = ubicacionIdeal
 		this.especialidades = especialidades
 	}
+	
+	new(Integer id,String nombre,List<String> especialidades, List<String> debilidades ,Ubicacion ubicacionIdeal, String source){
+		this.id = id
+		this.nombre = nombre
+		this.debilidades = debilidades
+		this.ubicacionIdeal = ubicacionIdeal
+		this.especialidades = especialidades
+		this.source = source
+	}
+	
 	
 	new() {	}
 	

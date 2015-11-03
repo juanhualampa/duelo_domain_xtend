@@ -63,13 +63,14 @@ class HomeJuego {
 		this.middle = Ubicacion.MIDDLE
 		this.jungle = Ubicacion.JUNGLE
 		
-		val wolverine = new Personaje(1,"Wolverine",	#["Araniar", "Llorar!"],#["La ducha"], top)
-		val bestia = new Personaje(2,"Bestia", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle)
-		val gambito = new Personaje(3,"Gambito", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle)
-		val ciclope = new Personaje(4,"Ciclope", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle)
-		val magneto = new Personaje(5,"Magneto", #["Usar casco","Volar"],#["Caminar"], bottom)
+		val amumu = new Personaje(1,"Amumu",	#["Araniar", "Llorar!"],#["La ducha"], top,'assets/images/amumu.png')
+		val ahri = new Personaje(2,"Ahri", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle,'assets/images/ahri.png')
+		val olaf = new Personaje(3,"Olaf", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle,'assets/images/olaf.png')
+		val pudge = new Personaje(4,"Pudge", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle,'assets/images/pudge.png')
+		val witchdoctor = new Personaje(5,"Witchdoctor", #["Usar casco","Volar"],#["Caminar"], bottom,'assets/images/witchdoctor.png')
+		val viper = new Personaje(6,"Viper", #["Ni idea","Volar"],#["Saltar"], bottom,'assets/images/viper.png')
 		
-		this.personajes = #[wolverine,bestia,gambito,ciclope,magneto]
+		this.personajes = #[amumu,ahri,olaf,pudge,witchdoctor,viper]
 		
 		//UBICACIONES
 		val ubicacionesRampage = #[top,top,top,top,top,bottom]
@@ -87,39 +88,40 @@ class HomeJuego {
 		
 		//STATS PERSONAJES JUGADOR UNO
 		//NO HAY RIVAL PARA PERSONAJE EN MANCO
-		statsRampage = new EstadisticasPersonajes(wolverine,120,80, 30, 10, 50, ubicacionesRampage, top,rampage)
-		statsDominador = new EstadisticasPersonajes(ciclope,12, 8, 3, 1, 5, ubicacionesNoDominador, top,dominador)
-		statsKillingSpread = new EstadisticasPersonajes(bestia, 4, 1, 1, 1, 1, ubicacionesNoDominador, middle,killing_spread)
-		statsManco = new EstadisticasPersonajes(magneto, 10, 8, 10, 6, 5, ubicacionesNoRampage, top,manco)
-		statsNoob = new EstadisticasPersonajes(gambito, 3, 0, 0, 2, 1, ubicacionesNoDominador, top,noob)	
+		statsRampage = new EstadisticasPersonajes(amumu,120,80, 30, 10, 50, ubicacionesRampage, top,rampage)
+		statsDominador = new EstadisticasPersonajes(pudge,12, 8, 3, 1, 5, ubicacionesNoDominador, top,dominador)
+		statsKillingSpread = new EstadisticasPersonajes(ahri, 4, 1, 1, 1, 1, ubicacionesNoDominador, middle,killing_spread)
+		statsManco = new EstadisticasPersonajes(witchdoctor, 10, 8, 10, 6, 5, ubicacionesNoRampage, top,manco)
+		statsNoob = new EstadisticasPersonajes(olaf, 3, 0, 0, 2, 1, ubicacionesNoDominador, top,noob)
+		val statsNoob2 = new EstadisticasPersonajes(viper, 4, 0, 0, 2, 1, ubicacionesNoDominador, top,noob)	
 		
 		//AGREGO PERSONAJES JUGADOR UNO
-		val statsJugadorUno = #[statsRampage,statsDominador,statsKillingSpread,statsManco,statsNoob]
+		val statsJugadorUno = #[statsRampage,statsDominador,statsKillingSpread,statsManco,statsNoob,statsNoob2]
 		
 		//STATS PERSONAJES JUGADOR DOS
-		statsRampageDos = new EstadisticasPersonajes(gambito,80, 60, 20, 10, 15, ubicacionesRampage, top, rampage)
-		statsDominadorDos = new EstadisticasPersonajes(bestia, 15, 8, 4, 2, 6, ubicacionesNoDominador, top, dominador)
-		statsKillingSpreadDos = new EstadisticasPersonajes(ciclope, 5, 2, 3, 0, 1, ubicacionesNoDominador, middle, killing_spread)
-//		statsMancoDos = new EstadisticasPersonajes(magneto,10,8, 10, 6, 5, ubicacionesNoRampage, top, manco)
-		statsNoobDos = new EstadisticasPersonajes(wolverine, 4, 3, 1, 2, 1, ubicacionesNoDominador, top, noob)
+		statsRampageDos = new EstadisticasPersonajes(olaf,80, 60, 20, 10, 15, ubicacionesRampage, top, rampage)
+		statsDominadorDos = new EstadisticasPersonajes(ahri, 15, 8, 4, 2, 6, ubicacionesNoDominador, top, dominador)
+		statsKillingSpreadDos = new EstadisticasPersonajes(pudge, 5, 2, 3, 0, 1, ubicacionesNoDominador, middle, killing_spread)
+//		statsMancoDos = new EstadisticasPersonajes(witchdoctor,10,8, 10, 6, 5, ubicacionesNoRampage, top, manco)
+		statsNoobDos = new EstadisticasPersonajes(amumu, 4, 3, 1, 2, 1, ubicacionesNoDominador, top, noob)
 		
 		//AGREGO PERSONAJES JUGADOR DOS
 		val statsJugadorDos = #[statsRampageDos,statsDominadorDos,statsKillingSpreadDos,statsNoobDos]
 		
 		//STATS PERSONAJES JUGADOR TRES
-		statsRampageTres = new EstadisticasPersonajes(ciclope, 35, 30, 25, 4, 1, ubicacionesRampage, top,rampage)
-		statsDominadorTres = new EstadisticasPersonajes(wolverine, 25, 15, 13, 2, 2, ubicacionesNoDominador, top,dominador)
-		statsKillingSpreadTres = new EstadisticasPersonajes(bestia, 15, 10, 8, 1, 1, ubicacionesNoDominador, middle,killing_spread)
-//		statsMancoTres = new EstadisticasPersonajes(magneto,10,8, 10, 6, 5, ubicacionesNoRampage, top, manco)
-		statsNoobTres = new EstadisticasPersonajes(gambito, 2, 1, 0, 1, 0, ubicacionesNoDominador, top, noob)
+		statsRampageTres = new EstadisticasPersonajes(pudge, 35, 30, 25, 4, 1, ubicacionesRampage, top,rampage)
+		statsDominadorTres = new EstadisticasPersonajes(amumu, 25, 15, 13, 2, 2, ubicacionesNoDominador, top,dominador)
+		statsKillingSpreadTres = new EstadisticasPersonajes(ahri, 15, 10, 8, 1, 1, ubicacionesNoDominador, middle,killing_spread)
+//		statsMancoTres = new EstadisticasPersonajes(witchdoctor,10,8, 10, 6, 5, ubicacionesNoRampage, top, manco)
+		statsNoobTres = new EstadisticasPersonajes(olaf, 2, 1, 0, 1, 0, ubicacionesNoDominador, top, noob)
 		
 		//AGREGO PERSONAJES JUGADOR DOS
 		val statsJugadorTres = #[statsRampageTres,statsDominadorTres,statsKillingSpreadTres,statsNoobTres]
 		
 		//ASIGNO STATS A LOS JUGADORES
-		this.jugadorUno = new Jugador("Luciano",statsJugadorUno)
-		this.jugadorDos = new Jugador("Juan",statsJugadorDos)
-		this.jugadorTres = new Jugador("Guido",statsJugadorTres)
+		this.jugadorUno = new Jugador(1,"Luciano",statsJugadorUno)
+		this.jugadorDos = new Jugador(2,"Juan",statsJugadorDos)
+		this.jugadorTres = new Jugador(3,"Guido",statsJugadorTres)
 		
 		//REGISTRO A LOS JUGADORES EN EL JUEGO
 		jugadorUno.registrarEn(juego)
