@@ -87,10 +87,11 @@ class Juego {
 	}
 	
 	def generarMRX(Retador ret, int nroAzaroso){
-		val personajeRandom = ret.jugador.estadisticasPersonajes.map[ret.personaje].get(nroAzaroso)
-		val estadisticas = ret.jugador.estadisticasPersonajes
-		val bot = new Jugador("MR.X", estadisticas)
-		new Bot(bot, personajeRandom, Ubicacion.BOTTOM)
+		val mrX = new Personaje(34,"MrX",#["Ser omnipresente"],#["Le gana a muchos"],Ubicacion.BOTTOM,'assets/images/mrx.jpg')
+		val estadisticas = new EstadisticasPersonajes(mrX)
+		val bot = new Jugador("MR.X", this)
+		bot.estadisticasPersonajes.add(estadisticas)
+		new Bot(bot, mrX, Ubicacion.BOTTOM)
 	}
 	
 }
