@@ -39,6 +39,9 @@ class Personaje  extends Entity {
 		this.source = source
 	}
 	
+	def caracteristicas(){
+		#[especialidades,debilidades,ubicacionIdeal]
+	}
 	
 	new() {	}
 	

@@ -12,6 +12,9 @@ import org.uqbar.commons.model.UserException
 import java.util.regex.Pattern
 import homes.HomeJuego
 import java.util.HashMap
+import retador.Iniciador
+import resultado.Resultado
+import retador.Retador
 
 @Accessors
 @Observable
@@ -113,13 +116,6 @@ class RetarADueloAppModel {
 	}
 	
 	def dameSusPropiedades(EstadisticasPersonajes it) {
-//		#[new Pair("Jugadas",vecesUsadoAntesDelDuelo),
-//			new Pair("Ganadas",vecesQueGanoDuelo),
-//			new Pair("Kills",vecesKills),	
-//			new Pair("Deads",vecesDeads),	
-//			new Pair("Assists",vecesAssist),
-//			new Pair("Mejor ubicacion",mejorUbicacion),
-//			new Pair("Puntaje",calificacion.categoria)]
 		val nose = new HashMap<String, Object>();
 		nose.put("Jugadas",vecesUsadoAntesDelDuelo)
 		nose.put("Ganadas",vecesQueGanoDuelo)
@@ -129,6 +125,36 @@ class RetarADueloAppModel {
 		nose.put("Mejor ubicacion",mejorUbicacion)
 		nose.put("Puntaje",calificacion.categoria)
 		nose
+	}
+	
+	def iniciarDuelo(Integer idJugador,Integer idPersonaje,String pos){
+		val duelo = juego.iniciarReto(obtenerJugador(idJugador),obtenerPersonaje(idJugador,idPersonaje),
+			dameUbi(pos))
+		duelo.resultado.datos
+	}
+	
+	def datos(Resultado resultado){
+		#[propiedadesParaLasEstadisticas(resultado.retador),propiedadesParaLasEstadisticas(resultado.retado),resultado.mensaje]
+	}
+	
+	def mensaje(Resultado resultado){
+		#[resultado.retador.personaje.nombre,resultado.retado.personaje.nombre]
+	}
+	
+	def propiedadesParaLasEstadisticas(Retador it) {
+		jugador.estadisticas(personaje).dameSusPropiedades
+	}
+	
+	def dameUbi(String pos) {
+		Ubicacion.valueOf(pos)
+	}
+	
+	def obtenerPersonaje(Integer idJugador, Integer idPersonaje) {
+		obtenerJugador(idJugador).personajePor(idPersonaje)
+	}
+	
+	def personajePor(Jugador jugador, Integer idPersonaje) {
+		jugador.estadisticasPersonajes.map[personaje].findFirst[id.equals(idPersonaje)]
 	}
 	
 	def obtenerDuelo(Integer idJugador,Ubicacion ubicacion) {

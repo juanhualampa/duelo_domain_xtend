@@ -139,12 +139,7 @@ class HomeJuego {
 	def estadisticasDePersonajeSeleccionado(Integer idJugador,Integer idPersonaje){
 		estadisticas(idJugador).findFirst[personaje.id.equals(idPersonaje)]
 	}
-		
-	def caracteristicas(Integer idPersonaje){
-		val personaje =personajes.findFirst[id.equals(idPersonaje)]
-		#[personaje.especialidades,personaje.debilidades,personaje.ubicacionIdeal]
-	}
-		
+				
 	def jugador(){
 		jugadorUno
 	}
