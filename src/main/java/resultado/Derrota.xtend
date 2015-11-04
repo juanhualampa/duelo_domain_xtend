@@ -16,4 +16,8 @@ class Derrota extends Resultado{
 		"Aceptar derrota con honor"
 	}
 	
+	override saludo() {
+		"Perdiste"
+	}
+	
 }

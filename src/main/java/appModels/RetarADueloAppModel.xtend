@@ -145,12 +145,13 @@ class RetarADueloAppModel {
 	
 	def datos(Duelo duelo){
 		#[propiedadesParaLasEstadisticas(duelo.retador),propiedadesParaLasEstadisticas(duelo.retado),
-			duelo.retador.personaje.nombre,duelo.retado.personaje.nombre,duelo.resultado.msj,
-			duelo.retador.puntaje,duelo.retado.puntaje
+			duelo.retador.personaje.nombre, duelo.retado.personaje.nombre,
+			duelo.resultado.msj, duelo.resultado.saludo,
+			duelo.retador.puntaje, duelo.retado.puntaje
 		]
 	}
 	def puntaje(Retador ret){
-		ret.jugador.estadisticas(ret.personaje).calificacion.nro
+		ret.jugador.estadisticas(ret.personaje).poderDeAtaque
 	}
 	
 	def mensaje(Resultado resultado,Duelo duelo){
