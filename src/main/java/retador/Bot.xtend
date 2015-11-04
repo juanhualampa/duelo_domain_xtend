@@ -15,13 +15,13 @@ class Bot extends Retador{
 		super(jugador,personaje,ubicacion)
 	}
 	
-	override aplicarActualizacionAlGanar(Duelo duelo) {
+	override aplicarActualizacionAlGanar() {
 	}
 	
-	override aplicarActualizacionAlPerder(Duelo duelo) {
+	override aplicarActualizacionAlPerder() {
 	}
 	
-	override aplicarActualizacionAlEmpatar(Duelo duelo) {
+	override aplicarActualizacionAlEmpatar() {
 	}
 	
 }

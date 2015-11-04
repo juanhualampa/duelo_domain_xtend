@@ -50,8 +50,13 @@ class EstadisticasPersonajes extends Entity{
 	new() {	}
 	
 	def void agregarUnaParticipacion() {
+		println("ANTES DE AGREGAR PART " + vecesUsadoAntesDelDuelo)
 		vecesUsadoAntesDelDuelo += 1
-		println(vecesAssist)
+		println("DESP DE AGREGAR PART " +vecesUsadoAntesDelDuelo)
+	}
+	
+	def agregarUbicacion(Ubicacion ubi){
+		ubicacionesUsadas.add(ubi)
 	}
 	
 	def agregarUnaVictoria() {

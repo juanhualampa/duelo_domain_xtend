@@ -38,7 +38,13 @@ class Duelo {
 	
 	def aplicarCambios(Resultado r){	
 		this.resultado = r
-		this.resultado.actualizarEstadisticas(this)
+		this.actualizarEstadisticas(r)
+	}
+	
+	def actualizarEstadisticas(Resultado r){
+		retador.agregarDuelos(this)
+		retado.agregarDuelos(this)
+		r.actualizarEstadisticas(retador,retado)
 	}
 	
 	def dispatch agregarDuelos(Bot retador, Duelo duelo){

@@ -42,9 +42,9 @@ abstract class Retador {
 		this.jugador.agregarDuelo(duelo)
 	}
 	
-	def void aplicarActualizacionAlGanar(Duelo duelo)
+	def void aplicarActualizacionAlGanar()
 	
-	def void aplicarActualizacionAlPerder(Duelo duelo)
+	def void aplicarActualizacionAlPerder()
 	
-	def void aplicarActualizacionAlEmpatar(Duelo duelo)
+	def void aplicarActualizacionAlEmpatar()
 }

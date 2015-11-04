@@ -12,6 +12,6 @@ import duelos.Duelo
 @Observable
 abstract class Resultado {
 		
-	def void actualizarEstadisticas(Duelo duelo )
+	def void actualizarEstadisticas(Retador retador, Retador retado )
 	
 }

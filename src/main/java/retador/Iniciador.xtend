@@ -19,24 +19,23 @@ class Iniciador extends Retador{
 	}
 			
 		
-	override aplicarActualizacionAlGanar(Duelo duelo) {
-		println("LLEGUE A ACTUALIZAR")
-		agregarDuelosAJugador(duelo)
+	override aplicarActualizacionAlGanar() {
+		println(jugador.nombre)
 		estadisticas(personaje).agregarUnaParticipacion
-		//estadisticas(personaje).ubicacionesUsadas.add(ubicacion)
+		estadisticas(personaje).agregarUbicacion(this.ubicacion)
 		estadisticas(personaje).agregarUnaVictoria
-		estadisticas(personaje).mejorUbicacion = ubicacion		
+		estadisticas(personaje).mejorUbicacion = this.ubicacion		
 		val nroAlAzar = new Random().nextInt(100)
 		estadisticas(personaje).calificacion = new CalculadorDeCalificaciones().calcular(this,nroAlAzar)
 	}
 	
-	override aplicarActualizacionAlPerder(Duelo duelo) {
+	override aplicarActualizacionAlPerder() {
+		println(jugador.nombre)
 		estadisticas(personaje).agregarUnaParticipacion
-		agregarDuelosAJugador(duelo)
 	}
 	
-	override aplicarActualizacionAlEmpatar(Duelo duelo) {
-		agregarDuelosAJugador(duelo)
+	override aplicarActualizacionAlEmpatar() {
+		println(jugador.nombre)
 		estadisticas(personaje).agregarUnaParticipacion
 		estadisticas(personaje).agregarAssist
 	}

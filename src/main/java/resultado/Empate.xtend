@@ -5,9 +5,9 @@ import duelos.Duelo
 
 class Empate extends Resultado {
 		
-	override actualizarEstadisticas(Duelo duelo) {
-		duelo.retador.aplicarActualizacionAlEmpatar(duelo)
-		duelo.retado.aplicarActualizacionAlEmpatar(duelo)
+	override actualizarEstadisticas(Retador retador, Retador retado) {
+		retador.aplicarActualizacionAlEmpatar
+		retado.aplicarActualizacionAlEmpatar
 	}
 	
 }

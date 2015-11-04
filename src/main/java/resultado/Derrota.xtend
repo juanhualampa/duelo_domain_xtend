@@ -7,8 +7,8 @@ import duelos.Duelo
 @Accessors
 class Derrota extends Resultado{
 		
-	override actualizarEstadisticas(Duelo duelo) {
-		duelo.retado.aplicarActualizacionAlGanar(duelo)
-		duelo.retador.aplicarActualizacionAlPerder(duelo)
+	override actualizarEstadisticas(Retador retador, Retador retado) {
+		retado.aplicarActualizacionAlGanar
+		retador.aplicarActualizacionAlPerder
 	}
 }

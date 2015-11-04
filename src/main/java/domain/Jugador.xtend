@@ -93,7 +93,7 @@ class Jugador extends Entity{
 	}
 	
 	def EstadisticasPersonajes estadisticas(Personaje p){
-		estadisticasPersonajes.findFirst[it.personaje.equals(p)]
+		estadisticasPersonajes.findFirst[it.personaje.id.equals(p.id)]
 	}
 	
 	def poderDeAtaque(Personaje personaje) {

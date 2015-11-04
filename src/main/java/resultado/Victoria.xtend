@@ -8,9 +8,9 @@ import duelos.Duelo
 @Accessors
 class Victoria extends Resultado{	
 		
-	override actualizarEstadisticas(Duelo duelo) {
-		duelo.retador.aplicarActualizacionAlGanar(duelo)
-		duelo.retado.aplicarActualizacionAlPerder(duelo)
+	override actualizarEstadisticas(Retador retador, Retador retado) {
+		retador.aplicarActualizacionAlGanar
+		retado.aplicarActualizacionAlPerder
 	}
 	
 }

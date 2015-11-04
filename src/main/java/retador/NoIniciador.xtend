@@ -15,20 +15,16 @@ class NoIniciador extends Retador{
 		estadisticas(personaje).agregarAssist
 	}
 	
-	override aplicarActualizacionAlGanar(Duelo duelo) {
-		agregarDuelosAJugador(duelo)
+	override aplicarActualizacionAlGanar() {
 		actualizarse
-		estadisticas(personaje).sumarKill
-		estadisticas(personaje).agregarUnaParticipacion	
+		estadisticas(personaje).sumarKill	
 	}
 	
-	override aplicarActualizacionAlPerder(Duelo duelo) {
-		agregarDuelosAJugador(duelo)
+	override aplicarActualizacionAlPerder() {
 		estadisticas(personaje).sumarDeads
 	}
 	
-	override aplicarActualizacionAlEmpatar(Duelo duelo) {
-		agregarDuelosAJugador(duelo)
+	override aplicarActualizacionAlEmpatar() {
 		estadisticas(personaje).agregarAssist
 	}
 	
