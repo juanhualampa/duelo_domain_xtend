@@ -19,7 +19,6 @@ class Iniciador extends Retador{
 	}			
 		
 	override aplicarActualizacionAlGanar() {
-		println(jugador.nombre)
 		estadisticas(personaje).agregarUnaParticipacion
 		//estadisticas(personaje).agregarUbicacion(this.ubicacion)
 		estadisticas(personaje).agregarUnaVictoria
@@ -28,13 +27,11 @@ class Iniciador extends Retador{
 	}
 	
 	override aplicarActualizacionAlPerder() {
-		println(jugador.nombre)
 		estadisticas(personaje).agregarUnaParticipacion
 		actualizarCalificacion
 	}
 	
 	override aplicarActualizacionAlEmpatar() {
-		println(jugador.nombre)
 		estadisticas(personaje).agregarUnaParticipacion
 		estadisticas(personaje).agregarAssist
 		actualizarCalificacion
