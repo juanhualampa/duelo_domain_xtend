@@ -72,11 +72,14 @@ class HomeJuego {
 		this.personajes = #[amumu,ahri,olaf,pudge,witchdoctor,viper]
 		
 		//UBICACIONES
-		val ubicacionesRampage = #[top,top,top,top,top,bottom]
+		val List<Ubicacion> ubicacionesRampage = newArrayList
+		ubicacionesRampage.addAll(top,top,top,top,top,bottom)
 		
-		ubicacionesNoRampage = #[top,jungle,top,middle]
+		val List<Ubicacion> ubicacionesNoRampage = newArrayList
+		ubicacionesNoRampage.addAll(top,jungle,top,middle)
 		
-		ubicacionesNoDominador = #[top,jungle,bottom,middle]
+		val List<Ubicacion> ubicacionesNoDominador = newArrayList
+		ubicacionesNoDominador.addAll(top,jungle,bottom,middle)
 		
 		//CALIFICACIONES SETEADAS PARA EVITAR RANDOM
 		rampage = new Calificacion("RAMPAGE",100)
