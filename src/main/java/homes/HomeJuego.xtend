@@ -24,8 +24,13 @@ class HomeJuego {
 	Ubicacion middle
 	//PERSONAJES
 	
+	Personaje amumu
+	Personaje ahri 
+	Personaje olaf 
+	Personaje pudge 
+	Personaje witchdoctor
+	Personaje viper 
 	
-		
 	//STATS PERSONAJES
 	EstadisticasPersonajes statsRampage
 	EstadisticasPersonajes statsDominador
@@ -63,23 +68,18 @@ class HomeJuego {
 		this.middle = Ubicacion.MIDDLE
 		this.jungle = Ubicacion.JUNGLE
 		
-		val amumu = new Personaje(1,"Amumu",	#["Araniar", "Llorar!"],#["La ducha"], top,'assets/images/amumu.png')
-		val ahri = new Personaje(2,"Ahri", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle,'assets/images/ahri.png')
-		val olaf = new Personaje(3,"Olaf", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle,'assets/images/olaf.png')
-		val pudge = new Personaje(4,"Pudge", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle,'assets/images/pudge.png')
-		val witchdoctor = new Personaje(5,"Witchdoctor", #["Usar casco","Volar"],#["Caminar"], bottom,'assets/images/witchdoctor.png')
-		val viper = new Personaje(6,"Viper", #["Ni idea","Volar"],#["Saltar"], bottom,'assets/images/viper.png')
+		amumu = new Personaje(1,"Amumu",	#["Araniar", "Llorar!"],#["La ducha"], top,'assets/images/amumu.png')
+		ahri = new Personaje(2,"Ahri", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle,'assets/images/ahri.png')
+		olaf = new Personaje(3,"Olaf", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle,'assets/images/olaf.png')
+		pudge = new Personaje(4,"Pudge", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle,'assets/images/pudge.png')
+		witchdoctor = new Personaje(5,"Witchdoctor", #["Usar casco","Volar"],#["Caminar"], bottom,'assets/images/witchdoctor.png')
+		viper = new Personaje(6,"Viper", #["Ni idea","Volar"],#["Saltar"], bottom,'assets/images/viper.png')
 		this.personajes = #[amumu,ahri,olaf,pudge,witchdoctor,viper]
 		
 		//UBICACIONES
-		val List<Ubicacion> ubicacionesRampage = newArrayList
-		ubicacionesRampage.addAll(top,top,top,top,top,bottom)
-		
-		val List<Ubicacion> ubicacionesNoRampage = newArrayList
-		ubicacionesNoRampage.addAll(top,jungle,top,middle)
-		
-		val List<Ubicacion> ubicacionesNoDominador = newArrayList
-		ubicacionesNoDominador.addAll(top,jungle,bottom,middle)
+		val ubicacionesRampage = #[top,top,top,top,top,bottom]
+		val ubicacionesNoRampage = #[top,jungle,top,middle]
+		val ubicacionesNoDominador = #[top,jungle,bottom,middle]
 		
 		//CALIFICACIONES SETEADAS PARA EVITAR RANDOM
 		rampage = new Calificacion("RAMPAGE",100)
@@ -133,6 +133,14 @@ class HomeJuego {
 	
 	def jugadorSeleccionado(){
 		jugadorUno
+	}
+	
+	def otroJugador(){
+		jugadorDos
+	}
+	
+	def tercerJugador(){
+		jugadorTres
 	}
 		
 	def estadisticas(Integer idJugador){

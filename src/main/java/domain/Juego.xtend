@@ -26,28 +26,32 @@ class Juego {
 		realizarDuelo(ret, ret.obtenerOponente)
 	}
 	
-	def Retador obtenerOponente(Retador it){
-		if(noHayOponente(it)){
+	def Retador obtenerOponente(Retador ret){
+		if(noHayOponente(ret)){
 			throw new NoHayOponenteException
 		}
-		retadorPara(it)
+		retadorPara(ret)
 	}
 	
 	def noHayOponente(Retador ret){
-		retadorPara(ret) == null
+		otrosJugadores(ret).filter[conEstadisticasSimilaresA(ret)].isEmpty
+	}
+	
+	def otrosJugadores(Retador ret){
+		jugadores.filter[nombre != ret.jugador.nombre]
 	}
 	
 	def Retador retadorPara(Retador ret){
-		val jugador = jugadores.findFirst[nombre != ret.jugador.nombre && conEstadisticasSimilaresA(ret)]
+		val jugador = otrosJugadores(ret).findFirst[conEstadisticasSimilaresA(ret)]
 		this.toRetadores(toJugadorYPersonaje(jugador,ret.estadisticas(ret.personaje)))
 	}
 	
-	def conEstadisticasSimilaresA(Jugador it,Retador ret) {
-		estadisticasPersonajes.similaresA(ret.estadisticas(ret.personaje))
+	def conEstadisticasSimilaresA(Jugador jug,Retador ret) {
+		jug.estadisticasPersonajes.similaresA(ret.estadisticas(ret.personaje))
 	}
 		
-	def Retador toRetadores(Pair<Jugador, Personaje> it){
-		new NoIniciador(it.key, it.value, it.value.ubicacionIdeal)
+	def Retador toRetadores(Pair<Jugador, Personaje> per){
+		new NoIniciador(per.key, per.value, per.value.ubicacionIdeal)
 	}
 	
 	def Pair<Jugador,Personaje> toJugadorYPersonaje(Jugador jugador, EstadisticasPersonajes est) {
@@ -55,19 +59,19 @@ class Juego {
 	}
 	
 	def Personaje personajeCompatible (List<EstadisticasPersonajes> lista , EstadisticasPersonajes est){
-		lista.findFirst[it.esSimilarA(est)].personaje
+		lista.findFirst[esSimilarA(est)].personaje
 	}
 	
 	def boolean similaresA(List<EstadisticasPersonajes> list, EstadisticasPersonajes est){
-		list.exists[it.esSimilarA(est)]
+		list.exists[esSimilarA(est)]
 	}
 	
 	def boolean esSimilarA(EstadisticasPersonajes est1, EstadisticasPersonajes est2) {
 		est1.calificacion.categoria.equals(est2.calificacion.categoria)
 	}			
 	
-	def Duelo realizarDuelo(Retador it, Retador ret){		
-		val duelo = new Duelo(it,ret)
+	def Duelo realizarDuelo(Retador ret1, Retador ret2){		
+		val duelo = new Duelo(ret1,ret2)
 		duelo.realizarse
 		duelo
 	}
@@ -77,14 +81,14 @@ class Juego {
 		den.castigar
 	}	
 	
-	def Bot dameAMRX(Retador it) {
-		val cantPersonajesRandom =new Random().nextInt(it.jugador.estadisticasPersonajes.size )
-		generarMRX(it,cantPersonajesRandom)
+	def Bot dameAMRX(Retador ret) {
+		val cantPersonajesRandom =new Random().nextInt(ret.jugador.estadisticasPersonajes.size )
+		generarMRX(ret,cantPersonajesRandom)
 	}
 	
-	def generarMRX(Retador it, int nroAzaroso){
-		val personajeRandom = it.jugador.estadisticasPersonajes.map[personaje].get(nroAzaroso)
-		val estadisticas = it.jugador.estadisticasPersonajes
+	def generarMRX(Retador ret, int nroAzaroso){
+		val personajeRandom = ret.jugador.estadisticasPersonajes.map[ret.personaje].get(nroAzaroso)
+		val estadisticas = ret.jugador.estadisticasPersonajes
 		val bot = new Jugador("MR.X", estadisticas)
 		new Bot(bot, personajeRandom, Ubicacion.BOTTOM)
 	}

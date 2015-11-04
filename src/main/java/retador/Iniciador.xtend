@@ -18,15 +18,12 @@ class Iniciador extends Retador{
 		super()
 	}
 			
-	def paraInicializadores(){		
-		estadisticas(personaje).agregarAssist
-		estadisticas(personaje).agregarUnaParticipacion
-		estadisticas(personaje).ubicacionesUsadas.add(ubicacion)
-	}
-	
+		
 	override aplicarActualizacionAlGanar(Duelo duelo) {
 		agregarDuelosAJugador(duelo)
-		paraInicializadores
+		estadisticas(personaje).agregarAssist
+		estadisticas(personaje).agregarUnaParticipacion
+		//estadisticas(personaje).ubicacionesUsadas.add(ubicacion)
 		estadisticas(personaje).agregarUnaVictoria
 		estadisticas(personaje).mejorUbicacion = ubicacion		
 		val nroAlAzar = new Random().nextInt(100)
