@@ -42,29 +42,35 @@ class DueloTest {
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElPrimero(){
 		assertEquals(0,unJugador.duelos.size)
+		val estInicial = unJugador.estadisticas(this.home.amumu)
 		unJugador.iniciarDuelo(this.home.amumu,Ubicacion.MIDDLE)
 		assertEquals(1,unJugador.duelos.size)
 		val resultadoJugador1 = unJugador.duelos.get(0).resultado
 		assertTrue(resultadoJugador1 instanceof Victoria)
+		assertTrue(unJugador.estadisticas(this.home.amumu).vecesUsadoAntesDelDuelo == (estInicial.vecesUsadoAntesDelDuelo + 1))
 	}
 	
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConVictoriaParaElSegundo(){		
 		assertEquals(0,otroJugador.duelos.size)
+		val estInicial = unJugador.estadisticas(this.home.olaf)
 		otroJugador.iniciarDuelo(this.home.olaf,Ubicacion.MIDDLE)
 		assertEquals(1,otroJugador.duelos.size)
 		val resultadoJugador1 = otroJugador.duelos.get(0).resultado
 		assertTrue(resultadoJugador1 instanceof Derrota)
+		assertTrue(unJugador.estadisticas(this.home.olaf).vecesUsadoAntesDelDuelo == (estInicial.vecesUsadoAntesDelDuelo + 1))
+		
 	}
 	
 	@Test 
 	def testsDosRetadoresPeleanYSeEfectivizaEnLosDuelosDeAmbosConEmpate(){
-		
 		assertEquals(0,unJugador.duelos.size)
+		val estInicial = unJugador.estadisticas(this.home.ahri)
 		unJugador.iniciarDuelo(this.home.ahri,Ubicacion.TOP)
 		assertEquals(1,unJugador.duelos.size)
 		val resultadoJugador1 = unJugador.duelos.get(0).resultado
 		assertTrue(resultadoJugador1 instanceof Empate)
+		assertTrue(unJugador.estadisticas(this.home.ahri).vecesUsadoAntesDelDuelo == (estInicial.vecesUsadoAntesDelDuelo + 1))
 	}
 	
 }

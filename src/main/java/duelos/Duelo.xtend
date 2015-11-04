@@ -29,16 +29,16 @@ class Duelo {
 	 */
 	def void realizarse(){
 		switch retador {
-		  case retador.esMasPoderosoQue(retado)		: aplicarCambios(new Victoria(retador, retado))
-		  case retado.esMasPoderosoQue(retador)		: aplicarCambios(new Derrota(retador, retado))
-		  default									: aplicarCambios(new Empate(retador, retado))
+		  case retador.esMasPoderosoQue(retado)		: aplicarCambios(new Victoria)
+		  case retado.esMasPoderosoQue(retador)		: aplicarCambios(new Derrota)
+		  default									: aplicarCambios(new Empate)
 		} 
 	}
 	
 	
-	def aplicarCambios(Resultado r){			
-		resultado = r
-		resultado.actualizarEstadisticas(this)
+	def aplicarCambios(Resultado r){	
+		this.resultado = r
+		this.resultado.actualizarEstadisticas(this)
 	}
 	
 	def dispatch agregarDuelos(Bot retador, Duelo duelo){

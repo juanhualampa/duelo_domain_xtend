@@ -31,11 +31,13 @@ class Iniciador extends Retador{
 	}
 	
 	override aplicarActualizacionAlPerder(Duelo duelo) {
+		estadisticas(personaje).agregarUnaParticipacion
 		agregarDuelosAJugador(duelo)
 	}
 	
 	override aplicarActualizacionAlEmpatar(Duelo duelo) {
 		agregarDuelosAJugador(duelo)
+		estadisticas(personaje).agregarUnaParticipacion
 		estadisticas(personaje).agregarAssist
 	}
 	

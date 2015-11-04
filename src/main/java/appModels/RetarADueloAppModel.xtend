@@ -15,6 +15,7 @@ import java.util.HashMap
 import retador.Iniciador
 import resultado.Resultado
 import retador.Retador
+import duelos.Duelo
 
 @Accessors
 @Observable
@@ -130,15 +131,15 @@ class RetarADueloAppModel {
 	def iniciarDuelo(Integer idJugador,Integer idPersonaje,String pos){
 		val duelo = juego.iniciarReto(obtenerJugador(idJugador),obtenerPersonaje(idJugador,idPersonaje),
 			dameUbi(pos))
-		duelo.resultado.datos
+		duelo.datos
 	}
 	
-	def datos(Resultado resultado){
-		#[propiedadesParaLasEstadisticas(resultado.retador),propiedadesParaLasEstadisticas(resultado.retado),resultado.mensaje]
+	def datos(Duelo duelo){
+		#[propiedadesParaLasEstadisticas(duelo.retador),propiedadesParaLasEstadisticas(duelo.retado),duelo.resultado.mensaje(duelo)]
 	}
 	
-	def mensaje(Resultado resultado){
-		#[resultado.retador.personaje.nombre,resultado.retado.personaje.nombre]
+	def mensaje(Resultado resultado,Duelo duelo){
+		#[duelo.retador.personaje.nombre,duelo.retado.personaje.nombre]
 	}
 	
 	def propiedadesParaLasEstadisticas(Retador it) {

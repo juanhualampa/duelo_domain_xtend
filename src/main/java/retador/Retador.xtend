@@ -34,8 +34,8 @@ abstract class Retador {
 		this.poderDeAtaque > it.poderDeAtaque
 	}
 	
-	def estadisticas(Personaje it) {
-		jugador.estadisticas(it)
+	def estadisticas(Personaje personaje) {
+		jugador.estadisticas(personaje)
 	}
 	
 	def agregarDuelosAJugador(Duelo duelo){

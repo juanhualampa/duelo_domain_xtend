@@ -11,10 +11,7 @@ import duelos.Duelo
 @Accessors
 @Observable
 abstract class Resultado {
-	
-	Retador retador
-	Retador retado
-	
+		
 	def void actualizarEstadisticas(Duelo duelo )
 	
 }

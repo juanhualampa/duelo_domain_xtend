@@ -103,7 +103,7 @@ class HomeJuego {
 		//STATS PERSONAJES JUGADOR DOS
 		statsRampageDos = new EstadisticasPersonajes(olaf,80, 60, 20, 10, 15, ubicacionesRampage, top, rampage)
 		statsDominadorDos = new EstadisticasPersonajes(ahri, 15, 8, 4, 2, 6, ubicacionesNoDominador, top, dominador)
-		statsKillingSpreadDos = new EstadisticasPersonajes(pudge, 5, 2, 3, 0, 1, ubicacionesNoDominador, middle, killing_spread)
+		statsKillingSpreadDos = new EstadisticasPersonajes(pudge,4, 1, 1, 1, 1, ubicacionesNoDominador, middle, killing_spread)
 //		statsMancoDos = new EstadisticasPersonajes(witchdoctor,10,8, 10, 6, 5, ubicacionesNoRampage, top, manco)
 		statsNoobDos = new EstadisticasPersonajes(amumu, 4, 3, 1, 2, 1, ubicacionesNoDominador, top, noob)
 		
