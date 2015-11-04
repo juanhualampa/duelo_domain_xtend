@@ -20,8 +20,8 @@ class Iniciador extends Retador{
 			
 		
 	override aplicarActualizacionAlGanar(Duelo duelo) {
+		println("LLEGUE A ACTUALIZAR")
 		agregarDuelosAJugador(duelo)
-		estadisticas(personaje).agregarAssist
 		estadisticas(personaje).agregarUnaParticipacion
 		//estadisticas(personaje).ubicacionesUsadas.add(ubicacion)
 		estadisticas(personaje).agregarUnaVictoria

@@ -51,6 +51,7 @@ class EstadisticasPersonajes extends Entity{
 	
 	def void agregarUnaParticipacion() {
 		vecesUsadoAntesDelDuelo += 1
+		println(vecesAssist)
 	}
 	
 	def agregarUnaVictoria() {
@@ -66,9 +67,7 @@ class EstadisticasPersonajes extends Entity{
 	}
 	
 	def agregarAssist(){
-		
 		vecesAssist += 1
-		println(vecesAssist)
 	}
 	
 	def nombrePersonaje(){
