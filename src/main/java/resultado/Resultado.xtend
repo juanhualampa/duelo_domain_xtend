@@ -14,4 +14,6 @@ abstract class Resultado {
 		
 	def void actualizarEstadisticas(Retador retador, Retador retado )
 	
+	def String msj()
+	
 }

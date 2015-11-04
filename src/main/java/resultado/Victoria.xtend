@@ -13,4 +13,8 @@ class Victoria extends Resultado{
 		retado.aplicarActualizacionAlPerder
 	}
 	
+	override msj() {
+		"Celebra tu victoria"
+	}
+	
 }

@@ -11,4 +11,9 @@ class Derrota extends Resultado{
 		retado.aplicarActualizacionAlGanar
 		retador.aplicarActualizacionAlPerder
 	}
+	
+	override msj() {
+		"Aceptar derrota con honor"
+	}
+	
 }

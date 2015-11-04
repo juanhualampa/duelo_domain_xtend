@@ -10,4 +10,8 @@ class Empate extends Resultado {
 		retado.aplicarActualizacionAlEmpatar
 	}
 	
+	override msj() {
+		"Sigue practicando"
+	}
+	
 }
