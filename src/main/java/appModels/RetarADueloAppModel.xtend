@@ -134,6 +134,15 @@ class RetarADueloAppModel {
 		duelo.datos
 	}
 	
+	def iniciarDueloConMrX(Integer idJugador,Integer idPersonaje,String pos){
+		val retador = new Iniciador(obtenerJugador(idJugador),obtenerPersonaje(idJugador,idPersonaje),
+			dameUbi(pos))
+		val mrX = juego.generarMRX(retador,1)
+		val duelo = new Duelo( retador,mrX)
+		duelo.realizarse
+		duelo.datos
+	}
+	
 	def datos(Duelo duelo){
 		#[propiedadesParaLasEstadisticas(duelo.retador),propiedadesParaLasEstadisticas(duelo.retado),duelo.resultado.mensaje(duelo)]
 	}
