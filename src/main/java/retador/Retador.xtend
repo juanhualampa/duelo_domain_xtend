@@ -6,6 +6,8 @@ import domain.Jugador
 import domain.Personaje
 import domain.Ubicacion
 import duelos.Duelo
+import java.util.Random
+import calculadorDeCalificaciones.CalculadorDeCalificaciones
 
 /**
  * Clase que agrupa un jugador, personaje y ubicacion para un duelo.
@@ -40,6 +42,11 @@ abstract class Retador {
 	
 	def agregarDuelosAJugador(Duelo duelo){
 		this.jugador.agregarDuelo(duelo)
+	}
+	
+	def actualizarCalificacion(){
+		val nroAlAzar = new Random().nextInt(100)
+		estadisticas(personaje).calificacion = new CalculadorDeCalificaciones().calcular(this,nroAlAzar)
 	}
 	
 	def void aplicarActualizacionAlGanar()

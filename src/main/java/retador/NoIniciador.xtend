@@ -18,10 +18,12 @@ class NoIniciador extends Retador{
 	override aplicarActualizacionAlGanar() {
 		actualizarse
 		estadisticas(personaje).sumarKill	
+		actualizarCalificacion
 	}
 	
 	override aplicarActualizacionAlPerder() {
 		estadisticas(personaje).sumarDeads
+		actualizarCalificacion
 	}
 	
 	override aplicarActualizacionAlEmpatar() {

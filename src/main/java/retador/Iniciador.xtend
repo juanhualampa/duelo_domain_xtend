@@ -16,28 +16,28 @@ class Iniciador extends Retador{
 	
 	new() {
 		super()
-	}
-			
+	}			
 		
 	override aplicarActualizacionAlGanar() {
 		println(jugador.nombre)
 		estadisticas(personaje).agregarUnaParticipacion
-		estadisticas(personaje).agregarUbicacion(this.ubicacion)
+		//estadisticas(personaje).agregarUbicacion(this.ubicacion)
 		estadisticas(personaje).agregarUnaVictoria
-		estadisticas(personaje).mejorUbicacion = this.ubicacion		
-		val nroAlAzar = new Random().nextInt(100)
-		estadisticas(personaje).calificacion = new CalculadorDeCalificaciones().calcular(this,nroAlAzar)
+		estadisticas(personaje).mejorUbicacion = ubicacion		
+		actualizarCalificacion
 	}
 	
 	override aplicarActualizacionAlPerder() {
 		println(jugador.nombre)
 		estadisticas(personaje).agregarUnaParticipacion
+		actualizarCalificacion
 	}
 	
 	override aplicarActualizacionAlEmpatar() {
 		println(jugador.nombre)
 		estadisticas(personaje).agregarUnaParticipacion
 		estadisticas(personaje).agregarAssist
+		actualizarCalificacion
 	}
 	
 		
