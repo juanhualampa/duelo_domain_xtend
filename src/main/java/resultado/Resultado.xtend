@@ -16,6 +16,6 @@ abstract class Resultado {
 	
 	def String msj()
 	
-	def String saludo()
+	def String veredicto()
 	
 }

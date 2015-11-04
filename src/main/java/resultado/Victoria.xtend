@@ -17,7 +17,7 @@ class Victoria extends Resultado{
 		"Celebra tu victoria"
 	}
 	
-	override saludo() {
+	override veredicto() {
 		"Ganaste"
 	}
 	

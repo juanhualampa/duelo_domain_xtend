@@ -146,7 +146,7 @@ class RetarADueloAppModel {
 	def datos(Duelo duelo){
 		#[propiedadesParaLasEstadisticas(duelo.retador),propiedadesParaLasEstadisticas(duelo.retado),
 			duelo.retador.personaje.nombre, duelo.retado.personaje.nombre,
-			duelo.resultado.msj, duelo.resultado.saludo,
+			duelo.resultado.msj, duelo.resultado.veredicto,
 			duelo.retador.puntaje, duelo.retado.puntaje,
 			duelo.retador.personaje.source, duelo.retado.personaje.source
 		]

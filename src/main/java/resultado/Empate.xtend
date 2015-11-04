@@ -14,7 +14,7 @@ class Empate extends Resultado {
 		"Sigue practicando"
 	}
 	
-	override saludo() {
+	override veredicto() {
 		"Empataste"
 	}
 	
