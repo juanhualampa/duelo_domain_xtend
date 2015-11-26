@@ -154,5 +154,6 @@ class HomeJuego {
 	def jugador(){
 		jugadorUno
 	}
+	
 		
 }

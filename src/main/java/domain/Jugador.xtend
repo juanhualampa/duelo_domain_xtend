@@ -64,6 +64,10 @@ class Jugador extends Entity{
 		denuncias.fold(0)[a,b | a + b.unMotivo.peso]
 	}
 	
+	def List<String> nombrePersonajes(){
+		estadisticasPersonajes.map[it.personaje.nombre]
+	}
+	
 	def promedioDeCalificacionesDePersonajes() {
 		estadisticasPersonajes.fold(0)[a,b| a + b.calificacion.nro]
 	}
