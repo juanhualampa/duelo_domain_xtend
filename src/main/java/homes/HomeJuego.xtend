@@ -68,7 +68,7 @@ class HomeJuego {
 		this.middle = Ubicacion.MIDDLE
 		this.jungle = Ubicacion.JUNGLE
 		
-		amumu = new Personaje(1,"Amumu",	#["Araniar", "Llorar!"],#["La ducha"], top,'assets/images/amumu.png')
+		amumu = new Personaje(1,"Amumu",	#["Araniar", "Llorar!"],#["La ducha",'colgar la ropa'], top,'assets/images/amumu.png')
 		ahri = new Personaje(2,"Ahri", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle,'assets/images/ahri.png')
 		olaf = new Personaje(3,"Olaf", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle,'assets/images/olaf.png')
 		pudge = new Personaje(4,"Pudge", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle,'assets/images/pudge.png')
