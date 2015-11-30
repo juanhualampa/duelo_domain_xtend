@@ -72,7 +72,7 @@ class HomeJuego {
 		ahri = new Personaje(2,"Ahri", #["Ser azul", "Ser inteligente"], #["Las tijeras"], middle,'assets/images/ahri.png')
 		olaf = new Personaje(3,"Olaf", #["Tirarte cartitas","Tirar los perros"],#["Cualquier otra cosa"], middle,'assets/images/olaf.png')
 		pudge = new Personaje(4,"Pudge", #["Rayos laser","Lentes copados"],#["Cualquier otra cosa"], jungle,'assets/images/pudge.png')
-		witchdoctor = new Personaje(5,"Witchdoctor", #["Usar casco","Volar"],#["Caminar"], bottom,'assets/images/witchdoctor.png')
+		witchdoctor = new Personaje(5,"WitchDoctor", #["Usar casco","Volar"],#["Caminar"], bottom,'assets/images/witchdoctor.png')
 		viper = new Personaje(6,"Viper", #["Ni idea","Volar"],#["Saltar"], bottom,'assets/images/viper.png')
 		this.personajes = #[amumu,ahri,olaf,pudge,witchdoctor,viper]
 		
