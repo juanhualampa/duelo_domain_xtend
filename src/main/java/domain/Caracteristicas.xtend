@@ -7,9 +7,9 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class Caracteristicas {	
 	List<String> especialidades	
 	List<String> debilidades	
-	Ubicacion ubicacionIdeal
+	String ubicacionIdeal
 	
-	new(List<String> especialidades, List<String> debilidades, Ubicacion ubicacionIdeal) {
+	new(List<String> especialidades, List<String> debilidades, String ubicacionIdeal) {
 		this.especialidades = especialidades
 		this.debilidades = debilidades
 		this.ubicacionIdeal = ubicacionIdeal

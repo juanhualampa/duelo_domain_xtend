@@ -40,7 +40,7 @@ class Personaje  extends Entity {
 	}
 	
 	def caracteristicas(){
-		new Caracteristicas(especialidades,debilidades,ubicacionIdeal)
+		new Caracteristicas(especialidades,debilidades,String.valueOf(ubicacionIdeal).toLowerCase)
 	}
 	
 	new() {	}
